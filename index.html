@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ultima Versions Timeline</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* One visual world: the night sky over Britannia, gold-leaf runes, moongate glow.
+     Layout: header + view switch, then either a horizontal year track or a canon-order grid. */
+  --ink: #0d111d;
+  --panel: #151a2a;
+  --panel-2: #1c2236;
+  --line: #2b3250;
+  --text: #ebe2cc;
+  --muted: #a29c8d;
+  --gold: #dcb05a;
+  --display: "IM Fell English SC", "Iowan Old Style", Georgia, serif;
+  --body: "Alegreya Sans", "Segoe UI", system-ui, sans-serif;
+
+  --t-orig: #e2b45a;
+  --t-port: #cdbd96;
+  --t-remake: #e88b5c;
+  --t-console: #8ea6ff;
+  --t-jp: #ec7b98;
+  --t-engine: #7fd38c;
+  --t-decomp: #b79df2;
+  --t-fan: #5fcbe8;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--ink);
+  background-image: radial-gradient(ellipse 80% 50% at 50% -10%, #1d2647 0%, transparent 70%);
+  background-repeat: no-repeat;
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.5;
+}
+a { color: var(--gold); text-underline-offset: 2px; }
+a:hover { color: #f1cd84; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 3px; }
+button { font: inherit; color: inherit; }
+
+.wrap { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+header.top { padding: 28px 0 14px; display: grid; gap: 14px; }
+.title-row { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px; }
+h1 {
+  font-family: var(--display); font-weight: 400; margin: 0;
+  font-size: clamp(1.9rem, 4vw, 2.8rem); letter-spacing: .02em; line-height: 1.05;
+  text-wrap: balance;
+}
+h1 .ankh { color: var(--gold); }
+.lede { margin: 0; color: var(--muted); max-width: 70ch; }
+.lede strong { color: var(--text); font-weight: 500; }
+
+.switch {
+  display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px;
+  background: var(--panel);
+}
+.switch button {
+  border: 0; background: transparent; padding: 7px 16px; border-radius: 999px; cursor: pointer;
+  color: var(--muted); font-weight: 500;
+}
+.switch button[aria-pressed="true"] { background: var(--gold); color: #1a1408; }
+
+.controls { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
+.controls .lab { font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.typechips { display: flex; flex-wrap: wrap; gap: 6px; }
+.tchip {
+  display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px 3px 8px;
+  border: 1px solid var(--line); border-radius: 999px; background: var(--panel); cursor: pointer;
+  font-size: .86rem;
+}
+.tchip[aria-pressed="false"] { opacity: .42; }
+.tchip[aria-pressed="false"] .mark { filter: grayscale(1); }
+select {
+  font: inherit; color: var(--text); background: var(--panel); border: 1px solid var(--line);
+  border-radius: 8px; padding: 5px 8px;
+}
+
+.mark { width: 10px; height: 10px; border-radius: 50%; background: var(--c); flex: none; display: inline-block; }
+.mark.dia { border-radius: 2px; transform: rotate(45deg); width: 9px; height: 9px; }
+
+/* ---------- Timeline ---------- */
+.tl-shell { margin-top: 10px; border: 1px solid var(--line); border-radius: 14px; background: color-mix(in srgb, var(--panel) 80%, transparent); }
+.tl-hint { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 10px 16px; font-size: .85rem; color: var(--muted); border-bottom: 1px solid var(--line); }
+.tl-scroll { overflow-x: auto; overflow-y: hidden; scrollbar-color: var(--line) transparent; }
+.tl-track { display: flex; align-items: stretch; min-height: 380px; padding: 18px 20px 0; width: max-content; }
+.yr { display: flex; flex-direction: column; justify-content: flex-end; position: relative; }
+.yr .stacks { display: flex; gap: 6px; align-items: flex-end; padding: 0 5px 12px; flex: 1; }
+.yr .stack { display: flex; flex-direction: column; gap: 5px; justify-content: flex-end; }
+.yr.empty { width: 22px; }
+.yr .axis { height: 46px; border-top: 2px solid var(--line); position: relative; }
+.yr .axis::before {
+  content: ""; position: absolute; left: 50%; top: -2px; width: 1px; height: 8px; background: var(--muted); opacity: .6;
+}
+.yr .ylab {
+  position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
+  font-family: var(--display); font-size: 1.05rem; color: var(--text); white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.yr.empty .ylab { font-family: var(--body); font-size: .68rem; color: var(--muted); top: 14px; }
+.yr.empty:not(.decade) .ylab { display: none; }
+.yr.full .axis::before { height: 12px; width: 2px; background: var(--gold); opacity: 1; }
+
+.chip {
+  --c: var(--t-port);
+  display: flex; align-items: center; gap: 7px; width: 168px; text-align: left;
+  padding: 5px 9px 5px 8px; border-radius: 7px; cursor: pointer; text-decoration: none;
+  background: var(--panel-2); border: 1px solid var(--line); border-left: 3px solid var(--c);
+  color: var(--text); font-size: .84rem; line-height: 1.2;
+  transition: transform .12s ease, border-color .12s ease, opacity .15s ease;
+}
+.chip:hover { transform: translateY(-2px); border-color: var(--c); color: var(--text); }
+.chip .g { font-weight: 700; color: var(--c); white-space: nowrap; }
+.chip .p { color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.chip.active { outline: 2px solid var(--c); outline-offset: 1px; }
+.chip.dim { opacity: .18; }
+.chip.hidden { display: none; }
+
+/* ---------- Compact timeline ---------- */
+.cp-track { position: relative; }
+.cp-track svg { position: absolute; inset: 0; pointer-events: none; overflow: visible; }
+.cp-axis { stroke: var(--line); stroke-width: 2; }
+.cp-tick { stroke: var(--muted); stroke-width: 1; opacity: .5; }
+.cp-tick.major { stroke: var(--gold); opacity: 1; }
+.cp-lead { stroke-width: 1; opacity: .55; }
+.cp-dot { stroke: var(--ink); stroke-width: 1.5; }
+.cp-year { position: absolute; transform: translateX(-50%); font-size: .7rem; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cp-year.major { font-family: var(--display); font-size: .95rem; color: var(--text); }
+.cpc {
+  --c: var(--t-port);
+  position: absolute; display: flex; align-items: center; gap: 5px; height: 24px; padding: 0 7px 0 6px;
+  background: var(--panel-2); border: 1px solid var(--line); border-left: 3px solid var(--c); border-radius: 5px;
+  color: var(--text); text-decoration: none; font-size: .76rem; line-height: 1; white-space: nowrap; overflow: hidden;
+  transition: border-color .12s ease, opacity .15s ease;
+}
+.cpc:hover, .cpc:focus-visible { border-color: var(--c); color: var(--text); z-index: 3; }
+.cpc .g { font-weight: 700; color: var(--c); flex: none; }
+.cpc .p { overflow: hidden; text-overflow: ellipsis; }
+.cpc.active { outline: 2px solid var(--c); outline-offset: 1px; z-index: 4; }
+.cpc.dim { opacity: .16; }
+.cp-dim { opacity: .14; }
+
+/* ---------- Table ---------- */
+.tbl-shell { margin-top: 10px; border: 1px solid var(--line); border-radius: 14px; background: color-mix(in srgb, var(--panel) 80%, transparent); overflow-x: auto; }
+table { border-collapse: separate; border-spacing: 0; width: max-content; min-width: 100%; font-size: .9rem; }
+td { min-width: 112px; }
+td.wide { min-width: 170px; }
+th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; vertical-align: top; text-align: left; }
+thead th {
+  position: sticky; top: 0; background: var(--panel); z-index: 2;
+  font-weight: 500; font-size: .76rem; text-transform: uppercase; letter-spacing: .07em; color: var(--muted);
+}
+thead th.grp { color: var(--gold); }
+tbody th {
+  position: sticky; left: 0; background: var(--panel); z-index: 1; min-width: 230px; font-weight: 400;
+  border-right: 1px solid var(--line);
+}
+tbody tr.era td, tbody tr.era th {
+  background: var(--ink); color: var(--gold); font-family: var(--display); font-size: 1.05rem; padding: 12px 10px 6px;
+}
+tbody tr.era th { position: sticky; left: 0; }
+.gname { font-family: var(--display); font-size: 1.12rem; line-height: 1.15; display: block; color: var(--text); text-decoration: none; }
+.gname:hover { color: var(--gold); }
+.gmeta { font-size: .78rem; color: var(--muted); }
+.ord { display: inline-block; min-width: 2.1em; color: var(--gold); font-variant-numeric: tabular-nums; font-family: var(--display); }
+.cell { display: flex; flex-wrap: wrap; gap: 2px 0; align-items: baseline; }
+.br { color: var(--muted); }
+.vlink { color: var(--c, var(--gold)); font-weight: 700; text-decoration: none; padding: 0 1px; font-variant-numeric: tabular-nums; }
+.vlink:hover { text-decoration: underline; color: var(--c); }
+.cell .sep { color: var(--muted); margin-right: 3px; }
+.cell .plat { display: grid; gap: 1px; width: 100%; font-size: .76rem; color: var(--muted); line-height: 1.3; margin-top: 3px; }
+.cell .plat span { white-space: nowrap; }
+.cell .plat b { color: var(--c); font-weight: 700; margin-right: 4px; font-variant-numeric: tabular-nums; }
+td.empty::after { content: "—"; color: var(--line); }
+td.buy a { display: inline-block; margin: 0 8px 2px 0; white-space: nowrap; }
+.free { font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; color: var(--t-engine); margin-left: 2px; }
+
+/* ---------- Card ---------- */
+.card {
+  position: fixed; z-index: 50; width: min(420px, calc(100vw - 24px)); max-height: min(78vh, 640px); overflow: auto;
+  background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--c, var(--gold));
+  border-radius: 12px; box-shadow: 0 18px 50px rgba(0,0,0,.55); padding: 16px 18px 18px;
+}
+.card[hidden] { display: none; }
+.card .close {
+  position: absolute; top: 8px; right: 8px; border: 0; background: transparent; cursor: pointer;
+  color: var(--muted); font-size: 1.4rem; line-height: 1; padding: 4px 8px; border-radius: 6px;
+}
+.card .close:hover { color: var(--text); background: var(--panel-2); }
+.card .kick { display: flex; align-items: center; gap: 8px; font-size: .78rem; text-transform: uppercase; letter-spacing: .07em; color: var(--c); }
+.card h2 { font-family: var(--display); font-weight: 400; font-size: 1.45rem; line-height: 1.15; margin: 6px 28px 2px 0; text-wrap: balance; }
+.card .sub { color: var(--muted); margin: 0 0 10px; }
+.card .note { margin: 0 0 12px; }
+.card h3 { font-size: .74rem; text-transform: uppercase; letter-spacing: .09em; color: var(--muted); margin: 14px 0 6px; font-weight: 500; }
+.card ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 5px; }
+.card li { display: flex; gap: 8px; align-items: baseline; }
+.card li .k { flex: none; font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); min-width: 78px; }
+.card .links { display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.card .warn { font-size: .82rem; color: var(--muted); font-style: italic; margin-top: 8px; }
+@media (max-width: 640px) {
+  .card { left: 8px !important; right: 8px; bottom: 8px; top: auto !important; width: auto; max-height: 72vh; }
+}
+
+footer { color: var(--muted); font-size: .85rem; padding: 22px 0 40px; display: grid; gap: 8px; max-width: 95ch; }
+footer p { margin: 0; }
+
+.view[hidden] { display: none; }
+@media (prefers-reduced-motion: reduce) { .chip { transition: none; } .chip:hover { transform: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="title-row">
+      <div>
+        <h1><span class="ankh">☥</span> Ultima, Version by Version</h1>
+      </div>
+      <div class="switch" role="group" aria-label="Choose layout">
+        <button type="button" id="btn-timeline" aria-pressed="true">Timeline</button>
+        <button type="button" id="btn-compact" aria-pressed="false">Compact timeline</button>
+        <button type="button" id="btn-table" aria-pressed="false">Canon table</button>
+      </div>
+    </div>
+    <p class="lede" id="lede"></p>
+    <div class="controls">
+      <span class="lab">Show</span>
+      <div class="typechips" id="typechips"></div>
+      <label class="lab" for="gamesel">Highlight game</label>
+      <select id="gamesel"><option value="">All games</option></select>
+    </div>
+  </header>
+
+  <section class="view" id="view-timeline" aria-label="Release timeline">
+    <div class="tl-shell">
+      <div class="tl-hint"><span>Scroll sideways through 1979–2026. Select any release to open its card.</span><span id="undated"></span></div>
+      <div class="tl-scroll" id="tlscroll"><div class="tl-track" id="track"></div></div>
+    </div>
+  </section>
+
+  <section class="view" id="view-compact" aria-label="Compact release timeline" hidden>
+    <div class="tl-shell">
+      <div class="tl-hint"><span>Each dot is a release on a compressed year scale; its card sits above or below on a leader line. Select a card to open it.</span><span id="cp-count"></span></div>
+      <div class="tl-scroll" id="cpscroll"><div class="cp-track" id="cptrack"></div></div>
+    </div>
+  </section>
+
+  <section class="view" id="view-table" aria-label="Canon order table" hidden>
+    <div class="tbl-shell"><table id="tbl"></table></div>
+  </section>
+
+  <footer>
+    <p><strong>Canon order</strong> follows Britannia's internal chronology: the Worlds of Ultima and Underworld spin-offs slot in after Ultima VI, and Underworld II sits between The Black Gate and Serpent Isle. Escape from Mt. Drash and the two Runes of Virtue games have no fixed place in the story, so they close the table. Numbers in the table are ordered by release year; select one to open its card.</p>
+    <p><strong>Ways to play</strong> link to stores, emulators and fan projects only. No disk images or ROMs are linked; dump your own originals. Engine recreations and decompilation ports need data files from a copy you own (GOG and Steam copies work).</p>
+    <p>Fan projects were catalogued from the Ultima Codex wiki and its per-game sites in November 2026; where the only date is the Codex listing date, it is marked “c.”, and unreleased, cancelled or undated projects appear only in the table. Utilities, patches, translations, music and map conversions are left out. Dates marked “c.” are approximate. Japanese ports with no documented year appear in the table but not on the timeline. Store availability checked November 2026: EA put eleven Ultimas on Steam on 5 November 2026.</p>
+  </footer>
+</div>
+
+<div class="card" id="card" role="dialog" aria-modal="false" aria-labelledby="card-title" hidden></div>
+
+<script>
+/* ======================= DATA ======================= */
+const STEAM = t => 'https://store.steampowered.com/search/?term=' + encodeURIComponent(t);
+const GOG = s => 'https://www.gog.com/en/game/' + s;
+const EA_FR = 'https://www.ea.com/games/ultima';
+const W = s => 'https://en.wikipedia.org/wiki/' + s;
+const MOBY = q => 'https://www.mobygames.com/search/?q=' + encodeURIComponent(q);
+const CODEX = q => 'https://wiki.ultimacodex.com/index.php?search=' + encodeURIComponent(q);
+
+const GAMES = [
+  { id:'akal', ord:'0', t:'Akalabeth: World of Doom', a:'Akalabeth', era:'Prologue', wiki:'Akalabeth:_World_of_Doom', q:'Akalabeth',
+    buy:[['GOG', GOG('akalabeth_world_of_doom'), true]] },
+  { id:'u1', ord:'I', t:'Ultima I: The First Age of Darkness', a:'U1', era:'Age of Darkness', wiki:'Ultima_I:_The_First_Age_of_Darkness', q:'Ultima I',
+    buy:[['GOG (1+2+3)', GOG('ultima_1_2_3')],['Steam', STEAM('Ultima I')],['EA app', EA_FR]] },
+  { id:'u2', ord:'II', t:'Ultima II: The Revenge of the Enchantress', a:'U2', era:'Age of Darkness', wiki:'Ultima_II:_The_Revenge_of_the_Enchantress', q:'Ultima II',
+    buy:[['GOG (1+2+3)', GOG('ultima_1_2_3')],['Steam', STEAM('Ultima II')],['EA app', EA_FR]] },
+  { id:'u3', ord:'III', t:'Ultima III: Exodus', a:'U3', era:'Age of Darkness', wiki:'Ultima_III:_Exodus', q:'Ultima III',
+    buy:[['GOG (1+2+3)', GOG('ultima_1_2_3')],['Steam', STEAM('Ultima III')],['EA app', EA_FR]] },
+  { id:'u4', ord:'IV', t:'Ultima IV: Quest of the Avatar', a:'U4', era:'Age of Enlightenment', wiki:'Ultima_IV:_Quest_of_the_Avatar', q:'Ultima IV',
+    buy:[['GOG', GOG('ultima_iv_quest_of_the_avatar'), true],['GOG (4+5+6)', GOG('ultima_456')],['Steam', STEAM('Ultima IV')],['EA app','https://www.ea.com/games/ultima/ultima-4-quest-of-the-avatar']] },
+  { id:'u5', ord:'V', t:'Ultima V: Warriors of Destiny', a:'U5', era:'Age of Enlightenment', wiki:'Ultima_V:_Warriors_of_Destiny', q:'Ultima V',
+    buy:[['GOG (4+5+6)', GOG('ultima_456')],['Steam', STEAM('Ultima V')],['EA app', EA_FR]] },
+  { id:'u6', ord:'VI', t:'Ultima VI: The False Prophet', a:'U6', era:'Age of Enlightenment', wiki:'Ultima_VI:_The_False_Prophet', q:'Ultima VI',
+    buy:[['GOG (4+5+6)', GOG('ultima_456')],['Steam', STEAM('Ultima VI')],['EA app', EA_FR]] },
+  { id:'se', ord:'VI·a', t:'Worlds of Ultima: The Savage Empire', a:'SE', era:'Spin-offs between VI and VII', wiki:'Worlds_of_Ultima:_The_Savage_Empire', q:'Savage Empire',
+    buy:[['GOG', GOG('worlds_of_ultima_the_savage_empire'), true]] },
+  { id:'md', ord:'VI·b', t:'Ultima: Worlds of Adventure 2: Martian Dreams', a:'MD', era:'Spin-offs between VI and VII', wiki:'Martian_Dreams', q:'Martian Dreams',
+    buy:[['GOG', GOG('ultima_worlds_of_adventure_2_martian_dreams'), true]] },
+  { id:'uw1', ord:'VI·c', t:'Ultima Underworld: The Stygian Abyss', a:'UW1', era:'Spin-offs between VI and VII', wiki:'Ultima_Underworld:_The_Stygian_Abyss', q:'Ultima Underworld',
+    buy:[['GOG (UW 1+2)', GOG('ultima_underworld_1_2')],['Steam', STEAM('Ultima Underworld')],['EA app', EA_FR]] },
+  { id:'u7', ord:'VII', t:'Ultima VII: The Black Gate', a:'U7', era:'Age of Armageddon', wiki:'Ultima_VII:_The_Black_Gate', q:'Ultima VII Black Gate',
+    buy:[['GOG (Complete)', GOG('ultima_7_complete')],['Steam', STEAM('Ultima VII')],['EA app', EA_FR]] },
+  { id:'uw2', ord:'VII·a', t:'Ultima Underworld II: Labyrinth of Worlds', a:'UW2', era:'Age of Armageddon', wiki:'Ultima_Underworld_II:_Labyrinth_of_Worlds', q:'Ultima Underworld II',
+    buy:[['GOG (UW 1+2)', GOG('ultima_underworld_1_2')],['Steam', STEAM('Ultima Underworld II')],['EA app', EA_FR]] },
+  { id:'si', ord:'VII·II', t:'Ultima VII Part Two: Serpent Isle', a:'SI', era:'Age of Armageddon', wiki:'Ultima_VII_Part_Two:_Serpent_Isle', q:'Serpent Isle',
+    buy:[['GOG (Complete)', GOG('ultima_7_complete')],['Steam', STEAM('Ultima VII')],['EA app', EA_FR]] },
+  { id:'u8', ord:'VIII', t:'Ultima VIII: Pagan', a:'U8', era:'Age of Armageddon', wiki:'Ultima_VIII:_Pagan', q:'Ultima VIII Pagan',
+    buy:[['GOG (Gold)', GOG('ultima_8_gold_edition')],['Steam', STEAM('Ultima VIII')],['EA app', EA_FR]] },
+  { id:'u9', ord:'IX', t:'Ultima IX: Ascension', a:'U9', era:'Age of Armageddon', wiki:'Ultima_IX:_Ascension', q:'Ultima IX Ascension',
+    buy:[['GOG', GOG('ultima_9_ascension')],['Steam', STEAM('Ultima IX')],['EA app', EA_FR]] },
+  { id:'drash', ord:'Drash', t:'Ultima: Escape from Mt. Drash', a:'Drash', era:'Other spin-offs (no fixed place in the chronology)', wiki:'Ultima:_Escape_from_Mt._Drash', q:'Escape from Mt. Drash', buy:[] },
+  { id:'rov1', ord:'RoV', t:'Ultima: Runes of Virtue', a:'RoV', era:'Other spin-offs (no fixed place in the chronology)', wiki:'Ultima:_Runes_of_Virtue', q:'Runes of Virtue', buy:[] },
+  { id:'rov2', ord:'RoV II', t:'Ultima: Runes of Virtue II', a:'RoV2', era:'Other spin-offs (no fixed place in the chronology)', wiki:'Ultima:_Runes_of_Virtue_II', q:'Runes of Virtue II', buy:[] },
+];
+const GMAP = Object.fromEntries(GAMES.map(g => [g.id, g]));
+
+const TYPES = {
+  orig:    { l:'Original release',        c:'var(--t-orig)',    s:'dot' },
+  port:    { l:'Official port',           c:'var(--t-port)',    s:'dot' },
+  remake:  { l:'Remake',                  c:'var(--t-remake)',  s:'dot' },
+  console: { l:'Console / handheld',      c:'var(--t-console)', s:'dot' },
+  jp:      { l:'Japanese computer',       c:'var(--t-jp)',      s:'dot' },
+  engine:  { l:'Engine recreation',       c:'var(--t-engine)',  s:'dia' },
+  decomp:  { l:'Decompilation / PC port', c:'var(--t-decomp)',  s:'dia' },
+  fan:     { l:'Fan remake / port',              c:'var(--t-fan)',     s:'dia' },
+};
+
+/* platform: short label, table column, emulators, original-hardware hint */
+const MAME = ['MAME','https://www.mamedev.org/'];
+const PLAT = {
+  apple2:{ s:'Apple II',     col:'apple2', emu:[['AppleWin','https://github.com/AppleWin/AppleWin'], MAME], hw:'Apple II / IIe with a 5.25" drive' },
+  iigs:  { s:'Apple IIGS',   col:'apple2', emu:[MAME], hw:'Apple IIGS' },
+  a8:    { s:'Atari 8-bit',  col:'a8',     emu:[['Altirra','https://www.virtualdub.org/altirra.html'],['Atari800','https://atari800.github.io/']], hw:'Atari 400/800/XL/XE with disk drive' },
+  vic20: { s:'VIC-20',       col:'c64',    emu:[['VICE (xvic)','https://vice-emu.sourceforge.io/']], hw:'Commodore VIC-20 with an 8K or 16K RAM expansion and a Datasette' },
+  c64:   { s:'C64', col:'c64',    emu:[['VICE','https://vice-emu.sourceforge.io/']], hw:'Commodore 64/128 with 1541 drive' },
+  dos:   { s:'MS-DOS',       col:'dos',    emu:[['DOSBox Staging','https://www.dosbox-staging.org/'],['DOSBox-X','https://dosbox-x.com/']], hw:'Period IBM PC compatible', store:true },
+  st:    { s:'Atari ST',     col:'st',     emu:[['Hatari','https://www.hatari-emu.org/']], hw:'Atari ST / STE' },
+  amiga: { s:'Amiga',        col:'amiga',  emu:[['FS-UAE','https://fs-uae.net/'],['WinUAE','https://www.winuae.net/']], hw:'Commodore Amiga' },
+  mac:   { s:'Macintosh',    col:'mac',    emu:[['Mini vMac','https://www.gryphel.com/c/minivmac/']], hw:'Compact 68k Macintosh' },
+  win:   { s:'Windows',      col:'win',    emu:[], hw:'Windows 98-era PC with a 3D card', store:true },
+  ppc:   { s:'Pocket PC',    col:'win',    emu:[], hw:'Pocket PC / Windows Mobile handheld' },
+  pc88:  { s:'PC-88',        col:'jp',     emu:[MAME], hw:'NEC PC-8801' },
+  pc98:  { s:'PC-98',        col:'jp',     emu:[['Neko Project II kai','https://github.com/AZO234/NP2kai'], MAME], hw:'NEC PC-9801' },
+  fm7:   { s:'FM-7',         col:'jp',     emu:[MAME], hw:'Fujitsu FM-7' },
+  towns: { s:'FM Towns',     col:'jp',     emu:[['Tsugaru','https://github.com/captainys/TOWNSEMU'], MAME], hw:'Fujitsu FM Towns (CD-ROM)' },
+  msx:   { s:'MSX2',         col:'jp',     emu:[['openMSX','https://openmsx.org/']], hw:'MSX2 computer' },
+  x1:    { s:'Sharp X1',     col:'jp',     emu:[MAME], hw:'Sharp X1' },
+  x68k:  { s:'X68000',       col:'jp',     emu:[MAME], hw:'Sharp X68000' },
+  gb:    { s:'Game Boy',     col:'console',emu:[['Mesen','https://www.mesen.ca/']], hw:'Nintendo Game Boy' },
+  fc:    { s:'Famicom',      col:'console',emu:[['Mesen','https://www.mesen.ca/']], hw:'Nintendo Famicom (Japan)' },
+  nes:   { s:'NES',          col:'console',emu:[['Mesen','https://www.mesen.ca/']], hw:'Nintendo Entertainment System' },
+  sms:   { s:'Master System',col:'console',emu:[['Mesen','https://www.mesen.ca/']], hw:'Sega Master System (PAL / Brazil)' },
+  sfc:   { s:'Super Famicom',col:'console',emu:[['Mesen','https://www.mesen.ca/']], hw:'Super Famicom (Japan)' },
+  snes:  { s:'SNES',         col:'console',emu:[['Mesen','https://www.mesen.ca/']], hw:'Super Nintendo (North America)' },
+  ps1:   { s:'PlayStation',  col:'console',emu:[['DuckStation','https://www.duckstation.org/']], hw:'Japanese PlayStation' },
+  psp:   { s:'PSP',          col:'console',emu:[['PPSSPP','https://www.ppsspp.org/']], hw:'PlayStation Portable (UMD)' },
+};
+
+/* Fan / engine project link shorthands */
+const L = {
+  exult:   [['Exult','https://exult.sourceforge.io/'],['GitHub','https://github.com/exult/exult']],
+  scummvm: [['ScummVM','https://www.scummvm.org/'],['Compatibility','https://www.scummvm.org/compatibility/']],
+  nuvie:   [['Nuvie','https://nuvie.sourceforge.net/'],['ScummVM','https://www.scummvm.org/']],
+  exhumed: [['Underworld Exhumed','https://github.com/abedegno/underworld-exhumed'],['Project site','https://abedegno.github.io/underworld-exhumed-web/'],['Exhume toolkit','https://github.com/abedegno/Exhume']],
+  uwexp:   [['UnderworldExporter','https://github.com/hankmorgan/UnderworldExporter'],['UnderworldGodot','https://github.com/hankmorgan/UnderworldGodot']],
+};
+
+/* v(game, year, platform|null, type, label, note, opts) ; opts: c (approx), links, play, col */
+const V = [];
+function v(g, y, p, type, label, note, o = {}) { V.push({ g, y, p, type, label, note, ...o }); }
+
+// Akalabeth
+v('akal',1979,'apple2','orig','Apple II (self-published)','Richard Garriott sold the first copies himself in zip-lock bags, with cover art by his mother.');
+v('akal',1980,'apple2','orig','Apple II (California Pacific)','The published release; it sold over 30,000 copies and led directly to Ultima.');
+v('akal',1998,'dos','port','MS-DOS port (Ultima Collection)','First official port off the Apple II, made for the 1998 Ultima Collection. GOG ships this version (Windows, Mac, Linux) and keeps the 1998 build in its extras.');
+
+// Ultima I
+v('u1',1981,'apple2','orig','Apple II (California Pacific)','The original release.');
+v('u1',1983,'a8','port','Atari 8-bit (Sierra re-release)','Sierra On-Line re-release for Atari computers.');
+v('u1',1986,'apple2','remake','Apple II remake (Origin)','Origin Systems remake released in December 1986 as Ultima I: The First Age of Darkness; the base for later ports.');
+v('u1',1986,'c64','remake','Commodore 64 (remake)','Port of the 1986 remake.');
+v('u1',1987,'dos','remake','MS-DOS (EGA remake)','EGA version of the remake. This is the version sold today on GOG and Steam.');
+v('u1',1987,'msx','jp','MSX2','Japanese MSX2 release.');
+v('u1',1988,'x1','jp','Sharp X1','Japanese Sharp X1 release.');
+v('u1',1989,'msx','jp','MSX2 remake (Pony Canyon)','A second, reworked MSX2 version published by Pony Canyon.');
+v('u1',1990,'towns','jp','FM Towns (Ultima Trilogy)','Released in Japan as part of the FM Towns Ultima Trilogy.');
+v('u1',null,'pc88','jp','PC-88','Listed among Japanese releases; year undocumented.');
+v('u1',null,'pc98','jp','PC-98','Listed among Japanese releases; year undocumented.');
+v('u1',1994,'iigs','remake','Apple IIGS remake (Vitesse)','16-bit remake for the Apple IIGS by Vitesse.');
+v('u1',2007,null,'engine','Ultima 1 Revenge','Reverse-engineering effort that reads the original game files. Unfinished by design; the author states it will never be done.', { col:'engine', links:[['Bitbucket','https://bitbucket.org/dandago/u1revenge']] });
+v('u1',2020,null,'engine','ScummVM Ultima I (in progress)','An Ultima I subengine based on a decompilation was added to ScummVM\'s Ultima engine, but it is still incomplete and not offered in release builds.', { col:'engine', links:[['Announcement','https://ultimacodex.com/2020/02/support-for-some-ultima-games-is-coming-to-scummvm/'], ['ScummVM','https://www.scummvm.org/']] });
+v('u1',2026,null,'decomp','u1-decompiled (Karl Clinckspoor)','Source for the PC remake (1986/87, conversion by John Fachini), rebuilt with Lattice C 3.1x, MASM 3.00 and Microsoft LINK into executables byte-identical to the GOG release. All five EXEs rebuild identical; GEN.EXE is decompiled to C and the rest still use generated assembly stand-ins. No playable port yet.', { col:'decomp', needs:true, links:[['GitHub','https://github.com/KarlClinckspoor/u1-decompiled'],['Handoff notes','https://github.com/KarlClinckspoor/u1-decompiled/blob/main/docs/HANDOFF.md']] });
+
+// Ultima II
+v('u2',1982,'apple2','orig','Apple II (Sierra)','Published by Sierra On-Line; the first Ultima boxed with a cloth map.');
+v('u2',1983,'a8','port','Atari 8-bit','Late-1983 port.');
+v('u2',1983,'c64','port','Commodore 64','Port released by Sierra.', { c:true });
+v('u2',1983,'dos','port','IBM PC','PC version; today\'s GOG and Steam releases run it in DOSBox.', { c:true });
+v('u2',1985,'mac','port','Macintosh','Port for the Macintosh 128K/512K.');
+v('u2',1985,'st','port','Atari ST','Released shortly after the ST launched.');
+v('u2',1989,'apple2','port','Apple II (enhanced, Ultima Trilogy)','Enhanced version only sold in the Ultima Trilogy I·II·III box.');
+v('u2',1990,'towns','jp','FM Towns (Ultima Trilogy)','Part of the Japanese FM Towns Ultima Trilogy.');
+v('u2',null,'fm7','jp','FM-7','Japanese release; year undocumented.');
+v('u2',null,'msx','jp','MSX2','Japanese release; year undocumented.');
+v('u2',null,'pc88','jp','PC-88','Japanese release; year undocumented.');
+v('u2',null,'pc98','jp','PC-98','Japanese release; year undocumented.');
+
+// Ultima III
+v('u3',1983,'apple2','orig','Apple II','First Ultima published by Garriott\'s own Origin Systems.');
+v('u3',1983,'a8','port','Atari 8-bit','Atari version, noted for its music.');
+v('u3',1983,'c64','port','Commodore 64','C64 port.');
+v('u3',1983,'dos','port','IBM PC','PC port; the version in today\'s GOG and Steam releases.');
+v('u3',1986,'amiga','port','Amiga','Amiga port.');
+v('u3',1986,'st','port','Atari ST','Atari ST port.');
+v('u3',1986,'mac','port','Macintosh','Macintosh port by Origin.');
+v('u3',1986,'pc88','jp','PC-88 (Starcraft)','Japanese port by Starcraft.');
+v('u3',1986,'pc98','jp','PC-98 (Starcraft)','Japanese port by Starcraft.');
+v('u3',1986,'fm7','jp','FM-7 (Starcraft)','Japanese port by Starcraft.');
+v('u3',1987,'fc','console','Famicom (FCI / Pony Canyon)','Console redesign with new graphics and music, released in Japan.');
+v('u3',1989,'nes','console','NES: Ultima: Exodus','North American release of the Famicom version.');
+v('u3',1988,'msx','jp','MSX2 cartridge','Pony Canyon cartridge release.');
+v('u3',1989,'msx','jp','MSX2 disk','Pony Canyon 3.5" disk release.');
+v('u3',1990,'towns','jp','FM Towns (Ultima Trilogy)','Part of the Japanese FM Towns Ultima Trilogy.');
+v('u3',null,'x1','jp','Sharp X1','Japanese release; year undocumented.');
+v('u3',1993,'mac','remake','Macintosh remake (LairWare)','Color remake for the Macintosh by LairWare.');
+
+// Ultima IV
+v('u4',1985,'apple2','orig','Apple II','Released 16 September 1985; the start of the Avatar and the Eight Virtues.');
+v('u4',1985,'c64','port','Commodore 64','North America December 1985, Europe 1986.');
+v('u4',1986,'a8','port','Atari 8-bit','February 1986.');
+v('u4',1987,'dos','port','MS-DOS','October 1987. GOG gives this version away free.');
+v('u4',1987,'st','port','Atari ST','Atari ST port.');
+v('u4',1988,'amiga','port','Amiga','Amiga port.');
+v('u4',1987,'fm7','jp','FM-7','Japan, July 1987.');
+v('u4',1987,'pc88','jp','PC-88','Japan, July 1987.');
+v('u4',1987,'pc98','jp','PC-98','Japan, July 1987.');
+v('u4',1987,'msx','jp','MSX2','Japanese MSX2 release.');
+v('u4',1987,'x1','jp','Sharp X1','Japanese Sharp X1 release.');
+v('u4',1988,'x68k','jp','X68000','Japan, 21 December 1988.');
+v('u4',1992,'towns','jp','FM Towns','Japan, April 1992.');
+v('u4',1989,'fc','console','Famicom','Japan, 20 September 1989: a reworked console version.');
+v('u4',1990,'nes','console','NES: Ultima: Quest of the Avatar','North America, December 1990, with changes to plot and gameplay.');
+v('u4',1990,'sms','console','Sega Master System','A faithful port sold only in Europe and Brazil.');
+v('u4',2004,null,'engine','xu4','Faithful recreation of the engine that loads the original MS-DOS data files. It spent about 18 years in beta before version 1.0 in 2022; ports for Windows, macOS, Linux and Android.', { c:true, col:'engine', links:[['SourceForge','https://sourceforge.net/projects/xu4/'],['GitHub','https://github.com/xu4-engine/u4']] });
+v('u4',2015,null,'fan','Ultima IV Remastered (C64)','Fan remaster of the Commodore 64 version with bug fixes and improvements; source on GitHub. Runs on a real C64 or in VICE.', { col:'fan', links:[['GitHub','https://github.com/MagerValp/u4remastered']], play:[['VICE','https://vice-emu.sourceforge.io/'],['Original C64 hardware',null]] });
+v('u4',2016,null,'decomp','u4-decompiled','Reverse compilation of the MS-DOS executables back to C by ergonomy_joe. A study codebase rather than a packaged port.', { col:'decomp', links:[['GitHub','https://github.com/ergonomy-joe/u4-decompiled'],['Announcement','https://ultimacodex.com/2016/12/ultima-4-decomplied/']] });
+v('u4',2020,null,'engine','ScummVM (xu4 subengine)','xu4 became a ScummVM subengine in 2020, with original and enhanced modes; supported since ScummVM 2.2.', { col:'engine', links:L.scummvm });
+
+// Ultima V
+v('u5',1988,'apple2','orig','Apple II','March 1988: the last Ultima developed on the Apple II.');
+v('u5',1988,'c64','port','Commodore 64','C64/128 port.');
+v('u5',1988,'dos','port','MS-DOS','PC port; the version in today\'s GOG and Steam releases.');
+v('u5',1989,'amiga','port','Amiga','Amiga port.');
+v('u5',1989,'st','port','Atari ST','Atari ST port.');
+v('u5',1993,'nes','console','NES: Ultima: Warriors of Destiny','Simplified console adaptation.');
+v('u5',null,'towns','jp','FM Towns','Listed as a platform; year undocumented.');
+v('u5',null,'pc88','jp','PC-88','Listed as a platform; year undocumented.');
+v('u5',null,'pc98','jp','PC-98','Listed as a platform; year undocumented.');
+v('u5',null,'x68k','jp','X68000','Listed as a platform; year undocumented.');
+v('u5',2005,null,'fan','Ultima V: Lazarus','Full 3D remake built in the Dungeon Siege engine by Team Lazarus, released 22 December 2005. Needs Dungeon Siege, not Ultima V.', { col:'fan', links:[['ModDB','https://www.moddb.com/mods/ultima-v-lazarus'],['Codex downloads','https://ultima5.ultimacodex.com/ultima-5-lazarus'],['Codex wiki','https://wiki.ultimacodex.com/wiki/Lazarus']], play:[['Free download (ModDB)','https://www.moddb.com/mods/ultima-v-lazarus/downloads'],['Requires Dungeon Siege (Steam)', STEAM('Dungeon Siege')]] });
+v('u5',2019,null,'fan','Ultima V Redux (in development)','Brad Hannah\'s remake built on the original data. Began as a Unity voxel version, moved to a 2D Go/Ebiten engine in 2024, and was function-complete and heading to playtesting in September 2026.', { needs:true, col:'fan', links:[['GitHub (Go)','https://github.com/bradhannah/Ultima5ReduxGo'],['Codex page','https://ultima5.ultimacodex.com/ultima-5-redux']] });
+v('u5',null,null,'decomp','u5d (in progress)','Matching decompilation of the MS-DOS version, inspired by u4-decompiled. About half matched; it does not link a playable executable yet.', { col:'decomp', links:[['GitHub','https://github.com/wonst719/u5d']] });
+
+// Ultima VI
+v('u6',1990,'dos','orig','MS-DOS','April 1990: the first main Ultima developed on the PC.');
+v('u6',1991,'amiga','port','Amiga','Amiga port.');
+v('u6',1991,'st','port','Atari ST','Atari ST port.');
+v('u6',1991,'c64','port','Commodore 64','Heavily trimmed: no portraits, horses or working gems, and some dialogue and quests cut.');
+v('u6',1992,'towns','jp','FM Towns','CD-ROM version with full speech in English and Japanese.', { c:true });
+v('u6',1992,'pc98','jp','PC-98','Japanese port.', { c:true });
+v('u6',1992,'x68k','jp','X68000','Japanese port.', { c:true });
+v('u6',1992,'sfc','console','Super Famicom','Japanese console version by FCI / Pony Canyon.', { c:true });
+v('u6',1994,'snes','console','SNES','North American release of the console version.');
+v('u6',2003,null,'engine','Nuvie','Open-source engine for Ultima VI, also partly covering the Worlds of Ultima games. Became a ScummVM subengine in 2020.', { c:true, col:'engine', links:L.nuvie });
+v('u6',2010,null,'fan','The Ultima 6 Project (Dungeon Siege)','Team Archon\'s 3D remake in the Dungeon Siege engine, released 5 July 2010. Needs Dungeon Siege.', { col:'fan', links:[['Ultima Codex wiki', CODEX('Ultima 6 Project')]], play:[['Requires Dungeon Siege (Steam)', STEAM('Dungeon Siege')]] });
+v('u6',2020,null,'engine','ScummVM (Nuvie subengine)','Nuvie integrated into ScummVM, with classic and enhanced modes; supported since ScummVM 2.2.', { col:'engine', links:L.scummvm });
+v('u6',2022,null,'decomp','u6-decompiled','Decompilation of the MS-DOS Ultima VI executable by ergonomy_joe.', { col:'decomp', links:[['GitHub','https://github.com/ergonomy-joe/u6-decompiled'],['Announcement','https://ultimacodex.com/2022/03/ultima-6-has-been-decompiled']] });
+v('u6',2024,null,'fan','Ultima VI Remake (Exult mod)','Remake of Ultima VI inside Exult with Ultima VII graphics, new NPCs and side quests. Version 1.2 came out in 2024 and 1.3 (bug fixes, working cooking) in May 2026; needs Exult and Ultima VII with Forge of Virtue.', { needs:true, col:'fan', links:[['Project site','https://www.ultima6.realmofultima.com/'],['Exult downloads','https://exult.sourceforge.io/download.php'],['Codex wiki','https://wiki.ultimacodex.com/wiki/The_Ultima_6_Remake']] });
+v('u6',2026,null,'decomp','Ultima VI native port (Karl Clinckspoor)','Native Windows / Linux port on SDL2 built from the u6-decompiled sources, with GAME.EXE, U.EXE (title, intro, character creation) and END.EXE (the ending) decompiled. AdLib music through Nuked OPL3, and every session can be replayed exactly. In beta; the DOS build stays byte-identical. Also adds a readable branch with named functions and globals.', { col:'decomp', links:[['GitHub','https://github.com/KarlClinckspoor/u6-decompiled'],['Releases','https://github.com/KarlClinckspoor/u6-decompiled/releases'],['Port notes','https://github.com/KarlClinckspoor/u6-decompiled/blob/main/docs/port/PORT.md']] });
+
+// Savage Empire
+v('se',1990,'dos','orig','MS-DOS','Built on a modified Ultima VI engine; the Avatar lands in the dinosaur world of Eodon. Free on GOG.');
+v('se',1993,'x68k','jp','X68000','Japanese port.');
+v('se',null,'pc98','jp','PC-98','Japanese port; year undocumented.');
+v('se',1995,'sfc','console','Super Famicom','Japan only, 28 July 1995. A localized US release was cancelled.');
+v('se',2003,null,'engine','Nuvie (partial support)','Nuvie also targets the Ultima VI-engine spin-offs, with less complete support than for Ultima VI.', { c:true, col:'engine', links:L.nuvie });
+v('se',2026,null,'decomp','u6se-decompiled (Karl Clinckspoor)','C and assembly sources that rebuild SAVAGE.EXE and GAME.EXE byte for byte equal to the GOG release, header and relocation table included. GAME.EXE was decompiled starting from u6-decompiled, since the game runs on the Ultima VI engine. INSTALL.EXE is not started; no playable port yet.', { col:'decomp', links:[['GitHub','https://github.com/KarlClinckspoor/u6se-decompiled']] });
+
+// Martian Dreams
+v('md',1991,'dos','orig','MS-DOS','Victorian-era trip to Mars on the Ultima VI engine, championed by Warren Spector. Free on GOG.');
+v('md',2003,null,'engine','Nuvie (partial support)','Nuvie also targets the Ultima VI-engine spin-offs, with less complete support than for Ultima VI.', { c:true, col:'engine', links:L.nuvie });
+
+// Underworld I
+v('uw1',1992,'dos','orig','MS-DOS','March 1992, by Blue Sky Productions (later Looking Glass): free-movement first-person 3D in the Stygian Abyss.');
+v('uw1',1993,'towns','jp','FM Towns','Japan, December 1993.');
+v('uw1',1993,'pc98','jp','PC-98','Japan, 17 December 1993.');
+v('uw1',1997,'ps1','console','PlayStation','Japan only, 14 March 1997: a 3D-model remake by Infinity, published by EA Victor.');
+v('uw1',2002,'ppc','port','Pocket PC','Windows Mobile version by ZIO Interactive, May 2002.');
+v('uw1',2002,null,'engine','Underworld Adventures','Cross-platform engine for UW1 using the original files. Advanced but inactive since 2007; code now on GitHub.', { c:true, col:'engine', links:[['Project site','https://vividos.github.io/UnderworldAdventures/'],['GitHub','https://github.com/vividos/UnderworldAdventures']] });
+v('uw1',2017,null,'engine','UnderworldExporter (Unity)','Hank Morgan\'s Unity port with high resolutions and mouselook; full UW1 support in its 2017–2018 releases. Work continues as UnderworldGodot.', { c:true, col:'engine', links:L.uwexp });
+v('uw1',2023,null,'engine','UnderworldGodot','Hank Morgan\'s engine recreation of both Underworld games in Godot, which replaces his Unity project and rebuilds the code to work the way the originals did, backed by his UW1/UW2 disassembly. In development: you build and run it in Godot yourself.', { c:true, col:'engine', links:[['GitHub','https://github.com/hankmorgan/UnderworldGodot'],['Reverse-engineering notes','https://github.com/hankmorgan/UWReverseEngineering']] });
+v('uw1',2026,null,'engine','Unity Underground','Steve McCrea (Kweepa)\'s Unity engine recreation, in the works since 2015, with new hand-made 3D models and animations for every creature and object, new sound and particle effects, achievements, and gamepad or mouse-and-keyboard controls. Released on itch.io in March 2026 for Windows and reads the GOG version\'s files; the source is now on GitHub as OpenUnderground.', { col:'engine', links:[['itch.io','https://kweepa.itch.io/unity-underground'],['GitHub (OpenUnderground)','https://github.com/Kweepa/OpenUnderground']], play:[['Free download (itch.io)','https://kweepa.itch.io/unity-underground']] });
+v('uw1',2026,null,'decomp','Underworld Exhumed (native port)','Byte-matching decompilation that rebuilds the exact UW.EXE, plus a native macOS / Windows / Linux port built from that source and checked against recorded DOS sessions.', { col:'decomp', links:L.exhumed });
+v('uw1',2026,null,'decomp','uw1go','Go and Ebiten port that follows the Exhumed decompiled source function by function, played as a modernized game; also runs in the browser via WebAssembly.', { col:'decomp', links:[['GitHub','https://github.com/retro-ware/uw1go']] });
+v('uw1',2026,null,'engine','Underworld Revisited','PQMarine\'s open-source Unity reimplementation for Windows and Linux, fully playable from character creation to the ending and checked against the original (rules verified against Underworld Exhumed). Saves work both ways with DOS. First release 0.1.0 on 2 October 2026; can replace the game\'s launch on Steam.', { col:'engine', links:[['Project site','https://pqmarine.github.io/'],['GitHub','https://github.com/PQMarine/UnderworldRevisited'],['Releases','https://github.com/PQMarine/UnderworldRevisited/releases/latest']] });
+
+// Ultima VII
+v('u7',1992,'dos','orig','MS-DOS','17 April 1992. The Forge of Virtue add-on followed in September 1992.');
+v('u7',1992,'dos','orig','Forge of Virtue (add-on)','Expansion released 7 September 1992: the Isle of Fire rises, with the Shrines of the Principles and the Black Sword. Included in every later release of Ultima VII.');
+v('u7',1994,'snes','console','SNES: Ultima: The Black Gate','Cut-down action-adventure adaptation by FCI / Pony Canyon (also Super Famicom, November 1994).');
+v('u7',2006,'psp','console','PSP (EA Replay)','The SNES version included in the EA Replay compilation, US, November 2006.');
+v('u7',2000,null,'engine','Exult','Open-source Ultima VII engine running The Black Gate, Serpent Isle and both add-ons on Windows, macOS, Linux and Android. Version 1.12.1 in 2026.', { c:true, col:'engine', links:L.exult });
+v('u7',2024,null,'fan','Ultima VII: Revisited (in development)','Anthony Salter\'s open-source 3D engine replacement for The Black Gate; Trinsic became fully playable in version 0.2.1 (May 2026). Needs your own copy of Ultima VII.', { needs:true, col:'fan', links:[['Project site','https://u7revisited.com/'],['GitHub','https://github.com/ViridianGames/U7Revisited']] });
+
+// Underworld II
+v('uw2',1993,'dos','orig','MS-DOS','January 1993: set in Lord British\'s castle a year after The Black Gate.');
+v('uw2',1995,'towns','jp','FM Towns','Japan, March 1995.');
+v('uw2',1995,'pc98','jp','PC-98','Japan, 17 March 1995.');
+v('uw2',2018,null,'engine','UnderworldExporter (Unity)','The Unity port\'s 2018 releases cover both Underworld games. Work continues as UnderworldGodot.', { c:true, col:'engine', links:L.uwexp });
+v('uw2',2023,null,'engine','UnderworldGodot','The Godot recreation targets Underworld II as well as the first game; its author\'s main reverse-engineering focus is the UW2 executable. In development.', { c:true, col:'engine', links:[['GitHub','https://github.com/hankmorgan/UnderworldGodot'],['Reverse-engineering notes','https://github.com/hankmorgan/UWReverseEngineering']] });
+v('uw2',2026,null,'decomp','Underworld Exhumed (native port)','UW2 was the project\'s first case study: every function rebuilt with Borland\'s 1990 tools into a byte-identical UW2.EXE, then compiled natively for macOS, Windows and Linux.', { col:'decomp', links:L.exhumed });
+v('uw2',2026,null,'engine','Underworld Revisited (UW2 preview)','Version 0.13.0 of PQMarine\'s Unity reimplementation adds a first preview of Ultima Underworld II alongside the complete UW1.', { col:'engine', links:[['Project site','https://pqmarine.github.io/'],['GitHub','https://github.com/PQMarine/UnderworldRevisited'],['Releases','https://github.com/PQMarine/UnderworldRevisited/releases/latest']] });
+
+// Serpent Isle
+v('si',1993,'dos','orig','MS-DOS','25 March 1993. The Silver Seed add-on came later; both are in the Complete Edition.');
+v('si',1993,'dos','orig','The Silver Seed (add-on)','Expansion that sends the Avatar into the past of Serpent Isle; included in the Complete Edition and all later releases.');
+v('si',2000,null,'engine','Exult','Exult plays Serpent Isle and The Silver Seed, and restores the longer original Serpent Isle intro.', { c:true, col:'engine', links:L.exult });
+
+// Ultima VIII
+v('u8',1994,'dos','orig','MS-DOS','23 March 1994. A Speech Pack add-on (English, German, French) shipped at the same time.');
+v('u8',1994,'dos','orig','Speech Pack (add-on)','Released alongside the game: spoken lines for key characters in English, German and French. Built into the CD Gold Edition.');
+v('u8',1995,'dos','port','CD-ROM Gold Edition','Patched CD release with the speech files; GOG and Steam sell this edition.', { c:true });
+v('u8',1995,'pc98','jp','PC-98','Japanese release.');
+v('u8',2002,null,'engine','Pentagram','Open-source Ultima VIII engine for Windows, macOS and Linux; merged into ScummVM in May 2020.', { c:true, col:'engine', links:[['Pentagram','https://pentagram.sourceforge.net/'],['ScummVM','https://www.scummvm.org/']] });
+v('u8',2020,null,'engine','ScummVM (Pentagram subengine)','Ultima VIII became completable in ScummVM in May 2020 and has been supported since ScummVM 2.2.', { col:'engine', links:L.scummvm });
+v('u8',2026,null,'decomp','Ultima 8 Decomp Port (Karl Clinckspoor)','Builds on the Kitrinx decompilation of the last retail version (byte-exact with Borland C++ 3.0, English usecode included) and adds a 64-bit port for Windows, macOS and Linux with emulated MT-32 or AdLib music and Sound Blaster speech. Ships u8edit, a Qt 6 editor for maps, items, NPCs and flags whose saves also play in DOS U8.EXE.', { col:'decomp', links:[['GitHub','https://github.com/KarlClinckspoor/Ultima8_DecompPort'],['Releases','https://github.com/KarlClinckspoor/Ultima8_DecompPort/releases'],['Upstream decompilation','https://github.com/Kitrinx/Ultima8_Decomp']] });
+
+// Ultima IX
+v('u9',1999,'win','orig','Windows','23 November 1999. Also sold as the Dragon Edition (1999) and Premium Edition (2000). GOG and Steam sell it today; no engine recreation exists.');
+
+// Escape from Mt. Drash
+v('drash',1983,'vic20','orig','VIC-20 (Sierra On-Line, cassette)','Keith Zabalaoui\'s timed escape from randomly generated 3D dungeons, written in BASIC with assembly routines and needing an 8K or 16K RAM expansion. Sierra made about 3,000 copies; a complete copy sold for US$3,605 in 2004, and counterfeits exist. Only loosely tied to the series.');
+v('drash',2025,null,'fan','The Sosarian Paradox (Neverwinter Nights)','Melavir Sauin Dragon\'s remake as a Neverwinter Nights: Enhanced Edition module, which returned in July 2025; version 1.02 reached the Neverwinter Vault in November 2026.', { c:true, col:'fan', links:[['Neverwinter Vault','https://neverwintervault.org/project/nwnee/module/sosarian-paradox'],['Codex entry','https://inspired.ultimacodex.com/the-sosarian-paradox/'],['Codex article','https://ultimacodex.com/2026/11/the-sosarian-paradox-version-1-02-arrives-on-the-neverwinter-vault/']], play:[['Requires Neverwinter Nights: Enhanced Edition (Steam)', STEAM('Neverwinter Nights Enhanced Edition')]] });
+v('drash',null,null,'fan','Mt. Drash: The Roguelike (DrashRL)','Java roguelike remake of Escape from Mt. Drash by Slashie, with VGA-style and DragonUI interfaces.', { col:'fan', links:[['DrashRL website','https://slashie.net/info/drashrl.html'],['Codex wiki','https://wiki.ultimacodex.com/wiki/Mt._Drash:_The_Roguelike']] });
+
+// Runes of Virtue
+v('rov1',1991,'gb','orig','Game Boy (Japan)','Action-adventure for the Game Boy by Origin Systems, published by Pony Canyon on 14 December 1991. Never re-released digitally.');
+v('rov1',1992,'gb','orig','Game Boy (North America)','Published by FCI in April 1992.');
+v('rov2',1993,'gb','orig','Game Boy (Japan)','Pony Canyon, 19 November 1993: the Black Knight has kidnapped Lord Tholden and others.');
+v('rov2',1994,'gb','orig','Game Boy (North America)','Published by FCI in March 1994.');
+v('rov2',1994,'sfc','console','Super Famicom','Japan, 17 June 1994, published by EA Victor.');
+v('rov2',1994,'snes','console','SNES','North American release of the 16-bit version, 1994.');
+
+/* ---- Fan projects catalogued from the Ultima Codex (wiki + per-game sites), November 2026 ---- */
+const CX = (g, s) => 'https://' + g + '.ultimacodex.com/' + s + '/';
+const CXW = s => 'https://wiki.ultimacodex.com/wiki/' + s;
+const P = {
+  vice: ['VICE','https://vice-emu.sourceforge.io/'], palm: ['CloudpilotEmu','https://cloudpilot-emu.github.io/'],
+  mesen: ['Mesen','https://www.mesen.ca/'], openmsx: ['openMSX','https://openmsx.org/'], dosbox: ['DOSBox Staging','https://www.dosbox-staging.org/'],
+  nwnee: ['Requires Neverwinter Nights: Enhanced Edition (Steam)', STEAM('Neverwinter Nights Enhanced Edition')],
+  nwn: ['Requires Neverwinter Nights', STEAM('Neverwinter Nights')],
+  exultdl: ['Exult downloads','https://exult.sourceforge.io/download.php'],
+};
+// Akalabeth
+v('akal',2016,null,'fan','Fan port: Commodore 64','A full port of Akalabeth to the C64.', { c:true, col:'fan', links:[['Codex entry', CX('akalabeth','akalabeth-world-of-doom-for-commodore-64')]], play:[P.vice] });
+v('akal',2018,null,'fan','Vecalabeth (Vectrex32)','Akalabeth for the Vectrex32 cartridge, which plugs into an original Vectrex.', { c:true, col:'fan', links:[['Codex entry', CX('akalabeth','vecalabeth')]], play:[['Vectrex with a Vectrex32 cartridge',null]] });
+v('akal',2019,null,'fan','Fan port: GW-BASIC','Akalabeth rewritten in GW-BASIC for DOS.', { c:true, col:'fan', links:[['Codex entry', CX('akalabeth','akalabeth-for-gw-basic')]], play:[P.dosbox] });
+v('akal',2019,null,'fan','Fan port: MSX BASIC','Akalabeth rewritten in MSX BASIC.', { c:true, col:'fan', links:[['Codex entry', CX('akalabeth','akalabeth-for-msx-basic')]], play:[P.openmsx] });
+v('akal',2022,null,'fan','Akalabeth 128 (Commodore 128)','A Commodore 128 port of the original.', { c:true, col:'fan', links:[['Codex entry', CX('akalabeth','akalabeth-128')]], play:[P.vice] });
+v('akal',null,null,'fan','Akalabeth for iPhone (Quantum Toast)','Exact re-creation of the Apple II game and its interface for iPhone and iPod Touch. No longer available since December 2025.', { col:'fan', links:[['Codex wiki', CXW('Akalabeth_for_iPhone')]] });
+// Ultima I
+v('u1',2017,null,'fan','uUltima (Unity)','Unity remake of Ultima I aimed at Android and PC.', { c:true, col:'fan', links:[['Codex entry', CX('ultima1','uultima')]] });
+v('u1',2022,null,'fan','Fan port: Palm OS','Ultima I running on Palm OS devices.', { c:true, col:'fan', links:[['Codex entry', CX('ultima1','ultima-1-for-palmos')]], play:[P.palm] });
+v('u1',2024,null,'fan','Ultima I remake (RPG Maker MZ)','Remake of Ultima I built in RPG Maker MZ.', { c:true, col:'fan', links:[['Codex entry', CX('ultima1','ultima-1-remake-in-rpg-maker-mz')]] });
+v('u1',2025,null,'fan','Fan port: VIC-20 (Aleksi Eeben)','Unofficial conversion of Ultima I to the Commodore VIC-20.', { col:'fan', links:[['Codex entry', CX('ultima1','vic-20-ultima-i')],['Announcement','https://ultimacodex.com/2025/11/check-out-aleksi-eebens-port-of-ultima-1-to-the-vic-20/']], play:[P.vice] });
+v('u1',null,null,'fan','The Gate of Sosaria (RPG Maker VX)','Ultima I remake in RPG Maker VX using Ultima VII graphics.', { col:'fan', links:[['Codex entry', CX('ultima1','the-gate-of-sosaria')]] });
+// Ultima II
+v('u2',2022,null,'fan','Fan port: Palm OS','Ultima II running on Palm OS devices.', { c:true, col:'fan', links:[['Codex entry', CX('ultima2','ultima-2-for-palmos')]], play:[P.palm] });
+v('u2',2025,null,'fan','Fan port: VIC-20 (Aleksi Eeben)','Unofficial conversion of Ultima II to the Commodore VIC-20, listed as completed.', { col:'fan', links:[['Codex entry', CX('ultima2','vic-20-ultima-ii')],['Announcement','https://ultimacodex.com/2025/11/check-out-aleksi-eebens-port-of-ultima-2-to-the-vic-20/']], play:[P.vice] });
+v('u2',null,null,'fan','Ultima II for Windows','A Windows-native port, listed as completed on the Codex.', { col:'fan', links:[['Codex entry', CX('ultima2','ultima-2-for-windows')]] });
+// Ultima III
+v('u3',2001,null,'fan','Fan port: Game Boy Color (Sven Carlberg)','Complete, faithful port with controls adapted to two buttons, plus an unlockable second game that bridges III and IV. Latest ROM from 2001.', { col:'fan', links:[['Project site','http://ult3gbc.sourceforge.net/'],['Codex wiki', CXW('Ultima_3_for_the_Gameboy_Color')]], play:[P.mesen] });
+v('u3',2015,null,'fan','Shroud of Infinity (Java)','Java-based remake of Ultima III for Windows.', { c:true, col:'fan', links:[['Codex entry', CX('ultima3','ultima-infinity')]] });
+v('u3',2017,null,'fan','Ultima III remake in Python (in progress)','A remake of Ultima III being written in Python.', { c:true, col:'fan', links:[['Codex entry', CX('ultima3','ultima-3-remake-in-python')]] });
+v('u3',2020,null,'fan','Ultima 3: Exodus Remastered (NES)','Reworked version of the NES Ultima: Exodus.', { c:true, col:'fan', links:[['Codex entry', CX('ultima3','ultima-3-exodus-remastered')]], play:[P.mesen] });
+v('u3',2025,null,'fan','Fan port: VIC-20 (Aleksi Eeben)','Unofficial conversion of Ultima III to the Commodore VIC-20.', { col:'fan', links:[['Codex entry', CX('ultima3','vic-20-ultima-iii')]], play:[P.vice] });
+v('u3',2026,null,'fan','Ultima: Exodus (RPG Maker MZ)','Francois Poisson\'s remake, released in March 2026, with version 1.07 in October. A standalone build needs nothing else; the Steam Workshop version needs RPG Maker MZ.', { col:'fan', links:[['Codex entry (standalone)', CX('ultima3','ultima-exodus')],['Steam Workshop','https://steamcommunity.com/sharedfiles/filedetails/?id=3691800151']] });
+v('u3',2026,null,'decomp','Ultima III modernized port (ChangeNode)','TypeScript rebuild of LairWare\'s Mac port, whose source was released in 2014, keeping the data files unchanged and adding a controller mode, auto-map, quest journal and shared inventory. Runs in the browser and on Windows, macOS, Linux, Android and Steam Deck; MIT licence.', { col:'decomp', links:[['Play in browser','https://synthwave-pixel.github.io/ultima3/'],['GitHub','https://github.com/synthwave-pixel/ultima3'],['Releases','https://github.com/synthwave-pixel/ultima3/releases'],['LairWare source','https://github.com/beastie/ultima3']] });
+v('u3',null,null,'fan','Fan port: Palm OS','Ultima III for Palm OS devices, listed as completed.', { col:'fan', links:[['Codex entry', CX('ultima3','ultima-3-for-palmos')]], play:[P.palm] });
+v('u3',null,null,'fan','Ultima III Gold (C64)','Improved fan version of the Commodore 64 release.', { col:'fan', links:[['Codex entry', CX('ultima3','ultima-3-gold')]], play:[P.vice] });
+v('u3',null,null,'fan','Ultima III for Mac (OS X port)','Fan port to OS X, called the best available version on the Codex.', { col:'fan', links:[['Codex entry', CX('ultima3','ultima-3-for-mac')]] });
+// Ultima IV
+v('u4',2003,null,'fan','Avatarship (Neverwinter Nights)','Ultima IV remake by Zonker, first called Lyrac; version 1.3 in 2003.', { col:'fan', links:[['Codex wiki', CXW('Avatarship')]], play:[P.nwn] });
+v('u4',2003,null,'fan','Ultima IV Reborn / Rebirth (Neverwinter Nights)','Begun by Devi in 2003, reworked as Rebirth for Neverwinter Nights: Enhanced Edition, kept alive by community patches (2.3.2 in 2024) and updated for the 40th anniversary in 2025.', { col:'fan', links:[['Neverwinter Vault (2.3.2)','https://neverwintervault.org/project/nwnee/module/ultima-iv-rebirth-nwnee-only-unofficial-patch-continued'],['Codex entry', CX('ultima4','ultima-iv-rebirth')],['Codex wiki', CXW('Ultima_IV_Reborn')]], play:[P.nwnee] });
+v('u4',2007,null,'fan','Ultima IV Gold (C64)','Enhanced fan version of the Commodore 64 release.', { c:true, col:'fan', links:[['Codex entry', CX('ultima4','ultima-4-gold')]], play:[P.vice] });
+v('u4',null,null,'fan','Ultima IV: Virtue of Humility (Dark Basic)','Ultima IV remake written in Dark Basic with higher-resolution tiles.', { col:'fan', links:[['Codex entry', CX('ultima4','ultima-4-virtue-of-humility')]] });
+v('u4',2015,null,'engine','Classic Ultima Online','Online client for playing Ultima IV and the earlier games together; open-sourced in 2025 when its developer stepped away.', { c:true, col:'engine', links:[['Codex entry', CX('ultima4','classic-ultima-online-u4-multiplayer')],['Open-source news','https://ultimacodex.com/2025/09/shattered-moon-has-open-sourced-classic-ultima-online/']] });
+v('u4',2024,null,'fan','ANKH VR (Meta Quest)','Unity virtual-reality port of Ultima IV.', { c:true, col:'fan', links:[['Codex entry', CX('ultima4','ankh-vr')]] });
+v('u4',2024,null,'fan','Ultima: Avatar (RPG Maker MZ)','Complete remake of Ultima IV in RPG Maker MZ.', { c:true, col:'fan', links:[['Codex entry', CX('ultima4','ultima-avatar')]] });
+v('u4',2024,null,'fan','Ultima IV 3D','A 3D wrapper around the original game data.', { c:true, col:'fan', links:[['Codex entry', CX('ultima4','ultima-iv-3d')]] });
+v('u4',2024,null,'fan','xu4 for Scratch','Ultima IV rebuilt in Scratch, based on xu4.', { c:true, col:'fan', links:[['Codex entry', CX('ultima4','xu4-for-scratch')]] });
+v('u4',2026,null,'engine','XU4 Legacy Edition','xu4 fork with Master System-style menus, gamepad support, Apple II, C64 and SMS tilesets and music, and GOG auto-detection. Versions 1.0 and 1.1 in October 2026 for Windows and Linux.', { col:'engine', links:[['Releases','https://github.com/alexdia25/xu4-legacy-edition/releases'],['Codex article','https://ultimacodex.com/2026/10/check-out-xu4-legacy-edition-console-style-menus-and-gamepad-support-for-ultima-4/']] });
+v('u4',2026,null,'engine','Ultimatum (web and mobile)','Emre Motan\'s client that runs your own Ultima IV data in desktop and mobile browsers, with an iOS TestFlight; listed as 98–99% implemented.', { col:'engine', needs:true, links:[['Ultimatum: Ultima IV','https://ultimatumproject.com/games/ultima4/'],['GitHub','https://github.com/Ultimatum-Project/Ultimatum'],['Codex entry', CX('ultima4','the-ultimatum-project')]] });
+v('u4',null,null,'fan','Ultima 4 Online Flash Version (taken down)','Complete browser version written in Flash, removed after an EA DMCA notice in 2011.', { col:'fan', links:[['Codex wiki', CXW('Ultima_4:_Online_Flash_Version')]] });
+// Ultima V
+v('u5',2026,null,'engine','Ultimatum (Ultima V, in progress)','Ultima V support in the Ultimatum web client, listed as 89% done.', { col:'engine', links:[['Ultimatum','https://ultimatumproject.com/'],['GitHub','https://github.com/Ultimatum-Project/Ultimatum']] });
+v('u5',null,null,'fan','Fan port: TI-89 / TI-92 calculators','Ultima V ported to Texas Instruments graphing calculators.', { col:'fan', links:[['Codex entry', CX('ultima5','ultima-5-for-ti-calculators')]] });
+// Ultima VI
+v('u6',2005,null,'fan','Ultima VI conversion for Exult (Mike Fictiti0us)','Early Exult mod rebuilding Ultima VI on the Ultima VII engine, still in the Exult mod archive; needs Forge of Virtue.', { col:'fan', needs:true, links:[['Exult downloads','https://exult.sourceforge.io/download.php'],['Codex entry', CX('ultima6','ultima-6-for-exult')]] });
+v('u6',2024,null,'fan','Age of Singularity (Unity)','A 3D remake of Ultima VI built with Blender and Unity.', { c:true, col:'fan', links:[['Codex entry', CX('ultima6','age-of-singularity')]] });
+v('u6',null,null,'engine','Ultima 6 Online (Galleon Dragon)','Persistent online world that runs the original data files in a new engine.', { col:'engine', links:[['Official site','http://ultimasixonline.thezogcabal.com/'],['Codex wiki', CXW('Ultima_VI_Online')]] });
+v('u6',null,null,'engine','Britannia Online','Another online remake of Ultima VI.', { col:'engine', links:[['Codex entry', CX('ultima6','britannia-online')]] });
+v('u6',null,null,'fan','Ultima VI: Enhanced Edition (alpha, not public)','Kamakura Game Works\' first-person reworking on Godot, with Nuvie handling the original files. Announced in November 2026 as a local alpha with no download yet.', { col:'fan', links:[['Developer news','https://kamakura-game-works.pages.dev/en/news/ultima-vi-enhanced-edition-new-chapter/'],['Codex entry', CX('ultima6','ultima-vi-enhanced-edition')]] });
+// Savage Empire
+v('se',null,null,'fan','The Savage Empire Remake for Exult (early)','Planned direct remake in Exult by Sythifuge; so far character and item pixel art.', { col:'fan', links:[['Codex wiki', CXW('The_Savage_Empire_Remake')],['Codex entry','https://savageempire.ultimacodex.com/the-savage-empire-remake-for-exult/']] });
+// Underworld I
+v('uw1',2014,null,'fan','Ultima Underworld Demo Remake (Unreal Engine 4)','Remake of the first level from the demo in Unreal Engine 4, with VR support.', { c:true, col:'fan', links:[['Codex entry', CX('underworld','ultima-underworld-demo-remake-project')]] });
+v('uw1',null,null,'fan','The Great Stygian Abyss for Unreal Tournament','The whole Abyss rebuilt as Unreal Tournament levels.', { col:'fan', links:[['Codex entry', CX('underworld','the-great-stygian-abyss-for-unreal-tournament')]] });
+// Underworld II
+v('uw2',2003,null,'engine','Abysmal (early)','Early replacement engine aiming to run Ultima Underworld II on modern systems; its research was later credited by Underworld Adventures and UnderworldGodot.', { c:true, col:'engine', links:[['Codex entry', CX('underworld2','abysmal-engine')]] });
+v('uw2',null,null,'engine','LoW (Labyrinth of Worlds rewrite)','A rewrite of Ultima Underworld II for modern systems.', { col:'engine', links:[['Project site','https://low.sourceforge.net/']] });
+// Ultima VII
+v('u7',2009,null,'fan','Ultima VII: The Feudal Lands (Exult mod, alpha)','Exult mod that merges The Black Gate and Serpent Isle and adds a third continent. Alpha 0.1 in February 2009; last news in 2013.', { col:'fan', links:[['Archived site','https://web.archive.org/web/20131209012549/http://www.thefeudallands.ca/'],['Codex wiki', CXW('Ultima_VII:_The_Feudal_Lands')]] });
+v('u7',2017,null,'fan','El Portal Negro (Unity)','A Unity remake of Ultima VII.', { c:true, col:'fan', links:[['Codex entry', CX('ultima7','el-portal-negro-ultima-7-in-unity')]] });
+v('u7',2026,null,'decomp','Ultima7_Decomp (Kitrinx)','AI-assisted decompilation of The Black Gate, byte-exact under Borland C++ 2.0, with an early portable build for Windows, macOS and Linux.', { col:'decomp', needs:true, links:[['GitHub','https://github.com/Kitrinx/Ultima7_Decomp'],['Codex article','https://ultimacodex.com/2026/10/the-black-gate-decompiled/']] });
+v('u7',2026,null,'engine','Quest of the Companions (Exult co-op fork)','Up to eight players: the host is the Avatar and friends each take a companion. Windows and Mac builds; Black Gate now, Serpent Isle planned.', { col:'engine', links:[['Project site','https://xcast3d.com/u7-quest-of-the-companions/'],['Codex entry', CX('ultima7','ultima-vii-quest-of-the-companions')]] });
+v('u7',null,null,'engine','Britannia Relit (Exult fork, beta)','Keeps the pixel art and adds GPU lighting, shadows, weather and seasons. Linux beta only; no public release yet.', { col:'engine', links:[['Project site','https://britannia-relit.pages.dev/'],['Codex article','https://ultimacodex.com/2026/10/britannia-relit-an-exult-fork-that-gives-ultima-vii-octopath-style-lighting/']] });
+v('u7',null,null,'fan','Ultima 7 Online (Loresong, not public)','Browser MMO version of The Black Gate on three.js with the classic assets, shown only in videos so far.', { col:'fan', links:[['Codex entry', CX('ultima7','ultima-7-online')],['Codex article','https://ultimacodex.com/2026/10/sotheres-a-browser-based-ultima-7-mmo-kind-of/']] });
+// Serpent Isle
+v('si',null,null,'fan','Serpent Isle Restored (in playtesting)','Exult mod rebuilding the unfinished second half from design documents, unused code and team recollections, adding 15–30 hours. Needs Silver Seed and Exult 1.12; testers were being recruited in November 2026.', { col:'fan', links:[['Codex entry', CX('serpentisle','serpent-isle-restored')],['Codex article','https://ultimacodex.com/2026/11/check-out-serpent-isle-restored-the-lost-half-of-serpent-isle-now-looking-for-playtesters/']] });
+v('si',null,null,'fan','Serpent Isle: An Oblivion Mod (abandoned)','3D remake in the Oblivion engine by Thepal, begun around 2010 and abandoned by 2014.', { col:'fan', links:[['Codex wiki', CXW('Serpent_Isle:_An_Oblivion_Mod')],['Archived site','https://web.archive.org/web/20130503123324/http://paulcarr.com.au/ultima/']] });
+// Ultima VIII
+v('u8',2013,null,'fan','Morgaelin','Spinoff of the LRUM project that presents Ultima VIII in the visual style of Ultima V.', { c:true, col:'fan', links:[['Codex entry', CX('ultima8','morgaelin')]] });
+v('u8',2024,null,'fan','Ultima 8: Exult (in development)','Ideal Dragon\'s re-creation of Ultima VIII on the Exult engine, begun in September 2024; Tenebrae, jumping and party members are in, with regular progress through 2026 and translations planned.', { c:true, col:'fan', links:[['Codex entry', CX('ultima8','ultima-8-exult')]] });
+v('u8',2025,null,'fan','A Tribute to Ultima 8 (Godot)','A 3D remake of Pagan built in Godot.', { c:true, col:'fan', links:[['Codex entry', CX('ultima8','a-tribute-to-ultima-8')]] });
+v('u8',2026,null,'decomp','Ultima8_Decomp (Kitrinx)','Decompilation of the last retail version with the English usecode, byte-exact with Borland C++ 3.0 apart from trailing debug data. The base for Karl Clinckspoor\'s port.', { c:true, col:'decomp', links:[['GitHub','https://github.com/Kitrinx/Ultima8_Decomp']] });
+v('u8',null,null,'engine','Project Tenebrae (no download yet)','Stephen Underwood\'s Ultima VIII Mod Studio for assets and usecode, with an Enhanced Edition as the long-term goal.', { col:'engine', links:[['Codex entry', CX('ultima8','project-tenebrae')],['Codex article','https://ultimacodex.com/2026/11/project-tenebraeaims-to-be-a-mod-studio-and-an-enhanced-edition-for-ultima-8/']] });
+// Ultima IX
+v('u9',2025,null,'fan','Ultima Unity','Unity remake of Ultima IX built on the Bob White Plot, the earlier unused storyline.', { c:true, col:'fan', links:[['Codex entry', CX('ultima9','ultima-unity')],['Codex article','https://ultimacodex.com/2025/11/check-out-ultima-unity-a-unity-based-remake-of-ultima-9/']] });
+v('u9',null,null,'fan','Ultima IX: Redemption (cancelled)','Reimagining in the Morrowind engine, begun in 2001 and later led by the Titans of Ether; cancelled in December 2016.', { col:'fan', links:[['Codex wiki', CXW('Ultima_IX:_Redemption')],['Cancellation notice','https://titansofether.com/uix/']] });
+v('u9',null,null,'fan','Ultima IX: Atonement (early)','Godot rebuild of the isometric 1995–97 Ultima IX prototype, started in October 2026.', { col:'fan', links:[['Codex article','https://ultimacodex.com/2026/10/ultima-ix-atonement-rebuilding-the-isometric-ultima-9-that-never-was/'],['Developer GitHub','https://github.com/delcodigo']] });
+
+/* ======================= STATE ======================= */
+V.forEach((x, i) => { x.id = 'v' + i; x.col = x.col || (x.p && PLAT[x.p].col); });
+const state = { types: new Set(Object.keys(TYPES)), game: '' };
+const visible = x => state.types.has(x.type);
+
+/* ======================= HELPERS ======================= */
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const typeColor = t => TYPES[t].c;
+const yearText = x => x.y == null ? 'Date unknown' : (x.c ? 'c. ' : '') + x.y;
+function platLabel(x) {
+  if (x.p) return PLAT[x.p].s;
+  return x.label.replace(/\s*\(.*\)\s*$/, '');
+}
+function chipText(x) {
+  const g = GMAP[x.g];
+  return { g: g.a, p: x.p ? PLAT[x.p].s + (x.type === 'remake' ? ' remake' : '') : x.label };
+}
+function primaryUrl(x) {
+  if (x.links && x.links.length) return x.links[0][1];
+  return W(GMAP[x.g].wiki);
+}
+
+/* ======================= LEDE / CONTROLS ======================= */
+function renderLede() {
+  const n = V.length, rec = V.filter(x => ['engine','decomp','fan'].includes(x.type)).length;
+  document.getElementById('lede').innerHTML =
+    `From <strong>Akalabeth</strong> (1979) to <strong>Ultima IX</strong> (1999), with the Underworld, Worlds of Ultima, Escape from Mt. Drash and Runes of Virtue spin-offs: <strong>${n} versions</strong> across computers, consoles and Japanese machines, including <strong>${rec}</strong> engine recreations, decompilation ports and fan remakes.`;
+}
+function renderControls() {
+  const wrap = document.getElementById('typechips');
+  wrap.innerHTML = Object.entries(TYPES).map(([k, t]) =>
+    `<button type="button" class="tchip" data-type="${k}" aria-pressed="true" style="--c:${t.c}"><span class="mark ${t.s === 'dia' ? 'dia' : ''}"></span>${t.l}</button>`).join('');
+  wrap.addEventListener('click', e => {
+    const b = e.target.closest('.tchip'); if (!b) return;
+    const k = b.dataset.type;
+    if (state.types.has(k)) state.types.delete(k); else state.types.add(k);
+    b.setAttribute('aria-pressed', state.types.has(k));
+    applyFilters(); renderTable(); renderCompact();
+  });
+  const sel = document.getElementById('gamesel');
+  sel.insertAdjacentHTML('beforeend', GAMES.map(g => `<option value="${g.id}">${esc(g.t)}</option>`).join(''));
+  sel.addEventListener('change', () => { state.game = sel.value; applyFilters(); renderTable(); renderCompact(); });
+}
+
+/* ======================= TIMELINE ======================= */
+const MAX_STACK = 7;
+function renderTimeline() {
+  const track = document.getElementById('track');
+  const dated = V.filter(x => x.y != null).sort((a, b) => a.y - b.y || GAMES.indexOf(GMAP[a.g]) - GAMES.indexOf(GMAP[b.g]));
+  const byYear = {};
+  dated.forEach(x => (byYear[x.y] = byYear[x.y] || []).push(x));
+  let html = '';
+  for (let y = 1979; y <= 2026; y++) {
+    const items = byYear[y] || [];
+    if (!items.length) {
+      html += `<div class="yr empty ${y % 5 === 0 ? 'decade' : ''}" data-year="${y}"><div class="stacks"></div><div class="axis"><span class="ylab">${y}</span></div></div>`;
+      continue;
+    }
+    let stacks = '';
+    for (let i = 0; i < items.length; i += MAX_STACK) {
+      stacks += '<div class="stack">' + items.slice(i, i + MAX_STACK).map(chipHtml).join('') + '</div>';
+    }
+    html += `<div class="yr full" data-year="${y}"><div class="stacks">${stacks}</div><div class="axis"><span class="ylab">${y}</span></div></div>`;
+  }
+  track.innerHTML = html;
+  const und = V.filter(x => x.y == null).length;
+  document.getElementById('undated').textContent = und ? `${und} undated versions are listed in the canon table.` : '';
+}
+function chipHtml(x) {
+  const t = chipText(x);
+  return `<a class="chip" href="${esc(primaryUrl(x))}" data-v="${x.id}" style="--c:${typeColor(x.type)}" title="${esc(GMAP[x.g].t + ' · ' + x.label + ' · ' + yearText(x))}"><span class="g">${esc(t.g)}</span><span class="p">${esc(t.p)}</span></a>`;
+}
+function applyFilters() {
+  document.querySelectorAll('.chip').forEach(el => {
+    const x = V[+el.dataset.v.slice(1)];
+    el.classList.toggle('hidden', !visible(x));
+    el.classList.toggle('dim', !!state.game && x.g !== state.game);
+  });
+}
+
+/* ======================= COMPACT TIMELINE ======================= */
+const CP = { padL: 28, padR: 150, yBase: 14, perItem: 9, lane: 30, cardW: 120, cardH: 24, band: 44, gap: 6, margin: 14 };
+function renderCompact() {
+  const track = document.getElementById('cptrack');
+  const items = V.filter(x => x.y != null && visible(x))
+                 .sort((a, b) => a.y - b.y || GAMES.indexOf(GMAP[a.g]) - GAMES.indexOf(GMAP[b.g]));
+  const byYear = {};
+  items.forEach(x => (byYear[x.y] = byYear[x.y] || []).push(x));
+  // compressed x scale: every year gets a little room, plus a bit per release in it
+  const yearX = {}; let x = CP.padL;
+  for (let y = 1979; y <= 2026; y++) {
+    const n = (byYear[y] || []).length, w = CP.yBase + n * CP.perItem;
+    yearX[y] = { x0: x, w, n }; x += w;
+  }
+  const width = x + CP.padR;
+  // dot positions, spread inside each year
+  items.forEach(it => {
+    const Y = yearX[it.y], i = byYear[it.y].indexOf(it);
+    it._x = Y.x0 + 4 + (i + 0.5) * (Y.w - 8) / Y.n;
+  });
+  // greedy lanes, alternating above / below; a lane is free once the previous card in it has ended
+  const above = [], below = [];
+  items.forEach(it => {
+    const left = it._x - 6;
+    for (let k = 0; ; k++) {
+      const side = k % 2 === 0 ? above : below, lane = k >> 1;
+      if (side[lane] === undefined || side[lane] + CP.gap <= left) {
+        side[lane] = left + CP.cardW; it._side = k % 2 === 0 ? 'a' : 'b'; it._lane = lane; break;
+      }
+    }
+  });
+  const A = above.length, B = below.length;
+  const axisTop = CP.margin + A * CP.lane, axisY = axisTop + 12, axisBot = axisTop + CP.band;
+  const height = axisBot + B * CP.lane + CP.margin;
+  let svg = `<svg width="${width}" height="${height}" aria-hidden="true">`;
+  svg += `<line class="cp-axis" x1="${CP.padL}" x2="${width - CP.padR + 20}" y1="${axisY}" y2="${axisY}"/>`;
+  let labels = '';
+  for (let y = 1979; y <= 2026; y++) {
+    const Y = yearX[y], major = y % 5 === 0;
+    svg += `<line class="cp-tick${major ? ' major' : ''}" x1="${Y.x0}" x2="${Y.x0}" y1="${axisY - (major ? 6 : 3)}" y2="${axisY + (major ? 6 : 3)}"/>`;
+    if (major || Y.n >= 2) labels += `<span class="cp-year${major ? ' major' : ''}" style="left:${Y.x0 + Y.w / 2}px;top:${axisY + 4}px">${y}</span>`;
+  }
+  let cards = '';
+  items.forEach(it => {
+    const c = typeColor(it.type), left = it._x - 6;
+    const top = it._side === 'a' ? axisTop - (it._lane + 1) * CP.lane + (CP.lane - CP.cardH) - 2
+                                 : axisBot + it._lane * CP.lane + 2;
+    const yEnd = it._side === 'a' ? top + CP.cardH : top;
+    const dim = state.game && it.g !== state.game;
+    svg += `<line class="cp-lead${dim ? ' cp-dim' : ''}" stroke="${c}" x1="${it._x}" x2="${it._x}" y1="${axisY}" y2="${yEnd}"/>`;
+    svg += `<circle class="cp-dot${dim ? ' cp-dim' : ''}" fill="${c}" cx="${it._x}" cy="${axisY}" r="3.5"/>`;
+    const t = chipText(it);
+    cards += `<a class="cpc${dim ? ' dim' : ''}" href="${esc(primaryUrl(it))}" data-v="${it.id}" style="--c:${c};left:${left}px;top:${top}px;width:${CP.cardW}px" title="${esc(GMAP[it.g].t + ' · ' + it.label + ' · ' + yearText(it))}"><span class="g">${esc(t.g)}</span><span class="p">${esc(t.p)}</span></a>`;
+  });
+  svg += '</svg>';
+  track.style.width = width + 'px'; track.style.height = height + 'px';
+  track.innerHTML = svg + labels + cards;
+  document.getElementById('cp-count').textContent = `${items.length} releases · ${A + B} lanes · ${Math.round(width).toLocaleString()} px wide`;
+}
+
+/* ======================= TABLE ======================= */
+const COLS = [
+  ['apple2','Apple II'],['a8','Atari 8-bit'],['c64','Commodore 64 · VIC-20'],['dos','MS-DOS'],['st','Atari ST'],['amiga','Amiga'],['mac','Macintosh'],
+  ['win','Windows · Pocket PC'],['jp','Japanese computers'],['console','Consoles · handhelds'],
+  ['engine','Engine recreations'],['decomp','Decompilation · source ports'],['fan','Fan remakes · ports'],
+];
+function renderTable() {
+  const head = `<thead><tr><th scope="col">Game (canon order)</th>${COLS.map(c => `<th scope="col" class="${['engine','decomp','fan'].includes(c[0]) ? 'grp' : ''}">${c[1]}</th>`).join('')}<th scope="col" class="grp">Buy today</th></tr></thead>`;
+  let body = '', lastEra = '';
+  GAMES.forEach(g => {
+    if (g.era !== lastEra) {
+      body += `<tr class="era"><th scope="rowgroup" colspan="1">${esc(g.era)}</th><td colspan="${COLS.length + 1}"></td></tr>`;
+      lastEra = g.era;
+    }
+    const dim = state.game && state.game !== g.id ? ' style="opacity:.3"' : '';
+    const first = V.filter(x => x.g === g.id && x.y != null).reduce((m, x) => Math.min(m, x.y), 9999);
+    let row = `<tr${dim}><th scope="row"><span class="ord">${g.ord}</span><a class="gname" href="${W(g.wiki)}">${esc(g.t)}</a><span class="gmeta">First released ${first} · <a href="${MOBY(g.q)}">MobyGames</a> · <a href="${CODEX(g.q)}">Codex</a></span></th>`;
+    COLS.forEach(([col]) => {
+      const vs = V.filter(x => x.g === g.id && x.col === col && visible(x))
+                  .sort((a, b) => (a.y ?? 9999) - (b.y ?? 9999));
+      if (!vs.length) { row += '<td class="empty"></td>'; return; }
+      const nums = vs.map((x, i) => `<a class="vlink" href="${esc(primaryUrl(x))}" data-v="${x.id}" style="--c:${typeColor(x.type)}" title="${esc(x.label + ' · ' + yearText(x))}">${i + 1}</a>`).join('<span class="sep">,</span>');
+      const plats = vs.map((x, i) => `<span style="--c:${typeColor(x.type)}"><b>${i + 1}</b>${esc(platLabel(x))}${x.y ? ' ’' + String(x.y).slice(2) : ''}</span>`).join('');
+      const wide = ['jp','console','engine','decomp','fan'].includes(col) ? ' class="wide"' : '';
+      row += `<td${wide}><div class="cell"><span class="br">[</span>${nums}<span class="br">]</span><span class="plat">${plats}</span></div></td>`;
+    });
+    row += g.buy.length ? '' : '<td class="buy"><span class="gmeta">Not re-released</span></td></tr>';
+    if (!g.buy.length) { body += row; return; }
+    row += `<td class="buy">${g.buy.map(([n, u, free]) => `<a href="${u}">${esc(n)}</a>${free ? '<span class="free">free</span>' : ''}`).join('<br>')}</td></tr>`;
+    body += row;
+  });
+  document.getElementById('tbl').innerHTML = head + '<tbody>' + body + '</tbody>';
+}
+
+/* ======================= CARD ======================= */
+const card = document.getElementById('card');
+let activeEl = null;
+function linkList(arr) {
+  return arr.map(([n, u]) => u ? `<a href="${esc(u)}">${esc(n)}</a>` : `<span>${esc(n)}</span>`).join('');
+}
+function openCard(x, anchor) {
+  const g = GMAP[x.g], t = TYPES[x.type], p = x.p ? PLAT[x.p] : null;
+  const isRec = ['engine','decomp','fan'].includes(x.type);
+  const info = [['Wikipedia', W(g.wiki)], ['MobyGames', MOBY(g.q)], ['Ultima Codex', CODEX(g.q)]];
+  let play = [];
+  if (p) {
+    if (p.store) play.push(['Store copy', 'Today\'s GOG / Steam release (runs in DOSBox or natively)']);
+    if (p.emu.length) play.push(['Emulation', p.emu.map(([n, u]) => `<a href="${esc(u)}">${esc(n)}</a>`).join(' · ')]);
+    play.push(['Original', esc(p.hw)]);
+  }
+  if (isRec) {
+    if (x.play) play.push(['Get it', x.play.map(([n, u]) => u ? `<a href="${esc(u)}">${esc(n)}</a>` : esc(n)).join(' · ')]);
+    else play.push(['Get it', x.links.map(([n, u]) => `<a href="${esc(u)}">${esc(n)}</a>`).join(' · ')]);
+    if (x.type !== 'fan' || x.needs)
+      play.push(['Needs', 'Game data from a copy you own. Store copies below work.']);
+  }
+  card.style.setProperty('--c', t.c);
+  card.innerHTML = `
+    <button type="button" class="close" aria-label="Close card">×</button>
+    <div class="kick"><span class="mark ${t.s === 'dia' ? 'dia' : ''}" style="--c:${t.c}"></span>${esc(t.l)} · ${esc(yearText(x))}</div>
+    <h2 id="card-title">${esc(x.label)}</h2>
+    <p class="sub">${esc(g.t)}${p ? ' · ' + esc(p.s) : ''}</p>
+    <p class="note">${esc(x.note)}</p>
+    ${x.links && x.links.length ? `<h3>Project links</h3><div class="links">${linkList(x.links)}</div>` : ''}
+    <h3>More about the game</h3><div class="links">${linkList(info)}</div>
+    <h3>Ways to play this version</h3>
+    <ul>${play.map(([k, val]) => `<li><span class="k">${esc(k)}</span><span>${val}</span></li>`).join('')}</ul>
+    <h3>Buy the game today</h3>${g.buy.length ? `<div class="links">${g.buy.map(([n, u, free]) => `<a href="${esc(u)}">${esc(n)}${free ? ' (free)' : ''}</a>`).join('')}</div>` : '<p class="note">Not sold today: only the original cartridges exist.</p>'}
+    ${p && !p.store && g.buy.length ? '<p class="warn">Store releases contain the MS-DOS version. For this one, dump your own original disks or cartridge.</p>' : ''}
+  `;
+  card.hidden = false;
+  if (activeEl) activeEl.classList.remove('active');
+  activeEl = anchor; anchor.classList.add('active');
+  position(anchor);
+  card.querySelector('.close').focus({ preventScroll: true });
+}
+function position(anchor) {
+  if (window.innerWidth <= 640) return;
+  const r = anchor.getBoundingClientRect(), cw = card.offsetWidth, ch = card.offsetHeight, m = 12;
+  let left = r.right + 10;
+  if (left + cw > window.innerWidth - m) left = r.left - cw - 10;
+  if (left < m) left = Math.max(m, Math.min(window.innerWidth - cw - m, r.left));
+  let top = r.top - 20;
+  if (top + ch > window.innerHeight - m) top = window.innerHeight - ch - m;
+  if (top < m) top = m;
+  card.style.left = left + 'px'; card.style.top = top + 'px';
+}
+function closeCard() {
+  card.hidden = true;
+  if (activeEl) { activeEl.classList.remove('active'); activeEl.focus({ preventScroll: true }); activeEl = null; }
+}
+document.addEventListener('click', e => {
+  const a = e.target.closest('[data-v]');
+  if (a && !e.metaKey && !e.ctrlKey && !e.shiftKey && e.button === 0) {
+    e.preventDefault();
+    openCard(V[+a.dataset.v.slice(1)], a);
+    return;
+  }
+  if (e.target.closest('.close')) { closeCard(); return; }
+  if (!card.hidden && !card.contains(e.target)) closeCard();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && !card.hidden) closeCard(); });
+document.getElementById('tlscroll').addEventListener('scroll', () => { if (!card.hidden) closeCard(); }, { passive: true });
+window.addEventListener('resize', () => { if (!card.hidden && activeEl) position(activeEl); });
+
+/* ======================= VIEW SWITCH ======================= */
+const VIEWS = ['timeline', 'compact', 'table'];
+function show(view) {
+  if (!VIEWS.includes(view)) view = 'timeline';
+  VIEWS.forEach(v => {
+    document.getElementById('view-' + v).hidden = v !== view;
+    document.getElementById('btn-' + v).setAttribute('aria-pressed', v === view);
+  });
+  if (!card.hidden) closeCard();
+}
+function go(view) {
+  try { if (location.hash !== '#' + view) location.hash = view; } catch (_) {}
+  show(view);
+}
+document.getElementById('btn-timeline').addEventListener('click', () => go('timeline'));
+document.getElementById('btn-table').addEventListener('click', () => go('table'));
+document.getElementById('btn-compact').addEventListener('click', () => go('compact'));
+document.getElementById('cpscroll').addEventListener('scroll', () => { if (!card.hidden) closeCard(); }, { passive: true });
+window.addEventListener('hashchange', () => show(location.hash.slice(1)));
+
+/* ======================= INIT ======================= */
+renderLede(); renderControls(); renderTimeline(); renderCompact(); renderTable(); applyFilters();
+show(location.hash.slice(1));
+</script>
+</body>
+</html>
