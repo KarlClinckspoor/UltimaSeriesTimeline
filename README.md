@@ -37,4 +37,6 @@ build.py         validate + build
 .github/         Pages workflow, issue forms, PR template
 ```
 
+The **Export PNG** button saves whichever view is on screen (with your filters and theme) as an image; the PNG library loads from cdnjs only when you click it.
+
 The project links to stores, emulators and fan projects only. No game files are hosted or linked.

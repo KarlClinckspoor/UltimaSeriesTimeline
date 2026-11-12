@@ -312,6 +312,67 @@ document.getElementById('btn-compact').addEventListener('click', () => go('compa
 document.getElementById('cpscroll').addEventListener('scroll', () => { if (!card.hidden) closeCard(); }, { passive: true });
 window.addEventListener('hashchange', () => show(location.hash.slice(1)));
 
+
+/* ======================= EXPORT TO PNG ======================= */
+/* Draws the visible view (with the current filters and theme) onto a wrapper that is as wide as the whole
+   track, so the PNG shows everything, not only the scrolled part. html2canvas loads on first click. */
+const H2C_URL = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+function loadH2C() {
+  if (window.html2canvas) return Promise.resolve(window.html2canvas);
+  return new Promise((ok, fail) => {
+    const s = document.createElement('script');
+    s.src = H2C_URL; s.onload = () => ok(window.html2canvas);
+    s.onerror = () => fail(new Error('Could not load the image library. Are you offline?'));
+    document.head.appendChild(s);
+  });
+}
+async function exportPng() {
+  const btn = document.getElementById('btn-export'), label = btn.textContent;
+  const view = VIEWS.find(v => !document.getElementById('view-' + v).hidden);
+  const names = { timeline: 'Timeline', compact: 'Compact timeline', table: 'Canon table' };
+  const srcSel = { timeline: '#track', compact: '#cptrack', table: '#tbl' }[view];
+  if (!card.hidden) closeCard();
+  btn.disabled = true; btn.textContent = 'Exporting…';
+  let wrap;
+  try {
+    const html2canvas = await loadH2C();
+    if (document.fonts && document.fonts.ready) await document.fonts.ready;
+    const src = document.querySelector(srcSel), clone = src.cloneNode(true);
+    // inline SVG loses the page's CSS when rasterised, so copy the computed paint onto each shape
+    const a = src.querySelectorAll('svg, svg *'), b = clone.querySelectorAll('svg, svg *');
+    a.forEach((el, i) => {
+      const cs = getComputedStyle(el), t = b[i];
+      ['stroke', 'stroke-width', 'opacity', 'fill'].forEach(k => t.style.setProperty(k, cs.getPropertyValue(k)));
+    });
+    clone.querySelectorAll('th, thead th').forEach(th => { th.style.position = 'static'; });
+    const filters = [...state.types].length < Object.keys(TYPES).length || state.game;
+    const sub = names[view] + (filters ? ' (filtered)' : '') + ' · ' + new Date().toISOString().slice(0, 10);
+    wrap = document.createElement('div');
+    wrap.style.cssText = 'position:fixed;left:0;top:0;z-index:-1;width:max-content;padding:28px 32px 24px;pointer-events:none;'
+      + 'background:' + getComputedStyle(document.body).backgroundColor + ';color:var(--text);font-family:var(--body)';
+    wrap.innerHTML = `<div style="font-family:var(--display);font-size:2rem;line-height:1.1">☥ ${esc(SITE.title)}</div>`
+      + `<div style="color:var(--muted);margin:4px 0 16px">${esc(sub)}</div>`;
+    wrap.appendChild(clone);
+    wrap.insertAdjacentHTML('beforeend', `<div style="color:var(--muted);font-size:.85rem;margin-top:14px">${esc(location.origin + location.pathname)}</div>`);
+    document.body.appendChild(wrap);
+    const w = wrap.offsetWidth, h = wrap.offsetHeight;
+    const scale = Math.min(2, 16000 / Math.max(w, h), Math.sqrt(250e6 / (w * h)));
+    const canvas = await html2canvas(wrap, { scale, useCORS: true, backgroundColor: null, logging: false, width: w, height: h, windowWidth: w + 64, windowHeight: h + 64, scrollX: 0, scrollY: 0 });
+    const blob = await new Promise(r => canvas.toBlob(r, 'image/png'));
+    if (!blob) throw new Error('The image is too large for this browser. Try filtering some release types first.');
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob); link.download = 'ultima-' + view + '.png';
+    document.body.appendChild(link); link.click(); link.remove();
+    setTimeout(() => URL.revokeObjectURL(link.href), 10000);
+  } catch (e) {
+    alert('Export failed: ' + e.message);
+  } finally {
+    if (wrap) wrap.remove();
+    btn.disabled = false; btn.textContent = label;
+  }
+}
+document.getElementById('btn-export').addEventListener('click', exportPng);
+
 /* ======================= INIT ======================= */
 renderThemes(); renderLede(); renderControls(); renderTimeline(); renderCompact(); renderTable(); applyFilters();
 show(location.hash.slice(1));
