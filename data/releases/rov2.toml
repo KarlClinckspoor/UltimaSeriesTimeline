@@ -1,0 +1,29 @@
+# Releases of Ultima: Runes of Virtue II. One [[release]] block each; see CONTRIBUTING.md for every field.
+
+[[release]]
+year = 1993
+platform = "gb"
+type = "orig"
+label = "Game Boy (Japan)"
+note = "Pony Canyon, 19 November 1993: the Black Knight has kidnapped Lord Tholden and others."
+
+[[release]]
+year = 1994
+platform = "gb"
+type = "orig"
+label = "Game Boy (North America)"
+note = "Published by FCI in March 1994."
+
+[[release]]
+year = 1994
+platform = "sfc"
+type = "console"
+label = "Super Famicom"
+note = "Japan, 17 June 1994, published by EA Victor."
+
+[[release]]
+year = 1994
+platform = "snes"
+type = "console"
+label = "SNES"
+note = "North American release of the 16-bit version, 1994."

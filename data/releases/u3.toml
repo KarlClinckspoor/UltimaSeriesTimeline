@@ -1,0 +1,194 @@
+# Releases of Ultima III: Exodus. One [[release]] block each; see CONTRIBUTING.md for every field.
+
+[[release]]
+year = 1983
+platform = "apple2"
+type = "orig"
+label = "Apple II"
+note = "First Ultima published by Garriott's own Origin Systems."
+
+[[release]]
+year = 1983
+platform = "a8"
+type = "port"
+label = "Atari 8-bit"
+note = "Atari version, noted for its music."
+
+[[release]]
+year = 1983
+platform = "c64"
+type = "port"
+label = "Commodore 64"
+note = "C64 port."
+
+[[release]]
+year = 1983
+platform = "dos"
+type = "port"
+label = "IBM PC"
+note = "PC port; the version in today's GOG and Steam releases."
+
+[[release]]
+year = 1986
+platform = "amiga"
+type = "port"
+label = "Amiga"
+note = "Amiga port."
+
+[[release]]
+year = 1986
+platform = "st"
+type = "port"
+label = "Atari ST"
+note = "Atari ST port."
+
+[[release]]
+year = 1986
+platform = "mac"
+type = "port"
+label = "Macintosh"
+note = "Macintosh port by Origin."
+
+[[release]]
+year = 1986
+platform = "pc88"
+type = "jp"
+label = "PC-88 (Starcraft)"
+note = "Japanese port by Starcraft."
+
+[[release]]
+year = 1986
+platform = "pc98"
+type = "jp"
+label = "PC-98 (Starcraft)"
+note = "Japanese port by Starcraft."
+
+[[release]]
+year = 1986
+platform = "fm7"
+type = "jp"
+label = "FM-7 (Starcraft)"
+note = "Japanese port by Starcraft."
+
+[[release]]
+year = 1987
+platform = "fc"
+type = "console"
+label = "Famicom (FCI / Pony Canyon)"
+note = "Console redesign with new graphics and music, released in Japan."
+
+[[release]]
+year = 1989
+platform = "nes"
+type = "console"
+label = "NES: Ultima: Exodus"
+note = "North American release of the Famicom version."
+
+[[release]]
+year = 1988
+platform = "msx"
+type = "jp"
+label = "MSX2 cartridge"
+note = "Pony Canyon cartridge release."
+
+[[release]]
+year = 1989
+platform = "msx"
+type = "jp"
+label = "MSX2 disk"
+note = "Pony Canyon 3.5\" disk release."
+
+[[release]]
+year = 1990
+platform = "towns"
+type = "jp"
+label = "FM Towns (Ultima Trilogy)"
+note = "Part of the Japanese FM Towns Ultima Trilogy."
+
+[[release]]
+platform = "x1"
+type = "jp"
+label = "Sharp X1"
+note = "Japanese release; year undocumented."
+
+[[release]]
+year = 1993
+platform = "mac"
+type = "remake"
+label = "Macintosh remake (LairWare)"
+note = "Color remake for the Macintosh by LairWare."
+
+[[release]]
+year = 2001
+type = "fan"
+label = "Fan port: Game Boy Color (Sven Carlberg)"
+note = "Complete, faithful port with controls adapted to two buttons, plus an unlockable second game that bridges III and IV. Latest ROM from 2001."
+links = [ { name = "Project site", url = "http://ult3gbc.sourceforge.net/" }, { name = "Codex wiki", url = "https://wiki.ultimacodex.com/wiki/Ultima_3_for_the_Gameboy_Color" } ]
+play = [ { name = "Mesen", url = "https://www.mesen.ca/" } ]
+
+[[release]]
+year = 2015
+approx = true
+type = "fan"
+label = "Shroud of Infinity (Java)"
+note = "Java-based remake of Ultima III for Windows."
+links = [ { name = "Codex entry", url = "https://ultima3.ultimacodex.com/ultima-infinity/" } ]
+
+[[release]]
+year = 2017
+approx = true
+type = "fan"
+label = "Ultima III remake in Python (in progress)"
+note = "A remake of Ultima III being written in Python."
+links = [ { name = "Codex entry", url = "https://ultima3.ultimacodex.com/ultima-3-remake-in-python/" } ]
+
+[[release]]
+year = 2020
+approx = true
+type = "fan"
+label = "Ultima 3: Exodus Remastered (NES)"
+note = "Reworked version of the NES Ultima: Exodus."
+links = [ { name = "Codex entry", url = "https://ultima3.ultimacodex.com/ultima-3-exodus-remastered/" } ]
+play = [ { name = "Mesen", url = "https://www.mesen.ca/" } ]
+
+[[release]]
+year = 2025
+type = "fan"
+label = "Fan port: VIC-20 (Aleksi Eeben)"
+note = "Unofficial conversion of Ultima III to the Commodore VIC-20."
+links = [ { name = "Codex entry", url = "https://ultima3.ultimacodex.com/vic-20-ultima-iii/" } ]
+play = [ { name = "VICE", url = "https://vice-emu.sourceforge.io/" } ]
+
+[[release]]
+year = 2026
+type = "fan"
+label = "Ultima: Exodus (RPG Maker MZ)"
+note = "Francois Poisson's remake, released in March 2026, with version 1.07 in October. A standalone build needs nothing else; the Steam Workshop version needs RPG Maker MZ."
+links = [ { name = "Codex entry (standalone)", url = "https://ultima3.ultimacodex.com/ultima-exodus/" }, { name = "Steam Workshop", url = "https://steamcommunity.com/sharedfiles/filedetails/?id=3691800151" } ]
+
+[[release]]
+year = 2026
+type = "decomp"
+label = "Ultima III modernized port (ChangeNode)"
+note = "TypeScript rebuild of LairWare's Mac port, whose source was released in 2014, keeping the data files unchanged and adding a controller mode, auto-map, quest journal and shared inventory. Runs in the browser and on Windows, macOS, Linux, Android and Steam Deck; MIT licence."
+links = [ { name = "Play in browser", url = "https://synthwave-pixel.github.io/ultima3/" }, { name = "GitHub", url = "https://github.com/synthwave-pixel/ultima3" }, { name = "Releases", url = "https://github.com/synthwave-pixel/ultima3/releases" }, { name = "LairWare source", url = "https://github.com/beastie/ultima3" } ]
+
+[[release]]
+type = "fan"
+label = "Fan port: Palm OS"
+note = "Ultima III for Palm OS devices, listed as completed."
+links = [ { name = "Codex entry", url = "https://ultima3.ultimacodex.com/ultima-3-for-palmos/" } ]
+play = [ { name = "CloudpilotEmu", url = "https://cloudpilot-emu.github.io/" } ]
+
+[[release]]
+type = "fan"
+label = "Ultima III Gold (C64)"
+note = "Improved fan version of the Commodore 64 release."
+links = [ { name = "Codex entry", url = "https://ultima3.ultimacodex.com/ultima-3-gold/" } ]
+play = [ { name = "VICE", url = "https://vice-emu.sourceforge.io/" } ]
+
+[[release]]
+type = "fan"
+label = "Ultima III for Mac (OS X port)"
+note = "Fan port to OS X, called the best available version on the Codex."
+links = [ { name = "Codex entry", url = "https://ultima3.ultimacodex.com/ultima-3-for-mac/" } ]

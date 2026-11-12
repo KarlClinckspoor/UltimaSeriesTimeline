@@ -1,0 +1,23 @@
+# Releases of Ultima: Escape from Mt. Drash. One [[release]] block each; see CONTRIBUTING.md for every field.
+
+[[release]]
+year = 1983
+platform = "vic20"
+type = "orig"
+label = "VIC-20 (Sierra On-Line, cassette)"
+note = "Keith Zabalaoui's timed escape from randomly generated 3D dungeons, written in BASIC with assembly routines and needing an 8K or 16K RAM expansion. Sierra made about 3,000 copies; a complete copy sold for US$3,605 in 2004, and counterfeits exist. Only loosely tied to the series."
+
+[[release]]
+year = 2025
+approx = true
+type = "fan"
+label = "The Sosarian Paradox (Neverwinter Nights)"
+note = "Melavir Sauin Dragon's remake as a Neverwinter Nights: Enhanced Edition module, which returned in July 2025; version 1.02 reached the Neverwinter Vault in November 2026."
+links = [ { name = "Neverwinter Vault", url = "https://neverwintervault.org/project/nwnee/module/sosarian-paradox" }, { name = "Codex entry", url = "https://inspired.ultimacodex.com/the-sosarian-paradox/" }, { name = "Codex article", url = "https://ultimacodex.com/2026/11/the-sosarian-paradox-version-1-02-arrives-on-the-neverwinter-vault/" } ]
+play = [ { name = "Requires Neverwinter Nights: Enhanced Edition (Steam)", url = "https://store.steampowered.com/search/?term=Neverwinter%20Nights%20Enhanced%20Edition" } ]
+
+[[release]]
+type = "fan"
+label = "Mt. Drash: The Roguelike (DrashRL)"
+note = "Java roguelike remake of Escape from Mt. Drash by Slashie, with VGA-style and DragonUI interfaces."
+links = [ { name = "DrashRL website", url = "https://slashie.net/info/drashrl.html" }, { name = "Codex wiki", url = "https://wiki.ultimacodex.com/wiki/Mt._Drash:_The_Roguelike" } ]

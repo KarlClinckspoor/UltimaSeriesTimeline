@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>__TITLE__</title>
+<meta name="description" content="__DESCRIPTION__">
+<script>
+/* Apply the saved theme before first paint (no flash). Light theme for light-mode browsers by default. */
+(function () {
+  var t = null;
+  try { t = localStorage.getItem('ultima-theme'); } catch (e) {}
+  if (!t) t = window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches ? 'dawn' : 'twilight';
+  document.documentElement.dataset.theme = t;
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/*__STYLE__*/
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="title-row">
+      <div>
+        <h1><span class="ankh">☥</span> <span id="h1-text">Ultima, Version by Version</span></h1>
+      </div>
+      <div class="side">
+        <div class="switch" role="group" aria-label="Choose layout">
+          <button type="button" id="btn-timeline" aria-pressed="true">Timeline</button>
+          <button type="button" id="btn-compact" aria-pressed="false">Compact timeline</button>
+          <button type="button" id="btn-table" aria-pressed="false">Canon table</button>
+        </div>
+        <div class="themes" id="themes" role="group" aria-label="Colour theme"></div>
+      </div>
+    </div>
+    <p class="lede" id="lede"></p>
+    <div class="controls">
+      <span class="lab">Show</span>
+      <div class="typechips" id="typechips"></div>
+      <label class="lab" for="gamesel">Highlight game</label>
+      <select id="gamesel"><option value="">All games</option></select>
+    </div>
+  </header>
+
+  <noscript><p class="lede">This page needs JavaScript to draw the timeline. The data is in plain text in the project's <code>data/</code> folder.</p></noscript>
+
+  <section class="view" id="view-timeline" aria-label="Release timeline">
+    <div class="tl-shell">
+      <div class="tl-hint"><span id="hint-tl"></span><span id="undated"></span></div>
+      <div class="tl-scroll" id="tlscroll"><div class="tl-track" id="track"></div></div>
+    </div>
+  </section>
+
+  <section class="view" id="view-compact" aria-label="Compact release timeline" hidden>
+    <div class="tl-shell">
+      <div class="tl-hint"><span>Each dot is a release on a compressed year scale; its card sits above or below on a leader line. Select a card to open it.</span><span id="cp-count"></span></div>
+      <div class="tl-scroll" id="cpscroll"><div class="cp-track" id="cptrack"></div></div>
+    </div>
+  </section>
+
+  <section class="view" id="view-table" aria-label="Canon order table" hidden>
+    <div class="tbl-shell"><table id="tbl"></table></div>
+  </section>
+
+  <footer id="footer"></footer>
+  <footer class="contribute">
+    Something missing or wrong? The whole site is built from plain-text files:
+    <a href="https://github.com/KarlClinckspoor/UltimaSeriesTimeline/issues/new/choose">open an issue</a> or
+    <a href="https://github.com/KarlClinckspoor/UltimaSeriesTimeline/blob/main/CONTRIBUTING.md">edit the data yourself</a>.
+  </footer>
+</div>
+
+<div class="card" id="card" role="dialog" aria-modal="false" aria-labelledby="card-title" hidden></div>
+
+<script>window.__DATA__ = /*__DATA__*/null;</script>
+<script>
+/*__APP__*/
+</script>
+</body>
+</html>

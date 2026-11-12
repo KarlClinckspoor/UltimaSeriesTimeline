@@ -1,0 +1,144 @@
+# Releases of Ultima I: The First Age of Darkness. One [[release]] block each; see CONTRIBUTING.md for every field.
+
+[[release]]
+year = 1981
+platform = "apple2"
+type = "orig"
+label = "Apple II (California Pacific)"
+note = "The original release."
+
+[[release]]
+year = 1983
+platform = "a8"
+type = "port"
+label = "Atari 8-bit (Sierra re-release)"
+note = "Sierra On-Line re-release for Atari computers."
+
+[[release]]
+year = 1986
+platform = "apple2"
+type = "remake"
+label = "Apple II remake (Origin)"
+note = "Origin Systems remake released in December 1986 as Ultima I: The First Age of Darkness; the base for later ports."
+
+[[release]]
+year = 1986
+platform = "c64"
+type = "remake"
+label = "Commodore 64 (remake)"
+note = "Port of the 1986 remake."
+
+[[release]]
+year = 1987
+platform = "dos"
+type = "remake"
+label = "MS-DOS (EGA remake)"
+note = "EGA version of the remake. This is the version sold today on GOG and Steam."
+
+[[release]]
+year = 1987
+platform = "msx"
+type = "jp"
+label = "MSX2"
+note = "Japanese MSX2 release."
+
+[[release]]
+year = 1988
+platform = "x1"
+type = "jp"
+label = "Sharp X1"
+note = "Japanese Sharp X1 release."
+
+[[release]]
+year = 1989
+platform = "msx"
+type = "jp"
+label = "MSX2 remake (Pony Canyon)"
+note = "A second, reworked MSX2 version published by Pony Canyon."
+
+[[release]]
+year = 1990
+platform = "towns"
+type = "jp"
+label = "FM Towns (Ultima Trilogy)"
+note = "Released in Japan as part of the FM Towns Ultima Trilogy."
+
+[[release]]
+platform = "pc88"
+type = "jp"
+label = "PC-88"
+note = "Listed among Japanese releases; year undocumented."
+
+[[release]]
+platform = "pc98"
+type = "jp"
+label = "PC-98"
+note = "Listed among Japanese releases; year undocumented."
+
+[[release]]
+year = 1994
+platform = "iigs"
+type = "remake"
+label = "Apple IIGS remake (Vitesse)"
+note = "16-bit remake for the Apple IIGS by Vitesse."
+
+[[release]]
+year = 2007
+type = "engine"
+label = "Ultima 1 Revenge"
+note = "Reverse-engineering effort that reads the original game files. Unfinished by design; the author states it will never be done."
+links = [ { name = "Bitbucket", url = "https://bitbucket.org/dandago/u1revenge" } ]
+
+[[release]]
+year = 2020
+type = "engine"
+label = "ScummVM Ultima I (in progress)"
+note = "An Ultima I subengine based on a decompilation was added to ScummVM's Ultima engine, but it is still incomplete and not offered in release builds."
+links = [ { name = "Announcement", url = "https://ultimacodex.com/2020/02/support-for-some-ultima-games-is-coming-to-scummvm/" }, { name = "ScummVM", url = "https://www.scummvm.org/" } ]
+
+[[release]]
+year = 2026
+type = "decomp"
+label = "u1-decompiled (Karl Clinckspoor)"
+note = "Source for the PC remake (1986/87, conversion by John Fachini), rebuilt with Lattice C 3.1x, MASM 3.00 and Microsoft LINK into executables byte-identical to the GOG release. All five EXEs rebuild identical; GEN.EXE is decompiled to C and the rest still use generated assembly stand-ins. No playable port yet."
+needs_data = true
+links = [ { name = "GitHub", url = "https://github.com/KarlClinckspoor/u1-decompiled" }, { name = "Handoff notes", url = "https://github.com/KarlClinckspoor/u1-decompiled/blob/main/docs/HANDOFF.md" } ]
+
+[[release]]
+year = 2017
+approx = true
+type = "fan"
+label = "uUltima (Unity)"
+note = "Unity remake of Ultima I aimed at Android and PC."
+links = [ { name = "Codex entry", url = "https://ultima1.ultimacodex.com/uultima/" } ]
+
+[[release]]
+year = 2022
+approx = true
+type = "fan"
+label = "Fan port: Palm OS"
+note = "Ultima I running on Palm OS devices."
+links = [ { name = "Codex entry", url = "https://ultima1.ultimacodex.com/ultima-1-for-palmos/" } ]
+play = [ { name = "CloudpilotEmu", url = "https://cloudpilot-emu.github.io/" } ]
+
+[[release]]
+year = 2024
+approx = true
+type = "fan"
+label = "Ultima I remake (RPG Maker MZ)"
+note = "Remake of Ultima I built in RPG Maker MZ."
+links = [ { name = "Codex entry", url = "https://ultima1.ultimacodex.com/ultima-1-remake-in-rpg-maker-mz/" } ]
+
+[[release]]
+year = 2025
+type = "fan"
+label = "Fan port: VIC-20 (Aleksi Eeben)"
+note = "Unofficial conversion of Ultima I to the Commodore VIC-20."
+links = [ { name = "Codex entry", url = "https://ultima1.ultimacodex.com/vic-20-ultima-i/" }, { name = "Announcement", url = "https://ultimacodex.com/2025/11/check-out-aleksi-eebens-port-of-ultima-1-to-the-vic-20/" } ]
+play = [ { name = "VICE", url = "https://vice-emu.sourceforge.io/" } ]
+
+[[release]]
+type = "fan"
+label = "The Gate of Sosaria (RPG Maker VX)"
+note = "Ultima I remake in RPG Maker VX using Ultima VII graphics."
+links = [ { name = "Codex entry", url = "https://ultima1.ultimacodex.com/the-gate-of-sosaria/" } ]

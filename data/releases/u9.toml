@@ -1,0 +1,28 @@
+# Releases of Ultima IX: Ascension. One [[release]] block each; see CONTRIBUTING.md for every field.
+
+[[release]]
+year = 1999
+platform = "win"
+type = "orig"
+label = "Windows"
+note = "23 November 1999. Also sold as the Dragon Edition (1999) and Premium Edition (2000). GOG and Steam sell it today; no engine recreation exists."
+
+[[release]]
+year = 2025
+approx = true
+type = "fan"
+label = "Ultima Unity"
+note = "Unity remake of Ultima IX built on the Bob White Plot, the earlier unused storyline."
+links = [ { name = "Codex entry", url = "https://ultima9.ultimacodex.com/ultima-unity/" }, { name = "Codex article", url = "https://ultimacodex.com/2025/11/check-out-ultima-unity-a-unity-based-remake-of-ultima-9/" } ]
+
+[[release]]
+type = "fan"
+label = "Ultima IX: Redemption (cancelled)"
+note = "Reimagining in the Morrowind engine, begun in 2001 and later led by the Titans of Ether; cancelled in December 2016."
+links = [ { name = "Codex wiki", url = "https://wiki.ultimacodex.com/wiki/Ultima_IX:_Redemption" }, { name = "Cancellation notice", url = "https://titansofether.com/uix/" } ]
+
+[[release]]
+type = "fan"
+label = "Ultima IX: Atonement (early)"
+note = "Godot rebuild of the isometric 1995–97 Ultima IX prototype, started in October 2026."
+links = [ { name = "Codex article", url = "https://ultimacodex.com/2026/10/ultima-ix-atonement-rebuilding-the-isometric-ultima-9-that-never-was/" }, { name = "Developer GitHub", url = "https://github.com/delcodigo" } ]

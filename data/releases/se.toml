@@ -1,0 +1,49 @@
+# Releases of Worlds of Ultima: The Savage Empire. One [[release]] block each; see CONTRIBUTING.md for every field.
+
+[[release]]
+year = 1990
+platform = "dos"
+type = "orig"
+label = "MS-DOS"
+note = "Built on a modified Ultima VI engine; the Avatar lands in the dinosaur world of Eodon. Free on GOG."
+
+[[release]]
+year = 1993
+platform = "x68k"
+type = "jp"
+label = "X68000"
+note = "Japanese port."
+
+[[release]]
+platform = "pc98"
+type = "jp"
+label = "PC-98"
+note = "Japanese port; year undocumented."
+
+[[release]]
+year = 1995
+platform = "sfc"
+type = "console"
+label = "Super Famicom"
+note = "Japan only, 28 July 1995. A localized US release was cancelled."
+
+[[release]]
+year = 2003
+approx = true
+type = "engine"
+label = "Nuvie (partial support)"
+note = "Nuvie also targets the Ultima VI-engine spin-offs, with less complete support than for Ultima VI."
+links = [ { name = "Nuvie", url = "https://nuvie.sourceforge.net/" }, { name = "ScummVM", url = "https://www.scummvm.org/" } ]
+
+[[release]]
+year = 2026
+type = "decomp"
+label = "u6se-decompiled (Karl Clinckspoor)"
+note = "C and assembly sources that rebuild SAVAGE.EXE and GAME.EXE byte for byte equal to the GOG release, header and relocation table included. GAME.EXE was decompiled starting from u6-decompiled, since the game runs on the Ultima VI engine. INSTALL.EXE is not started; no playable port yet."
+links = [ { name = "GitHub", url = "https://github.com/KarlClinckspoor/u6se-decompiled" } ]
+
+[[release]]
+type = "fan"
+label = "The Savage Empire Remake for Exult (early)"
+note = "Planned direct remake in Exult by Sythifuge; so far character and item pixel art."
+links = [ { name = "Codex wiki", url = "https://wiki.ultimacodex.com/wiki/The_Savage_Empire_Remake" }, { name = "Codex entry", url = "https://savageempire.ultimacodex.com/the-savage-empire-remake-for-exult/" } ]

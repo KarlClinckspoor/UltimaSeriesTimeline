@@ -1,0 +1,15 @@
+# Releases of Ultima: Runes of Virtue. One [[release]] block each; see CONTRIBUTING.md for every field.
+
+[[release]]
+year = 1991
+platform = "gb"
+type = "orig"
+label = "Game Boy (Japan)"
+note = "Action-adventure for the Game Boy by Origin Systems, published by Pony Canyon on 14 December 1991. Never re-released digitally."
+
+[[release]]
+year = 1992
+platform = "gb"
+type = "orig"
+label = "Game Boy (North America)"
+note = "Published by FCI in April 1992."

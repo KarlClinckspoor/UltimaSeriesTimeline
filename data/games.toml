@@ -1,0 +1,184 @@
+# Games, in canon order (this is the row order of the canon table).
+# `era` groups consecutive rows. `ord` is the label shown in front of the title.
+# `wiki` = Wikipedia page slug, `query` = search term for MobyGames / Ultima Codex.
+# Add releases for a game in data/releases/<id>.toml.
+
+[[game]]
+id = "akal"
+ord = "0"
+title = "Akalabeth: World of Doom"
+short = "Akalabeth"
+era = "Prologue"
+wiki = "Akalabeth:_World_of_Doom"
+query = "Akalabeth"
+buy = [ { name = "GOG", url = "https://www.gog.com/en/game/akalabeth_world_of_doom", free = true } ]
+
+[[game]]
+id = "u1"
+ord = "I"
+title = "Ultima I: The First Age of Darkness"
+short = "U1"
+era = "Age of Darkness"
+wiki = "Ultima_I:_The_First_Age_of_Darkness"
+query = "Ultima I"
+buy = [ { name = "GOG (1+2+3)", url = "https://www.gog.com/en/game/ultima_1_2_3" }, { name = "Steam", url = "https://store.steampowered.com/search/?term=Ultima%20I" }, { name = "EA app", url = "https://www.ea.com/games/ultima" } ]
+
+[[game]]
+id = "u2"
+ord = "II"
+title = "Ultima II: The Revenge of the Enchantress"
+short = "U2"
+era = "Age of Darkness"
+wiki = "Ultima_II:_The_Revenge_of_the_Enchantress"
+query = "Ultima II"
+buy = [ { name = "GOG (1+2+3)", url = "https://www.gog.com/en/game/ultima_1_2_3" }, { name = "Steam", url = "https://store.steampowered.com/search/?term=Ultima%20II" }, { name = "EA app", url = "https://www.ea.com/games/ultima" } ]
+
+[[game]]
+id = "u3"
+ord = "III"
+title = "Ultima III: Exodus"
+short = "U3"
+era = "Age of Darkness"
+wiki = "Ultima_III:_Exodus"
+query = "Ultima III"
+buy = [ { name = "GOG (1+2+3)", url = "https://www.gog.com/en/game/ultima_1_2_3" }, { name = "Steam", url = "https://store.steampowered.com/search/?term=Ultima%20III" }, { name = "EA app", url = "https://www.ea.com/games/ultima" } ]
+
+[[game]]
+id = "u4"
+ord = "IV"
+title = "Ultima IV: Quest of the Avatar"
+short = "U4"
+era = "Age of Enlightenment"
+wiki = "Ultima_IV:_Quest_of_the_Avatar"
+query = "Ultima IV"
+buy = [ { name = "GOG", url = "https://www.gog.com/en/game/ultima_iv_quest_of_the_avatar", free = true }, { name = "GOG (4+5+6)", url = "https://www.gog.com/en/game/ultima_456" }, { name = "Steam", url = "https://store.steampowered.com/search/?term=Ultima%20IV" }, { name = "EA app", url = "https://www.ea.com/games/ultima/ultima-4-quest-of-the-avatar" } ]
+
+[[game]]
+id = "u5"
+ord = "V"
+title = "Ultima V: Warriors of Destiny"
+short = "U5"
+era = "Age of Enlightenment"
+wiki = "Ultima_V:_Warriors_of_Destiny"
+query = "Ultima V"
+buy = [ { name = "GOG (4+5+6)", url = "https://www.gog.com/en/game/ultima_456" }, { name = "Steam", url = "https://store.steampowered.com/search/?term=Ultima%20V" }, { name = "EA app", url = "https://www.ea.com/games/ultima" } ]
+
+[[game]]
+id = "u6"
+ord = "VI"
+title = "Ultima VI: The False Prophet"
+short = "U6"
+era = "Age of Enlightenment"
+wiki = "Ultima_VI:_The_False_Prophet"
+query = "Ultima VI"
+buy = [ { name = "GOG (4+5+6)", url = "https://www.gog.com/en/game/ultima_456" }, { name = "Steam", url = "https://store.steampowered.com/search/?term=Ultima%20VI" }, { name = "EA app", url = "https://www.ea.com/games/ultima" } ]
+
+[[game]]
+id = "se"
+ord = "VI·a"
+title = "Worlds of Ultima: The Savage Empire"
+short = "SE"
+era = "Spin-offs between VI and VII"
+wiki = "Worlds_of_Ultima:_The_Savage_Empire"
+query = "Savage Empire"
+buy = [ { name = "GOG", url = "https://www.gog.com/en/game/worlds_of_ultima_the_savage_empire", free = true } ]
+
+[[game]]
+id = "md"
+ord = "VI·b"
+title = "Ultima: Worlds of Adventure 2: Martian Dreams"
+short = "MD"
+era = "Spin-offs between VI and VII"
+wiki = "Martian_Dreams"
+query = "Martian Dreams"
+buy = [ { name = "GOG", url = "https://www.gog.com/en/game/ultima_worlds_of_adventure_2_martian_dreams", free = true } ]
+
+[[game]]
+id = "uw1"
+ord = "VI·c"
+title = "Ultima Underworld: The Stygian Abyss"
+short = "UW1"
+era = "Spin-offs between VI and VII"
+wiki = "Ultima_Underworld:_The_Stygian_Abyss"
+query = "Ultima Underworld"
+buy = [ { name = "GOG (UW 1+2)", url = "https://www.gog.com/en/game/ultima_underworld_1_2" }, { name = "Steam", url = "https://store.steampowered.com/search/?term=Ultima%20Underworld" }, { name = "EA app", url = "https://www.ea.com/games/ultima" } ]
+
+[[game]]
+id = "u7"
+ord = "VII"
+title = "Ultima VII: The Black Gate"
+short = "U7"
+era = "Age of Armageddon"
+wiki = "Ultima_VII:_The_Black_Gate"
+query = "Ultima VII Black Gate"
+buy = [ { name = "GOG (Complete)", url = "https://www.gog.com/en/game/ultima_7_complete" }, { name = "Steam", url = "https://store.steampowered.com/search/?term=Ultima%20VII" }, { name = "EA app", url = "https://www.ea.com/games/ultima" } ]
+
+[[game]]
+id = "uw2"
+ord = "VII·a"
+title = "Ultima Underworld II: Labyrinth of Worlds"
+short = "UW2"
+era = "Age of Armageddon"
+wiki = "Ultima_Underworld_II:_Labyrinth_of_Worlds"
+query = "Ultima Underworld II"
+buy = [ { name = "GOG (UW 1+2)", url = "https://www.gog.com/en/game/ultima_underworld_1_2" }, { name = "Steam", url = "https://store.steampowered.com/search/?term=Ultima%20Underworld%20II" }, { name = "EA app", url = "https://www.ea.com/games/ultima" } ]
+
+[[game]]
+id = "si"
+ord = "VII·II"
+title = "Ultima VII Part Two: Serpent Isle"
+short = "SI"
+era = "Age of Armageddon"
+wiki = "Ultima_VII_Part_Two:_Serpent_Isle"
+query = "Serpent Isle"
+buy = [ { name = "GOG (Complete)", url = "https://www.gog.com/en/game/ultima_7_complete" }, { name = "Steam", url = "https://store.steampowered.com/search/?term=Ultima%20VII" }, { name = "EA app", url = "https://www.ea.com/games/ultima" } ]
+
+[[game]]
+id = "u8"
+ord = "VIII"
+title = "Ultima VIII: Pagan"
+short = "U8"
+era = "Age of Armageddon"
+wiki = "Ultima_VIII:_Pagan"
+query = "Ultima VIII Pagan"
+buy = [ { name = "GOG (Gold)", url = "https://www.gog.com/en/game/ultima_8_gold_edition" }, { name = "Steam", url = "https://store.steampowered.com/search/?term=Ultima%20VIII" }, { name = "EA app", url = "https://www.ea.com/games/ultima" } ]
+
+[[game]]
+id = "u9"
+ord = "IX"
+title = "Ultima IX: Ascension"
+short = "U9"
+era = "Age of Armageddon"
+wiki = "Ultima_IX:_Ascension"
+query = "Ultima IX Ascension"
+buy = [ { name = "GOG", url = "https://www.gog.com/en/game/ultima_9_ascension" }, { name = "Steam", url = "https://store.steampowered.com/search/?term=Ultima%20IX" }, { name = "EA app", url = "https://www.ea.com/games/ultima" } ]
+
+[[game]]
+id = "drash"
+ord = "Drash"
+title = "Ultima: Escape from Mt. Drash"
+short = "Drash"
+era = "Other spin-offs (no fixed place in the chronology)"
+wiki = "Ultima:_Escape_from_Mt._Drash"
+query = "Escape from Mt. Drash"
+buy = []
+
+[[game]]
+id = "rov1"
+ord = "RoV"
+title = "Ultima: Runes of Virtue"
+short = "RoV"
+era = "Other spin-offs (no fixed place in the chronology)"
+wiki = "Ultima:_Runes_of_Virtue"
+query = "Runes of Virtue"
+buy = []
+
+[[game]]
+id = "rov2"
+ord = "RoV II"
+title = "Ultima: Runes of Virtue II"
+short = "RoV2"
+era = "Other spin-offs (no fixed place in the chronology)"
+wiki = "Ultima:_Runes_of_Virtue_II"
+query = "Runes of Virtue II"
+buy = []

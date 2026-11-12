@@ -1,0 +1,73 @@
+# Releases of Akalabeth: World of Doom. One [[release]] block each; see CONTRIBUTING.md for every field.
+
+[[release]]
+year = 1979
+platform = "apple2"
+type = "orig"
+label = "Apple II (self-published)"
+note = "Richard Garriott sold the first copies himself in zip-lock bags, with cover art by his mother."
+
+[[release]]
+year = 1980
+platform = "apple2"
+type = "orig"
+label = "Apple II (California Pacific)"
+note = "The published release; it sold over 30,000 copies and led directly to Ultima."
+
+[[release]]
+year = 1998
+platform = "dos"
+type = "port"
+label = "MS-DOS port (Ultima Collection)"
+note = "First official port off the Apple II, made for the 1998 Ultima Collection. GOG ships this version (Windows, Mac, Linux) and keeps the 1998 build in its extras."
+
+[[release]]
+year = 2016
+approx = true
+type = "fan"
+label = "Fan port: Commodore 64"
+note = "A full port of Akalabeth to the C64."
+links = [ { name = "Codex entry", url = "https://akalabeth.ultimacodex.com/akalabeth-world-of-doom-for-commodore-64/" } ]
+play = [ { name = "VICE", url = "https://vice-emu.sourceforge.io/" } ]
+
+[[release]]
+year = 2018
+approx = true
+type = "fan"
+label = "Vecalabeth (Vectrex32)"
+note = "Akalabeth for the Vectrex32 cartridge, which plugs into an original Vectrex."
+links = [ { name = "Codex entry", url = "https://akalabeth.ultimacodex.com/vecalabeth/" } ]
+play = [ { name = "Vectrex with a Vectrex32 cartridge" } ]
+
+[[release]]
+year = 2019
+approx = true
+type = "fan"
+label = "Fan port: GW-BASIC"
+note = "Akalabeth rewritten in GW-BASIC for DOS."
+links = [ { name = "Codex entry", url = "https://akalabeth.ultimacodex.com/akalabeth-for-gw-basic/" } ]
+play = [ { name = "DOSBox Staging", url = "https://www.dosbox-staging.org/" } ]
+
+[[release]]
+year = 2019
+approx = true
+type = "fan"
+label = "Fan port: MSX BASIC"
+note = "Akalabeth rewritten in MSX BASIC."
+links = [ { name = "Codex entry", url = "https://akalabeth.ultimacodex.com/akalabeth-for-msx-basic/" } ]
+play = [ { name = "openMSX", url = "https://openmsx.org/" } ]
+
+[[release]]
+year = 2022
+approx = true
+type = "fan"
+label = "Akalabeth 128 (Commodore 128)"
+note = "A Commodore 128 port of the original."
+links = [ { name = "Codex entry", url = "https://akalabeth.ultimacodex.com/akalabeth-128/" } ]
+play = [ { name = "VICE", url = "https://vice-emu.sourceforge.io/" } ]
+
+[[release]]
+type = "fan"
+label = "Akalabeth for iPhone (Quantum Toast)"
+note = "Exact re-creation of the Apple II game and its interface for iPhone and iPod Touch. No longer available since December 2025."
+links = [ { name = "Codex wiki", url = "https://wiki.ultimacodex.com/wiki/Akalabeth_for_iPhone" } ]

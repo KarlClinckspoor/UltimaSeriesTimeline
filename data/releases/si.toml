@@ -1,0 +1,35 @@
+# Releases of Ultima VII Part Two: Serpent Isle. One [[release]] block each; see CONTRIBUTING.md for every field.
+
+[[release]]
+year = 1993
+platform = "dos"
+type = "orig"
+label = "MS-DOS"
+note = "25 March 1993. The Silver Seed add-on came later; both are in the Complete Edition."
+
+[[release]]
+year = 1993
+platform = "dos"
+type = "orig"
+label = "The Silver Seed (add-on)"
+note = "Expansion that sends the Avatar into the past of Serpent Isle; included in the Complete Edition and all later releases."
+
+[[release]]
+year = 2000
+approx = true
+type = "engine"
+label = "Exult"
+note = "Exult plays Serpent Isle and The Silver Seed, and restores the longer original Serpent Isle intro."
+links = [ { name = "Exult", url = "https://exult.sourceforge.io/" }, { name = "GitHub", url = "https://github.com/exult/exult" } ]
+
+[[release]]
+type = "fan"
+label = "Serpent Isle Restored (in playtesting)"
+note = "Exult mod rebuilding the unfinished second half from design documents, unused code and team recollections, adding 15–30 hours. Needs Silver Seed and Exult 1.12; testers were being recruited in November 2026."
+links = [ { name = "Codex entry", url = "https://serpentisle.ultimacodex.com/serpent-isle-restored/" }, { name = "Codex article", url = "https://ultimacodex.com/2026/11/check-out-serpent-isle-restored-the-lost-half-of-serpent-isle-now-looking-for-playtesters/" } ]
+
+[[release]]
+type = "fan"
+label = "Serpent Isle: An Oblivion Mod (abandoned)"
+note = "3D remake in the Oblivion engine by Thepal, begun around 2010 and abandoned by 2014."
+links = [ { name = "Codex wiki", url = "https://wiki.ultimacodex.com/wiki/Serpent_Isle:_An_Oblivion_Mod" }, { name = "Archived site", url = "https://web.archive.org/web/20130503123324/http://paulcarr.com.au/ultima/" } ]

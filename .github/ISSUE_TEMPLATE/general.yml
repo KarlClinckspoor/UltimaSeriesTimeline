@@ -1,0 +1,17 @@
+name: Something else
+description: A question, a design or accessibility problem, a feature idea, or anything the other forms don't cover.
+title: ""
+labels: ["general"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What would you like to tell us or ask?
+      description: For a display problem, say which browser and layout (Timeline, Compact timeline, Canon table) and, if you can, which colour theme.
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else?
+      description: Links, screenshots, ideas.

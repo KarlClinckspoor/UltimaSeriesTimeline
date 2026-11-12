@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Edit the data yourself (pull request)
+    url: https://github.com/KarlClinckspoor/UltimaSeriesTimeline/blob/main/CONTRIBUTING.md
+    about: Every release is a few lines of TOML in data/releases/. Contributing guide.

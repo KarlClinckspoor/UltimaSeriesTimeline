@@ -1,0 +1,34 @@
+# Release types. Each release picks one of these ids as its `type`.
+# `shape` is "dot" (official releases) or "diamond" (recreations / fan work). Colours live in the CSS theme (--t-<id>).
+
+[orig]
+label = "Original release"
+shape = "dot"
+
+[port]
+label = "Official port"
+shape = "dot"
+
+[remake]
+label = "Remake"
+shape = "dot"
+
+[console]
+label = "Console / handheld"
+shape = "dot"
+
+[jp]
+label = "Japanese computer"
+shape = "dot"
+
+[engine]
+label = "Engine recreation"
+shape = "diamond"
+
+[decomp]
+label = "Decompilation / PC port"
+shape = "diamond"
+
+[fan]
+label = "Fan remake / port"
+shape = "diamond"

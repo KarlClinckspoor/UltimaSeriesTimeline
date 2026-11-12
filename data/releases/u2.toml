@@ -1,0 +1,106 @@
+# Releases of Ultima II: The Revenge of the Enchantress. One [[release]] block each; see CONTRIBUTING.md for every field.
+
+[[release]]
+year = 1982
+platform = "apple2"
+type = "orig"
+label = "Apple II (Sierra)"
+note = "Published by Sierra On-Line; the first Ultima boxed with a cloth map."
+
+[[release]]
+year = 1983
+platform = "a8"
+type = "port"
+label = "Atari 8-bit"
+note = "Late-1983 port."
+
+[[release]]
+year = 1983
+approx = true
+platform = "c64"
+type = "port"
+label = "Commodore 64"
+note = "Port released by Sierra."
+
+[[release]]
+year = 1983
+approx = true
+platform = "dos"
+type = "port"
+label = "IBM PC"
+note = "PC version; today's GOG and Steam releases run it in DOSBox."
+
+[[release]]
+year = 1985
+platform = "mac"
+type = "port"
+label = "Macintosh"
+note = "Port for the Macintosh 128K/512K."
+
+[[release]]
+year = 1985
+platform = "st"
+type = "port"
+label = "Atari ST"
+note = "Released shortly after the ST launched."
+
+[[release]]
+year = 1989
+platform = "apple2"
+type = "port"
+label = "Apple II (enhanced, Ultima Trilogy)"
+note = "Enhanced version only sold in the Ultima Trilogy I·II·III box."
+
+[[release]]
+year = 1990
+platform = "towns"
+type = "jp"
+label = "FM Towns (Ultima Trilogy)"
+note = "Part of the Japanese FM Towns Ultima Trilogy."
+
+[[release]]
+platform = "fm7"
+type = "jp"
+label = "FM-7"
+note = "Japanese release; year undocumented."
+
+[[release]]
+platform = "msx"
+type = "jp"
+label = "MSX2"
+note = "Japanese release; year undocumented."
+
+[[release]]
+platform = "pc88"
+type = "jp"
+label = "PC-88"
+note = "Japanese release; year undocumented."
+
+[[release]]
+platform = "pc98"
+type = "jp"
+label = "PC-98"
+note = "Japanese release; year undocumented."
+
+[[release]]
+year = 2022
+approx = true
+type = "fan"
+label = "Fan port: Palm OS"
+note = "Ultima II running on Palm OS devices."
+links = [ { name = "Codex entry", url = "https://ultima2.ultimacodex.com/ultima-2-for-palmos/" } ]
+play = [ { name = "CloudpilotEmu", url = "https://cloudpilot-emu.github.io/" } ]
+
+[[release]]
+year = 2025
+type = "fan"
+label = "Fan port: VIC-20 (Aleksi Eeben)"
+note = "Unofficial conversion of Ultima II to the Commodore VIC-20, listed as completed."
+links = [ { name = "Codex entry", url = "https://ultima2.ultimacodex.com/vic-20-ultima-ii/" }, { name = "Announcement", url = "https://ultimacodex.com/2025/11/check-out-aleksi-eebens-port-of-ultima-2-to-the-vic-20/" } ]
+play = [ { name = "VICE", url = "https://vice-emu.sourceforge.io/" } ]
+
+[[release]]
+type = "fan"
+label = "Ultima II for Windows"
+note = "A Windows-native port, listed as completed on the Codex."
+links = [ { name = "Codex entry", url = "https://ultima2.ultimacodex.com/ultima-2-for-windows/" } ]

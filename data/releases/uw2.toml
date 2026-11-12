@@ -1,0 +1,66 @@
+# Releases of Ultima Underworld II: Labyrinth of Worlds. One [[release]] block each; see CONTRIBUTING.md for every field.
+
+[[release]]
+year = 1993
+platform = "dos"
+type = "orig"
+label = "MS-DOS"
+note = "January 1993: set in Lord British's castle a year after The Black Gate."
+
+[[release]]
+year = 1995
+platform = "towns"
+type = "jp"
+label = "FM Towns"
+note = "Japan, March 1995."
+
+[[release]]
+year = 1995
+platform = "pc98"
+type = "jp"
+label = "PC-98"
+note = "Japan, 17 March 1995."
+
+[[release]]
+year = 2018
+approx = true
+type = "engine"
+label = "UnderworldExporter (Unity)"
+note = "The Unity port's 2018 releases cover both Underworld games. Work continues as UnderworldGodot."
+links = [ { name = "UnderworldExporter", url = "https://github.com/hankmorgan/UnderworldExporter" }, { name = "UnderworldGodot", url = "https://github.com/hankmorgan/UnderworldGodot" } ]
+
+[[release]]
+year = 2023
+approx = true
+type = "engine"
+label = "UnderworldGodot"
+note = "The Godot recreation targets Underworld II as well as the first game; its author's main reverse-engineering focus is the UW2 executable. In development."
+links = [ { name = "GitHub", url = "https://github.com/hankmorgan/UnderworldGodot" }, { name = "Reverse-engineering notes", url = "https://github.com/hankmorgan/UWReverseEngineering" } ]
+
+[[release]]
+year = 2026
+type = "decomp"
+label = "Underworld Exhumed (native port)"
+note = "UW2 was the project's first case study: every function rebuilt with Borland's 1990 tools into a byte-identical UW2.EXE, then compiled natively for macOS, Windows and Linux."
+links = [ { name = "Underworld Exhumed", url = "https://github.com/abedegno/underworld-exhumed" }, { name = "Project site", url = "https://abedegno.github.io/underworld-exhumed-web/" }, { name = "Exhume toolkit", url = "https://github.com/abedegno/Exhume" } ]
+
+[[release]]
+year = 2026
+type = "engine"
+label = "Underworld Revisited (UW2 preview)"
+note = "Version 0.13.0 of PQMarine's Unity reimplementation adds a first preview of Ultima Underworld II alongside the complete UW1."
+links = [ { name = "Project site", url = "https://pqmarine.github.io/" }, { name = "GitHub", url = "https://github.com/PQMarine/UnderworldRevisited" }, { name = "Releases", url = "https://github.com/PQMarine/UnderworldRevisited/releases/latest" } ]
+
+[[release]]
+year = 2003
+approx = true
+type = "engine"
+label = "Abysmal (early)"
+note = "Early replacement engine aiming to run Ultima Underworld II on modern systems; its research was later credited by Underworld Adventures and UnderworldGodot."
+links = [ { name = "Codex entry", url = "https://underworld2.ultimacodex.com/abysmal-engine/" } ]
+
+[[release]]
+type = "engine"
+label = "LoW (Labyrinth of Worlds rewrite)"
+note = "A rewrite of Ultima Underworld II for modern systems."
+links = [ { name = "Project site", url = "https://low.sourceforge.net/" } ]

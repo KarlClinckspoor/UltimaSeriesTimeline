@@ -1,0 +1,106 @@
+# Releases of Ultima VIII: Pagan. One [[release]] block each; see CONTRIBUTING.md for every field.
+
+[[release]]
+year = 1994
+platform = "dos"
+type = "orig"
+label = "MS-DOS"
+note = "23 March 1994. A Speech Pack add-on (English, German, French) shipped at the same time."
+
+[[release]]
+year = 1994
+platform = "dos"
+type = "orig"
+label = "Speech Pack (add-on)"
+note = "Released alongside the game: spoken lines for key characters in English, German and French. Built into the CD Gold Edition."
+
+[[release]]
+year = 1995
+approx = true
+platform = "dos"
+type = "port"
+label = "CD-ROM Gold Edition"
+note = "Patched CD release with the speech files; GOG and Steam sell this edition."
+
+[[release]]
+year = 1995
+platform = "pc98"
+type = "jp"
+label = "PC-98"
+note = "Japanese release."
+
+[[release]]
+year = 2002
+approx = true
+type = "engine"
+label = "Pentagram"
+note = "Open-source Ultima VIII engine for Windows, macOS and Linux; merged into ScummVM in May 2020."
+links = [ { name = "Pentagram", url = "https://pentagram.sourceforge.net/" }, { name = "ScummVM", url = "https://www.scummvm.org/" } ]
+
+[[release]]
+year = 2020
+type = "engine"
+label = "ScummVM (Pentagram subengine)"
+note = "Ultima VIII became completable in ScummVM in May 2020 and has been supported since ScummVM 2.2."
+links = [ { name = "ScummVM", url = "https://www.scummvm.org/" }, { name = "Compatibility", url = "https://www.scummvm.org/compatibility/" } ]
+
+[[release]]
+year = 2026
+type = "decomp"
+label = "Ultima 8 Decomp Port (Karl Clinckspoor)"
+note = "Builds on the Kitrinx decompilation of the last retail version (byte-exact with Borland C++ 3.0, English usecode included) and adds a 64-bit port for Windows, macOS and Linux with emulated MT-32 or AdLib music and Sound Blaster speech. Ships u8edit, a Qt 6 editor for maps, items, NPCs and flags whose saves also play in DOS U8.EXE."
+links = [ { name = "GitHub", url = "https://github.com/KarlClinckspoor/Ultima8_DecompPort" }, { name = "Releases", url = "https://github.com/KarlClinckspoor/Ultima8_DecompPort/releases" }, { name = "Upstream decompilation", url = "https://github.com/Kitrinx/Ultima8_Decomp" } ]
+
+[[release]]
+year = 2013
+approx = true
+type = "fan"
+label = "Morgaelin"
+note = "Spinoff of the LRUM project that presents Ultima VIII in the visual style of Ultima V."
+links = [ { name = "Codex entry", url = "https://ultima8.ultimacodex.com/morgaelin/" } ]
+
+[[release]]
+year = 2024
+approx = true
+type = "fan"
+label = "Ultima 8: Exult (in development)"
+note = "Ideal Dragon's re-creation of Ultima VIII on the Exult engine, begun in September 2024; Tenebrae, jumping and party members are in, with regular progress through 2026 and translations planned."
+links = [ { name = "Codex entry", url = "https://ultima8.ultimacodex.com/ultima-8-exult/" } ]
+
+[[release]]
+year = 2025
+approx = true
+type = "fan"
+label = "A Tribute to Ultima 8 (Godot)"
+note = "A 3D remake of Pagan built in Godot."
+links = [ { name = "Codex entry", url = "https://ultima8.ultimacodex.com/a-tribute-to-ultima-8/" } ]
+
+[[release]]
+year = 2026
+approx = true
+type = "decomp"
+label = "Ultima8_Decomp (Kitrinx)"
+note = "Decompilation of the last retail version with the English usecode, byte-exact with Borland C++ 3.0 apart from trailing debug data. The base for Karl Clinckspoor's port."
+links = [ { name = "GitHub", url = "https://github.com/Kitrinx/Ultima8_Decomp" } ]
+
+[[release]]
+type = "engine"
+label = "Project Tenebrae (no download yet)"
+note = "Stephen Underwood's Ultima VIII Mod Studio for assets and usecode, with an Enhanced Edition as the long-term goal."
+links = [ { name = "Codex entry", url = "https://ultima8.ultimacodex.com/project-tenebrae/" }, { name = "Codex article", url = "https://ultimacodex.com/2026/11/project-tenebraeaims-to-be-a-mod-studio-and-an-enhanced-edition-for-ultima-8/" } ]
+
+[[release]]
+year = 2026
+type = "engine"
+label = "U8 Ether Gate"
+note = "Clean-room C++ engine for Linux and the web browser that runs the original data files, with bug fixes and optional additions. Version 0.27.1 appeared in November 2026; only the English v2.10 data has been tested. Your game files stay in your browser and are never uploaded. GPL-3.0."
+needs_data = true
+links = [ { name = "GitHub", url = "https://github.com/LostMystic/u8-ether-gate" }, { name = "Releases", url = "https://github.com/LostMystic/u8-ether-gate/releases/latest" } ]
+
+[[release]]
+year = 2026
+type = "engine"
+label = "PaganRebuild"
+note = "Newly written Rust engine that plays Ultima VIII from the original data without DOSBox, with improvements you can switch on and off and optional orchestral album music. Windows 64-bit; Linux and macOS are untested. Version 0.3.2 appeared in November 2026. Credits the ScummVM (Pentagram) work as its base. GPL-3.0-or-later."
+needs_data = true
+links = [ { name = "Project page", url = "https://scareglow23.github.io/PaganRebuild/" }, { name = "GitHub", url = "https://github.com/scareglow23/PaganRebuild" }, { name = "Releases", url = "https://github.com/scareglow23/PaganRebuild/releases/latest" } ]

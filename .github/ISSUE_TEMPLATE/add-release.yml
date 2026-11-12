@@ -1,0 +1,94 @@
+name: Add a release or project
+description: A version, port, engine recreation, decompilation or fan remake that is missing from the timeline.
+title: "Add: "
+labels: ["add-release"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks! Fill in what you know; a maintainer (or you, via pull request) will turn it into an entry in `data/releases/`.
+        Not sure about a field? Leave it blank. Prefer to do it yourself? See [CONTRIBUTING.md](https://github.com/KarlClinckspoor/UltimaSeriesTimeline/blob/main/CONTRIBUTING.md).
+  - type: dropdown
+    id: game
+    attributes:
+      label: Which game is it for?
+      options:
+        - Akalabeth
+        - Ultima I
+        - Ultima II
+        - Ultima III
+        - Ultima IV
+        - Ultima V
+        - Ultima VI
+        - The Savage Empire
+        - Martian Dreams
+        - Ultima Underworld
+        - Ultima VII (The Black Gate)
+        - Ultima Underworld II
+        - Serpent Isle
+        - Ultima VIII
+        - Ultima IX
+        - Escape from Mt. Drash
+        - Runes of Virtue
+        - Runes of Virtue II
+        - Other / not sure
+    validations:
+      required: true
+  - type: input
+    id: name
+    attributes:
+      label: Name of the release or project
+      placeholder: "e.g. Ultima IV Remastered (C64)"
+    validations:
+      required: true
+  - type: dropdown
+    id: type
+    attributes:
+      label: What kind of release is it?
+      options:
+        - Original release
+        - Official port
+        - Remake (official)
+        - Console / handheld
+        - Japanese computer
+        - Engine recreation (runs the original data files)
+        - Decompilation / source port
+        - Fan remake / port
+        - Not sure
+    validations:
+      required: true
+  - type: input
+    id: year
+    attributes:
+      label: Year (and whether it is approximate)
+      placeholder: "e.g. 2026, or c. 2015, or unknown"
+  - type: input
+    id: platform
+    attributes:
+      label: Platform
+      description: For official versions. Leave blank for engines and fan projects that run on modern systems.
+      placeholder: "e.g. Amiga, Game Boy, Windows"
+  - type: textarea
+    id: description
+    attributes:
+      label: Short description
+      description: One to three plain sentences: what it is, who made it, what state it is in. Mention any data files players need.
+    validations:
+      required: true
+  - type: textarea
+    id: links
+    attributes:
+      label: Links
+      description: Project page, repository, releases, announcement. One per line.
+      placeholder: "GitHub: https://github.com/…"
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Checks
+      options:
+        - label: It is not already on the timeline (I searched the page).
+          required: true
+        - label: The links go to the project itself and none of them offers game files or ROMs.
+          required: true

@@ -1,0 +1,147 @@
+# Releases of Ultima VI: The False Prophet. One [[release]] block each; see CONTRIBUTING.md for every field.
+
+[[release]]
+year = 1990
+platform = "dos"
+type = "orig"
+label = "MS-DOS"
+note = "April 1990: the first main Ultima developed on the PC."
+
+[[release]]
+year = 1991
+platform = "amiga"
+type = "port"
+label = "Amiga"
+note = "Amiga port."
+
+[[release]]
+year = 1991
+platform = "st"
+type = "port"
+label = "Atari ST"
+note = "Atari ST port."
+
+[[release]]
+year = 1991
+platform = "c64"
+type = "port"
+label = "Commodore 64"
+note = "Heavily trimmed: no portraits, horses or working gems, and some dialogue and quests cut."
+
+[[release]]
+year = 1992
+approx = true
+platform = "towns"
+type = "jp"
+label = "FM Towns"
+note = "CD-ROM version with full speech in English and Japanese."
+
+[[release]]
+year = 1992
+approx = true
+platform = "pc98"
+type = "jp"
+label = "PC-98"
+note = "Japanese port."
+
+[[release]]
+year = 1992
+approx = true
+platform = "x68k"
+type = "jp"
+label = "X68000"
+note = "Japanese port."
+
+[[release]]
+year = 1992
+approx = true
+platform = "sfc"
+type = "console"
+label = "Super Famicom"
+note = "Japanese console version by FCI / Pony Canyon."
+
+[[release]]
+year = 1994
+platform = "snes"
+type = "console"
+label = "SNES"
+note = "North American release of the console version."
+
+[[release]]
+year = 2003
+approx = true
+type = "engine"
+label = "Nuvie"
+note = "Open-source engine for Ultima VI, also partly covering the Worlds of Ultima games. Became a ScummVM subengine in 2020."
+links = [ { name = "Nuvie", url = "https://nuvie.sourceforge.net/" }, { name = "ScummVM", url = "https://www.scummvm.org/" } ]
+
+[[release]]
+year = 2010
+type = "fan"
+label = "The Ultima 6 Project (Dungeon Siege)"
+note = "Team Archon's 3D remake in the Dungeon Siege engine, released 5 July 2010. Needs Dungeon Siege."
+links = [ { name = "Ultima Codex wiki", url = "https://wiki.ultimacodex.com/index.php?search=Ultima%206%20Project" } ]
+play = [ { name = "Requires Dungeon Siege (Steam)", url = "https://store.steampowered.com/search/?term=Dungeon%20Siege" } ]
+
+[[release]]
+year = 2020
+type = "engine"
+label = "ScummVM (Nuvie subengine)"
+note = "Nuvie integrated into ScummVM, with classic and enhanced modes; supported since ScummVM 2.2."
+links = [ { name = "ScummVM", url = "https://www.scummvm.org/" }, { name = "Compatibility", url = "https://www.scummvm.org/compatibility/" } ]
+
+[[release]]
+year = 2022
+type = "decomp"
+label = "u6-decompiled"
+note = "Decompilation of the MS-DOS Ultima VI executable by ergonomy_joe."
+links = [ { name = "GitHub", url = "https://github.com/ergonomy-joe/u6-decompiled" }, { name = "Announcement", url = "https://ultimacodex.com/2022/03/ultima-6-has-been-decompiled" } ]
+
+[[release]]
+year = 2024
+type = "fan"
+label = "Ultima VI Remake (Exult mod)"
+note = "Remake of Ultima VI inside Exult with Ultima VII graphics, new NPCs and side quests. Version 1.2 came out in 2024 and 1.3 (bug fixes, working cooking) in May 2026; needs Exult and Ultima VII with Forge of Virtue."
+needs_data = true
+links = [ { name = "Project site", url = "https://www.ultima6.realmofultima.com/" }, { name = "Exult downloads", url = "https://exult.sourceforge.io/download.php" }, { name = "Codex wiki", url = "https://wiki.ultimacodex.com/wiki/The_Ultima_6_Remake" } ]
+
+[[release]]
+year = 2026
+type = "decomp"
+label = "Ultima VI native port (Karl Clinckspoor)"
+note = "Native Windows / Linux port on SDL2 built from the u6-decompiled sources, with GAME.EXE, U.EXE (title, intro, character creation) and END.EXE (the ending) decompiled. AdLib music through Nuked OPL3, and every session can be replayed exactly. In beta; the DOS build stays byte-identical. Also adds a readable branch with named functions and globals."
+links = [ { name = "GitHub", url = "https://github.com/KarlClinckspoor/u6-decompiled" }, { name = "Releases", url = "https://github.com/KarlClinckspoor/u6-decompiled/releases" }, { name = "Port notes", url = "https://github.com/KarlClinckspoor/u6-decompiled/blob/main/docs/port/PORT.md" } ]
+
+[[release]]
+year = 2005
+type = "fan"
+label = "Ultima VI conversion for Exult (Mike Fictiti0us)"
+note = "Early Exult mod rebuilding Ultima VI on the Ultima VII engine, still in the Exult mod archive; needs Forge of Virtue."
+needs_data = true
+links = [ { name = "Exult downloads", url = "https://exult.sourceforge.io/download.php" }, { name = "Codex entry", url = "https://ultima6.ultimacodex.com/ultima-6-for-exult/" } ]
+
+[[release]]
+year = 2024
+approx = true
+type = "fan"
+label = "Age of Singularity (Unity)"
+note = "A 3D remake of Ultima VI built with Blender and Unity."
+links = [ { name = "Codex entry", url = "https://ultima6.ultimacodex.com/age-of-singularity/" } ]
+
+[[release]]
+type = "engine"
+label = "Ultima 6 Online (Galleon Dragon)"
+note = "Persistent online world that runs the original data files in a new engine."
+links = [ { name = "Official site", url = "http://ultimasixonline.thezogcabal.com/" }, { name = "Codex wiki", url = "https://wiki.ultimacodex.com/wiki/Ultima_VI_Online" } ]
+
+[[release]]
+type = "engine"
+label = "Britannia Online"
+note = "Another online remake of Ultima VI."
+links = [ { name = "Codex entry", url = "https://ultima6.ultimacodex.com/britannia-online/" } ]
+
+[[release]]
+type = "fan"
+label = "Ultima VI: Enhanced Edition (alpha, not public)"
+note = "Kamakura Game Works' first-person reworking on Godot, with Nuvie handling the original files. Announced in November 2026 as a local alpha with no download yet."
+links = [ { name = "Developer news", url = "https://kamakura-game-works.pages.dev/en/news/ultima-vi-enhanced-edition-new-chapter/" }, { name = "Codex entry", url = "https://ultima6.ultimacodex.com/ultima-vi-enhanced-edition/" } ]

@@ -1,0 +1,75 @@
+# Site-wide text and the layout of the canon table.
+# Games, platforms, types and releases live in the other files in this folder.
+
+title = "Ultima, Version by Version"
+description = "Every release of the single-player Ultima games, from Akalabeth to Ultima IX: originals, ports, Japanese and console versions, engine recreations, decompilation ports and fan remakes."
+repo = "https://github.com/KarlClinckspoor/UltimaSeriesTimeline"
+
+# Intro line. {versions} and {recreations} are counted from the data. **bold** is supported.
+lede = "From **Akalabeth** (1979) to **Ultima IX** (1999), with the Underworld, Worlds of Ultima, Escape from Mt. Drash and Runes of Virtue spin-offs: **{versions} versions** across computers, consoles and Japanese machines, including **{recreations}** engine recreations, decompilation ports and fan remakes."
+
+# Paragraphs shown under the timeline.
+footer = [
+  "**Canon order** follows Britannia's internal chronology: the Worlds of Ultima and Underworld spin-offs slot in after Ultima VI, and Underworld II sits between The Black Gate and Serpent Isle. Escape from Mt. Drash and the two Runes of Virtue games have no fixed place in the story, so they close the table. Numbers in the table are ordered by release year; select one to open its card.",
+  "**Ways to play** link to stores, emulators and fan projects only. No disk images or ROMs are linked; dump your own originals. Engine recreations and decompilation ports need data files from a copy you own (GOG and Steam copies work).",
+  "Fan projects were catalogued from the Ultima Codex wiki and its per-game sites in November 2026; where the only date is the Codex listing date, it is marked “c.”, and unreleased, cancelled or undated projects appear only in the table. Utilities, patches, translations, music and map conversions are left out. Dates marked “c.” are approximate. Japanese ports with no documented year appear in the table but not on the timeline. Store availability checked November 2026: EA put eleven Ultimas on Steam on 5 November 2026.",
+]
+
+# Columns of the canon table, left to right.
+# A release lands in the column of its platform (platforms.toml `column`),
+# or, for releases without a platform, in the column named after its type.
+# `group = true` highlights the column header (the "recreation" columns).
+[[column]]
+id = "apple2"
+label = "Apple II"
+
+[[column]]
+id = "a8"
+label = "Atari 8-bit"
+
+[[column]]
+id = "c64"
+label = "Commodore 64 · VIC-20"
+
+[[column]]
+id = "dos"
+label = "MS-DOS"
+
+[[column]]
+id = "st"
+label = "Atari ST"
+
+[[column]]
+id = "amiga"
+label = "Amiga"
+
+[[column]]
+id = "mac"
+label = "Macintosh"
+
+[[column]]
+id = "win"
+label = "Windows · Pocket PC"
+
+[[column]]
+id = "jp"
+label = "Japanese computers"
+
+[[column]]
+id = "console"
+label = "Consoles · handhelds"
+
+[[column]]
+id = "engine"
+label = "Engine recreations"
+group = true
+
+[[column]]
+id = "decomp"
+label = "Decompilation · source ports"
+group = true
+
+[[column]]
+id = "fan"
+label = "Fan remakes · ports"
+group = true

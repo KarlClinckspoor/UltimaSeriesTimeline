@@ -1,0 +1,56 @@
+# Build order: checkout -> validate data -> build site -> (main only) publish to GitHub Pages.
+# Pull requests run the same validate + build, so a broken data file is caught before merge.
+name: Build and deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # 1. Validate every TOML file (fails with a readable list of problems)
+      - name: Validate data
+        run: python build.py --check
+
+      # 2. Build dist/index.html (data + CSS + JS inlined) and dist/data.json
+      - name: Build site
+        run: python build.py
+
+      # 3. Package for Pages (main branch only)
+      - uses: actions/configure-pages@v5
+        if: github.event_name != 'pull_request'
+      - uses: actions/upload-pages-artifact@v3
+        if: github.event_name != 'pull_request'
+        with:
+          path: dist
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

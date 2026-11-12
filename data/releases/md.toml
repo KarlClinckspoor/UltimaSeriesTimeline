@@ -1,0 +1,16 @@
+# Releases of Ultima: Worlds of Adventure 2: Martian Dreams. One [[release]] block each; see CONTRIBUTING.md for every field.
+
+[[release]]
+year = 1991
+platform = "dos"
+type = "orig"
+label = "MS-DOS"
+note = "Victorian-era trip to Mars on the Ultima VI engine, championed by Warren Spector. Free on GOG."
+
+[[release]]
+year = 2003
+approx = true
+type = "engine"
+label = "Nuvie (partial support)"
+note = "Nuvie also targets the Ultima VI-engine spin-offs, with less complete support than for Ultima VI."
+links = [ { name = "Nuvie", url = "https://nuvie.sourceforge.net/" }, { name = "ScummVM", url = "https://www.scummvm.org/" } ]

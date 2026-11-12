@@ -1,0 +1,103 @@
+# Releases of Ultima Underworld: The Stygian Abyss. One [[release]] block each; see CONTRIBUTING.md for every field.
+
+[[release]]
+year = 1992
+platform = "dos"
+type = "orig"
+label = "MS-DOS"
+note = "March 1992, by Blue Sky Productions (later Looking Glass): free-movement first-person 3D in the Stygian Abyss."
+
+[[release]]
+year = 1993
+platform = "towns"
+type = "jp"
+label = "FM Towns"
+note = "Japan, December 1993."
+
+[[release]]
+year = 1993
+platform = "pc98"
+type = "jp"
+label = "PC-98"
+note = "Japan, 17 December 1993."
+
+[[release]]
+year = 1997
+platform = "ps1"
+type = "console"
+label = "PlayStation"
+note = "Japan only, 14 March 1997: a 3D-model remake by Infinity, published by EA Victor."
+
+[[release]]
+year = 2002
+platform = "ppc"
+type = "port"
+label = "Pocket PC"
+note = "Windows Mobile version by ZIO Interactive, May 2002."
+
+[[release]]
+year = 2002
+approx = true
+type = "engine"
+label = "Underworld Adventures"
+note = "Cross-platform engine for UW1 using the original files. Advanced but inactive since 2007; code now on GitHub."
+links = [ { name = "Project site", url = "https://vividos.github.io/UnderworldAdventures/" }, { name = "GitHub", url = "https://github.com/vividos/UnderworldAdventures" } ]
+
+[[release]]
+year = 2017
+approx = true
+type = "engine"
+label = "UnderworldExporter (Unity)"
+note = "Hank Morgan's Unity port with high resolutions and mouselook; full UW1 support in its 2017–2018 releases. Work continues as UnderworldGodot."
+links = [ { name = "UnderworldExporter", url = "https://github.com/hankmorgan/UnderworldExporter" }, { name = "UnderworldGodot", url = "https://github.com/hankmorgan/UnderworldGodot" } ]
+
+[[release]]
+year = 2023
+approx = true
+type = "engine"
+label = "UnderworldGodot"
+note = "Hank Morgan's engine recreation of both Underworld games in Godot, which replaces his Unity project and rebuilds the code to work the way the originals did, backed by his UW1/UW2 disassembly. In development: you build and run it in Godot yourself."
+links = [ { name = "GitHub", url = "https://github.com/hankmorgan/UnderworldGodot" }, { name = "Reverse-engineering notes", url = "https://github.com/hankmorgan/UWReverseEngineering" } ]
+
+[[release]]
+year = 2026
+type = "engine"
+label = "Unity Underground"
+note = "Steve McCrea (Kweepa)'s Unity engine recreation, in the works since 2015, with new hand-made 3D models and animations for every creature and object, new sound and particle effects, achievements, and gamepad or mouse-and-keyboard controls. Released on itch.io in March 2026 for Windows and reads the GOG version's files; the source is now on GitHub as OpenUnderground."
+links = [ { name = "itch.io", url = "https://kweepa.itch.io/unity-underground" }, { name = "GitHub (OpenUnderground)", url = "https://github.com/Kweepa/OpenUnderground" } ]
+play = [ { name = "Free download (itch.io)", url = "https://kweepa.itch.io/unity-underground" } ]
+
+[[release]]
+year = 2026
+type = "decomp"
+label = "Underworld Exhumed (native port)"
+note = "Byte-matching decompilation that rebuilds the exact UW.EXE, plus a native macOS / Windows / Linux port built from that source and checked against recorded DOS sessions."
+links = [ { name = "Underworld Exhumed", url = "https://github.com/abedegno/underworld-exhumed" }, { name = "Project site", url = "https://abedegno.github.io/underworld-exhumed-web/" }, { name = "Exhume toolkit", url = "https://github.com/abedegno/Exhume" } ]
+
+[[release]]
+year = 2026
+type = "decomp"
+label = "uw1go"
+note = "Go and Ebiten port that follows the Exhumed decompiled source function by function, played as a modernized game; also runs in the browser via WebAssembly."
+links = [ { name = "GitHub", url = "https://github.com/retro-ware/uw1go" } ]
+
+[[release]]
+year = 2026
+type = "engine"
+label = "Underworld Revisited"
+note = "PQMarine's open-source Unity reimplementation for Windows and Linux, fully playable from character creation to the ending and checked against the original (rules verified against Underworld Exhumed). Saves work both ways with DOS. First release 0.1.0 on 2 October 2026; can replace the game's launch on Steam."
+links = [ { name = "Project site", url = "https://pqmarine.github.io/" }, { name = "GitHub", url = "https://github.com/PQMarine/UnderworldRevisited" }, { name = "Releases", url = "https://github.com/PQMarine/UnderworldRevisited/releases/latest" } ]
+
+[[release]]
+year = 2014
+approx = true
+type = "fan"
+label = "Ultima Underworld Demo Remake (Unreal Engine 4)"
+note = "Remake of the first level from the demo in Unreal Engine 4, with VR support."
+links = [ { name = "Codex entry", url = "https://underworld.ultimacodex.com/ultima-underworld-demo-remake-project/" } ]
+
+[[release]]
+type = "fan"
+label = "The Great Stygian Abyss for Unreal Tournament"
+note = "The whole Abyss rebuilt as Unreal Tournament levels."
+links = [ { name = "Codex entry", url = "https://underworld.ultimacodex.com/the-great-stygian-abyss-for-unreal-tournament/" } ]

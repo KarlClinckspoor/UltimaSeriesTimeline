@@ -1,0 +1,161 @@
+# Hardware platforms. A release names one of these ids as its `platform`.
+# `column` is the canon-table column it lands in (see site.toml). `store = true` means today's GOG/Steam copy runs this version.
+# `emulators` = list of { name, url }. `original` = description of the original hardware.
+
+[apple2]
+name = "Apple II"
+column = "apple2"
+original = "Apple II / IIe with a 5.25\" drive"
+emulators = [ { name = "AppleWin", url = "https://github.com/AppleWin/AppleWin" }, { name = "MAME", url = "https://www.mamedev.org/" } ]
+
+[iigs]
+name = "Apple IIGS"
+column = "apple2"
+original = "Apple IIGS"
+emulators = [ { name = "MAME", url = "https://www.mamedev.org/" } ]
+
+[a8]
+name = "Atari 8-bit"
+column = "a8"
+original = "Atari 400/800/XL/XE with disk drive"
+emulators = [ { name = "Altirra", url = "https://www.virtualdub.org/altirra.html" }, { name = "Atari800", url = "https://atari800.github.io/" } ]
+
+[vic20]
+name = "VIC-20"
+column = "c64"
+original = "Commodore VIC-20 with an 8K or 16K RAM expansion and a Datasette"
+emulators = [ { name = "VICE (xvic)", url = "https://vice-emu.sourceforge.io/" } ]
+
+[c64]
+name = "C64"
+column = "c64"
+original = "Commodore 64/128 with 1541 drive"
+emulators = [ { name = "VICE", url = "https://vice-emu.sourceforge.io/" } ]
+
+[dos]
+name = "MS-DOS"
+column = "dos"
+original = "Period IBM PC compatible"
+store = true
+emulators = [ { name = "DOSBox Staging", url = "https://www.dosbox-staging.org/" }, { name = "DOSBox-X", url = "https://dosbox-x.com/" } ]
+
+[st]
+name = "Atari ST"
+column = "st"
+original = "Atari ST / STE"
+emulators = [ { name = "Hatari", url = "https://www.hatari-emu.org/" } ]
+
+[amiga]
+name = "Amiga"
+column = "amiga"
+original = "Commodore Amiga"
+emulators = [ { name = "FS-UAE", url = "https://fs-uae.net/" }, { name = "WinUAE", url = "https://www.winuae.net/" } ]
+
+[mac]
+name = "Macintosh"
+column = "mac"
+original = "Compact 68k Macintosh"
+emulators = [ { name = "Mini vMac", url = "https://www.gryphel.com/c/minivmac/" } ]
+
+[win]
+name = "Windows"
+column = "win"
+original = "Windows 98-era PC with a 3D card"
+store = true
+emulators = []
+
+[ppc]
+name = "Pocket PC"
+column = "win"
+original = "Pocket PC / Windows Mobile handheld"
+emulators = []
+
+[pc88]
+name = "PC-88"
+column = "jp"
+original = "NEC PC-8801"
+emulators = [ { name = "MAME", url = "https://www.mamedev.org/" } ]
+
+[pc98]
+name = "PC-98"
+column = "jp"
+original = "NEC PC-9801"
+emulators = [ { name = "Neko Project II kai", url = "https://github.com/AZO234/NP2kai" }, { name = "MAME", url = "https://www.mamedev.org/" } ]
+
+[fm7]
+name = "FM-7"
+column = "jp"
+original = "Fujitsu FM-7"
+emulators = [ { name = "MAME", url = "https://www.mamedev.org/" } ]
+
+[towns]
+name = "FM Towns"
+column = "jp"
+original = "Fujitsu FM Towns (CD-ROM)"
+emulators = [ { name = "Tsugaru", url = "https://github.com/captainys/TOWNSEMU" }, { name = "MAME", url = "https://www.mamedev.org/" } ]
+
+[msx]
+name = "MSX2"
+column = "jp"
+original = "MSX2 computer"
+emulators = [ { name = "openMSX", url = "https://openmsx.org/" } ]
+
+[x1]
+name = "Sharp X1"
+column = "jp"
+original = "Sharp X1"
+emulators = [ { name = "MAME", url = "https://www.mamedev.org/" } ]
+
+[x68k]
+name = "X68000"
+column = "jp"
+original = "Sharp X68000"
+emulators = [ { name = "MAME", url = "https://www.mamedev.org/" } ]
+
+[gb]
+name = "Game Boy"
+column = "console"
+original = "Nintendo Game Boy"
+emulators = [ { name = "Mesen", url = "https://www.mesen.ca/" } ]
+
+[fc]
+name = "Famicom"
+column = "console"
+original = "Nintendo Famicom (Japan)"
+emulators = [ { name = "Mesen", url = "https://www.mesen.ca/" } ]
+
+[nes]
+name = "NES"
+column = "console"
+original = "Nintendo Entertainment System"
+emulators = [ { name = "Mesen", url = "https://www.mesen.ca/" } ]
+
+[sms]
+name = "Master System"
+column = "console"
+original = "Sega Master System (PAL / Brazil)"
+emulators = [ { name = "Mesen", url = "https://www.mesen.ca/" } ]
+
+[sfc]
+name = "Super Famicom"
+column = "console"
+original = "Super Famicom (Japan)"
+emulators = [ { name = "Mesen", url = "https://www.mesen.ca/" } ]
+
+[snes]
+name = "SNES"
+column = "console"
+original = "Super Nintendo (North America)"
+emulators = [ { name = "Mesen", url = "https://www.mesen.ca/" } ]
+
+[ps1]
+name = "PlayStation"
+column = "console"
+original = "Japanese PlayStation"
+emulators = [ { name = "DuckStation", url = "https://www.duckstation.org/" } ]
+
+[psp]
+name = "PSP"
+column = "console"
+original = "PlayStation Portable (UMD)"
+emulators = [ { name = "PPSSPP", url = "https://www.ppsspp.org/" } ]

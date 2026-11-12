@@ -1,0 +1,44 @@
+name: Correct an entry
+description: A wrong date, a broken link, a missing detail or an outdated status on an existing entry.
+title: "Fix: "
+labels: ["correction"]
+body:
+  - type: input
+    id: entry
+    attributes:
+      label: Which entry?
+      description: Game and release name as shown on the card.
+      placeholder: "e.g. Ultima VI · Nuvie"
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What is wrong?
+      options:
+        - Wrong date
+        - Broken or outdated link
+        - Wrong or misleading description
+        - Status changed (released, abandoned, new version)
+        - Wrong type, platform or table column
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: What the page says now
+    validations:
+      required: true
+  - type: textarea
+    id: correct
+    attributes:
+      label: What it should say
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Source
+      description: A link that backs up the correction (release notes, the project page, an archive, a magazine scan).
+      placeholder: "https://…"
