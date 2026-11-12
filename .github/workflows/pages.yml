@@ -18,6 +18,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write   # only used to push the refreshed README table on main
     steps:
       - uses: actions/checkout@v4
 
@@ -32,6 +34,18 @@ jobs:
       # 2. Build dist/index.html (data + CSS + JS inlined) and dist/data.json
       - name: Build site
         run: python build.py
+
+      # 2b. build.py also regenerates the canon table in README.md; commit it if the data changed (main only)
+      - name: Commit refreshed README table
+        if: github.event_name == 'push'
+        run: |
+          if ! git diff --quiet README.md; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add README.md
+            git commit -m "Refresh canon table in README"
+            git push
+          fi
 
       # 3. Package for Pages (main branch only)
       - uses: actions/configure-pages@v5

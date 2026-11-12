@@ -82,7 +82,7 @@ Errors name the file and the entry, for example `data/releases/u4.toml release #
 ## Build order
 
 1. **Validate**: `python build.py --check` reads every TOML file and checks required fields, ids, years and links.
-2. **Build**: `python build.py` writes `dist/index.html` (data, CSS and script inlined; one file) and `dist/data.json` (the same data, for anyone who wants to reuse it).
+2. **Build**: `python build.py` also refreshes the canon table in `README.md` (between the `TABLE:START` / `TABLE:END` markers; never edit it by hand, CI commits it after a merge to `main`), and writes `dist/index.html` (data, CSS and script inlined; one file) and `dist/data.json` (the same data, for anyone who wants to reuse it).
 3. **Deploy**: pushes to `main` publish `dist/` to GitHub Pages via `.github/workflows/pages.yml`. Pull requests run steps 1 and 2 only.
 
 ## Colours
