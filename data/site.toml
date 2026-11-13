@@ -12,6 +12,7 @@ lede = "From **Akalabeth** (1979) to **Ultima IX** (1999), with the Underworld, 
 footer = [
   "**Canon order** follows Britannia's internal chronology: the Worlds of Ultima and Underworld spin-offs slot in after Ultima VI, and Underworld II sits between The Black Gate and Serpent Isle. Escape from Mt. Drash and the two Runes of Virtue games have no fixed place in the story, so they close the table. Numbers in the table are ordered by release year; select one to open its card.",
   "**Ways to play** link to stores, emulators and fan projects only. No disk images or ROMs are linked; dump your own originals. Engine recreations and decompilation ports need data files from a copy you own (GOG and Steam copies work).",
+  "Entries marked “Karl Clinckspoor” are the maintainer's own projects.",
   "Fan projects were catalogued from the Ultima Codex wiki and its per-game sites in November 2026; where the only date is the Codex listing date, it is marked “c.”, and unreleased, cancelled or undated projects appear only in the table. Utilities, patches, translations, music and map conversions are left out. Dates marked “c.” are approximate. Japanese ports with no documented year appear in the table but not on the timeline. Store availability checked November 2026: EA put eleven Ultimas on Steam on 5 November 2026.",
 ]
 

@@ -21,7 +21,7 @@ short = "U1"
 era = "Age of Darkness"
 wiki = "Ultima_I:_The_First_Age_of_Darkness"
 query = "Ultima I"
-buy = [ { name = "GOG (1+2+3)", url = "https://www.gog.com/en/game/ultima_1_2_3" }, { name = "Steam", url = "https://store.steampowered.com/search/?term=Ultima%20I" }, { name = "EA app", url = "https://www.ea.com/games/ultima" } ]
+buy = [ { name = "GOG", url = "https://www.gog.com/en/game/ultima_1" }, { name = "Steam", url = "https://store.steampowered.com/app/3067480/" }, { name = "EA app", url = "https://www.ea.com/games/ultima" } ]
 
 [[game]]
 id = "u2"
@@ -31,7 +31,7 @@ short = "U2"
 era = "Age of Darkness"
 wiki = "Ultima_II:_The_Revenge_of_the_Enchantress"
 query = "Ultima II"
-buy = [ { name = "GOG (1+2+3)", url = "https://www.gog.com/en/game/ultima_1_2_3" }, { name = "Steam", url = "https://store.steampowered.com/search/?term=Ultima%20II" }, { name = "EA app", url = "https://www.ea.com/games/ultima" } ]
+buy = [ { name = "GOG", url = "https://www.gog.com/en/game/ultima_2" }, { name = "Steam", url = "https://store.steampowered.com/app/3067490/" }, { name = "EA app", url = "https://www.ea.com/games/ultima" } ]
 
 [[game]]
 id = "u3"
@@ -41,7 +41,7 @@ short = "U3"
 era = "Age of Darkness"
 wiki = "Ultima_III:_Exodus"
 query = "Ultima III"
-buy = [ { name = "GOG (1+2+3)", url = "https://www.gog.com/en/game/ultima_1_2_3" }, { name = "Steam", url = "https://store.steampowered.com/search/?term=Ultima%20III" }, { name = "EA app", url = "https://www.ea.com/games/ultima" } ]
+buy = [ { name = "GOG", url = "https://www.gog.com/en/game/ultima_3" }, { name = "Steam", url = "https://store.steampowered.com/app/3067500/" }, { name = "EA app", url = "https://www.ea.com/games/ultima" } ]
 
 [[game]]
 id = "u4"
@@ -51,7 +51,7 @@ short = "U4"
 era = "Age of Enlightenment"
 wiki = "Ultima_IV:_Quest_of_the_Avatar"
 query = "Ultima IV"
-buy = [ { name = "GOG", url = "https://www.gog.com/en/game/ultima_iv_quest_of_the_avatar", free = true }, { name = "GOG (4+5+6)", url = "https://www.gog.com/en/game/ultima_456" }, { name = "Steam", url = "https://store.steampowered.com/search/?term=Ultima%20IV" }, { name = "EA app", url = "https://www.ea.com/games/ultima/ultima-4-quest-of-the-avatar" } ]
+buy = [ { name = "GOG", url = "https://www.gog.com/en/game/ultima_iv_quest_of_the_avatar" }, { name = "Steam", url = "https://store.steampowered.com/app/3067510/" }, { name = "EA app", url = "https://www.ea.com/games/ultima/ultima-4-quest-of-the-avatar" } ]
 
 [[game]]
 id = "u5"
@@ -61,7 +61,7 @@ short = "U5"
 era = "Age of Enlightenment"
 wiki = "Ultima_V:_Warriors_of_Destiny"
 query = "Ultima V"
-buy = [ { name = "GOG (4+5+6)", url = "https://www.gog.com/en/game/ultima_456" }, { name = "Steam", url = "https://store.steampowered.com/search/?term=Ultima%20V" }, { name = "EA app", url = "https://www.ea.com/games/ultima" } ]
+buy = [ { name = "GOG", url = "https://www.gog.com/en/game/ultima_v" }, { name = "Steam", url = "https://store.steampowered.com/app/3067520/" }, { name = "EA app", url = "https://www.ea.com/games/ultima" } ]
 
 [[game]]
 id = "u6"
@@ -71,7 +71,7 @@ short = "U6"
 era = "Age of Enlightenment"
 wiki = "Ultima_VI:_The_False_Prophet"
 query = "Ultima VI"
-buy = [ { name = "GOG (4+5+6)", url = "https://www.gog.com/en/game/ultima_456" }, { name = "Steam", url = "https://store.steampowered.com/search/?term=Ultima%20VI" }, { name = "EA app", url = "https://www.ea.com/games/ultima" } ]
+buy = [ { name = "GOG", url = "https://www.gog.com/en/game/ultima_vi" }, { name = "Steam", url = "https://store.steampowered.com/app/3067530/" }, { name = "EA app", url = "https://www.ea.com/games/ultima" } ]
 
 [[game]]
 id = "se"
@@ -101,7 +101,7 @@ short = "UW1"
 era = "Spin-offs between VI and VII"
 wiki = "Ultima_Underworld:_The_Stygian_Abyss"
 query = "Ultima Underworld"
-buy = [ { name = "GOG (UW 1+2)", url = "https://www.gog.com/en/game/ultima_underworld_1_2" }, { name = "Steam", url = "https://store.steampowered.com/search/?term=Ultima%20Underworld" }, { name = "EA app", url = "https://www.ea.com/games/ultima" } ]
+buy = [ { name = "GOG", url = "https://www.gog.com/en/game/ultima_underworld_1" }, { name = "Steam", url = "https://store.steampowered.com/app/3067580/" }, { name = "EA app", url = "https://www.ea.com/games/ultima" } ]
 
 [[game]]
 id = "u7"
@@ -111,7 +111,7 @@ short = "U7"
 era = "Age of Armageddon"
 wiki = "Ultima_VII:_The_Black_Gate"
 query = "Ultima VII Black Gate"
-buy = [ { name = "GOG (Complete)", url = "https://www.gog.com/en/game/ultima_7_complete" }, { name = "Steam", url = "https://store.steampowered.com/search/?term=Ultima%20VII" }, { name = "EA app", url = "https://www.ea.com/games/ultima" } ]
+buy = [ { name = "GOG (Complete)", url = "https://www.gog.com/en/game/ultima_7_complete" }, { name = "Steam", url = "https://store.steampowered.com/app/3067540/" }, { name = "EA app", url = "https://www.ea.com/games/ultima" } ]
 
 [[game]]
 id = "uw2"
@@ -121,7 +121,7 @@ short = "UW2"
 era = "Age of Armageddon"
 wiki = "Ultima_Underworld_II:_Labyrinth_of_Worlds"
 query = "Ultima Underworld II"
-buy = [ { name = "GOG (UW 1+2)", url = "https://www.gog.com/en/game/ultima_underworld_1_2" }, { name = "Steam", url = "https://store.steampowered.com/search/?term=Ultima%20Underworld%20II" }, { name = "EA app", url = "https://www.ea.com/games/ultima" } ]
+buy = [ { name = "GOG", url = "https://www.gog.com/en/game/ultima_underworld_2" }, { name = "Steam", url = "https://store.steampowered.com/app/3067590/" }, { name = "EA app", url = "https://www.ea.com/games/ultima" } ]
 
 [[game]]
 id = "si"
@@ -131,7 +131,7 @@ short = "SI"
 era = "Age of Armageddon"
 wiki = "Ultima_VII_Part_Two:_Serpent_Isle"
 query = "Serpent Isle"
-buy = [ { name = "GOG (Complete)", url = "https://www.gog.com/en/game/ultima_7_complete" }, { name = "Steam", url = "https://store.steampowered.com/search/?term=Ultima%20VII" }, { name = "EA app", url = "https://www.ea.com/games/ultima" } ]
+buy = [ { name = "GOG (Complete)", url = "https://www.gog.com/en/game/ultima_7_complete" }, { name = "Steam", url = "https://store.steampowered.com/app/3067540/" }, { name = "EA app", url = "https://www.ea.com/games/ultima" } ]
 
 [[game]]
 id = "u8"
@@ -141,7 +141,7 @@ short = "U8"
 era = "Age of Armageddon"
 wiki = "Ultima_VIII:_Pagan"
 query = "Ultima VIII Pagan"
-buy = [ { name = "GOG (Gold)", url = "https://www.gog.com/en/game/ultima_8_gold_edition" }, { name = "Steam", url = "https://store.steampowered.com/search/?term=Ultima%20VIII" }, { name = "EA app", url = "https://www.ea.com/games/ultima" } ]
+buy = [ { name = "GOG (Gold)", url = "https://www.gog.com/en/game/ultima_8_gold_edition" }, { name = "Steam", url = "https://store.steampowered.com/app/3067550/" }, { name = "EA app", url = "https://www.ea.com/games/ultima" } ]
 
 [[game]]
 id = "u9"
@@ -151,7 +151,7 @@ short = "U9"
 era = "Age of Armageddon"
 wiki = "Ultima_IX:_Ascension"
 query = "Ultima IX Ascension"
-buy = [ { name = "GOG", url = "https://www.gog.com/en/game/ultima_9_ascension" }, { name = "Steam", url = "https://store.steampowered.com/search/?term=Ultima%20IX" }, { name = "EA app", url = "https://www.ea.com/games/ultima" } ]
+buy = [ { name = "GOG", url = "https://www.gog.com/en/game/ultima_9_ascension" }, { name = "Steam", url = "https://store.steampowered.com/app/3067560/" }, { name = "EA app", url = "https://www.ea.com/games/ultima" } ]
 
 [[game]]
 id = "drash"

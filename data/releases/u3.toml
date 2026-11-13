@@ -1,5 +1,6 @@
 # Releases of Ultima III: Exodus. One [[release]] block each; see CONTRIBUTING.md for every field.
 
+
 [[release]]
 year = 1983
 platform = "apple2"
@@ -78,18 +79,18 @@ label = "Famicom (FCI / Pony Canyon)"
 note = "Console redesign with new graphics and music, released in Japan."
 
 [[release]]
-year = 1989
-platform = "nes"
-type = "console"
-label = "NES: Ultima: Exodus"
-note = "North American release of the Famicom version."
-
-[[release]]
 year = 1988
 platform = "msx"
 type = "jp"
 label = "MSX2 cartridge"
 note = "Pony Canyon cartridge release."
+
+[[release]]
+year = 1989
+platform = "nes"
+type = "console"
+label = "NES: Ultima: Exodus"
+note = "North American release of the Famicom version."
 
 [[release]]
 year = 1989
@@ -127,6 +128,22 @@ links = [ { name = "Project site", url = "http://ult3gbc.sourceforge.net/" }, { 
 play = [ { name = "Mesen", url = "https://www.mesen.ca/" } ]
 
 [[release]]
+year = 2007
+approx = true
+type = "fan"
+label = "Ultima III Gold (C64)"
+note = "Improved fan version of the Commodore 64 release."
+needs_data = true
+links = [ { name = "Codex entry", url = "https://ultima3.ultimacodex.com/ultima-3-gold/" } ]
+play = [ { name = "VICE", url = "https://vice-emu.sourceforge.io/" } ]
+
+[[release]]
+type = "fan"
+label = "Ultima III for Mac (OS X port)"
+note = "Fan port to OS X, called the best available version on the Codex."
+links = [ { name = "Codex entry", url = "https://ultima3.ultimacodex.com/ultima-3-for-mac/" } ]
+
+[[release]]
 year = 2015
 approx = true
 type = "fan"
@@ -148,8 +165,18 @@ approx = true
 type = "fan"
 label = "Ultima 3: Exodus Remastered (NES)"
 note = "Reworked version of the NES Ultima: Exodus."
+needs_data = true
 links = [ { name = "Codex entry", url = "https://ultima3.ultimacodex.com/ultima-3-exodus-remastered/" } ]
 play = [ { name = "Mesen", url = "https://www.mesen.ca/" } ]
+
+[[release]]
+year = 2022
+approx = true
+type = "fan"
+label = "Fan port: Palm OS (SoftwareByPaul)"
+note = "Ultima III for Palm OS devices by SoftwareByPaul, listed as completed; the Codex reports the Palm OS ports resurfacing in 2022, so the year is approximate."
+links = [ { name = "Codex entry", url = "https://ultima3.ultimacodex.com/ultima-3-for-palmos/" } ]
+play = [ { name = "CloudpilotEmu", url = "https://cloudpilot-emu.github.io/" } ]
 
 [[release]]
 year = 2025
@@ -168,27 +195,7 @@ links = [ { name = "Codex entry (standalone)", url = "https://ultima3.ultimacode
 
 [[release]]
 year = 2026
-type = "decomp"
-label = "Ultima III modernized port (ChangeNode)"
-note = "TypeScript rebuild of LairWare's Mac port, whose source was released in 2014, keeping the data files unchanged and adding a controller mode, auto-map, quest journal and shared inventory. Runs in the browser and on Windows, macOS, Linux, Android and Steam Deck; MIT licence."
+type = "fan"
+label = "Ultima III modernized port (synthwave-pixel)"
+note = "TypeScript rebuild of LairWare's Mac port, keeping the original data files unchanged and adding a controller mode, auto-map, quest journal, shared inventory and twelve tile sets. Runs in the browser and on Windows, macOS, Linux, Android and Steam Deck; MIT licence. Unlike most projects here it ships the game's original assets itself rather than asking for your copy, so check its terms before relying on it."
 links = [ { name = "Play in browser", url = "https://synthwave-pixel.github.io/ultima3/" }, { name = "GitHub", url = "https://github.com/synthwave-pixel/ultima3" }, { name = "Releases", url = "https://github.com/synthwave-pixel/ultima3/releases" }, { name = "LairWare source", url = "https://github.com/beastie/ultima3" } ]
-
-[[release]]
-type = "fan"
-label = "Fan port: Palm OS"
-note = "Ultima III for Palm OS devices, listed as completed."
-links = [ { name = "Codex entry", url = "https://ultima3.ultimacodex.com/ultima-3-for-palmos/" } ]
-play = [ { name = "CloudpilotEmu", url = "https://cloudpilot-emu.github.io/" } ]
-
-[[release]]
-type = "fan"
-label = "Ultima III Gold (C64)"
-note = "Improved fan version of the Commodore 64 release."
-links = [ { name = "Codex entry", url = "https://ultima3.ultimacodex.com/ultima-3-gold/" } ]
-play = [ { name = "VICE", url = "https://vice-emu.sourceforge.io/" } ]
-
-[[release]]
-type = "fan"
-label = "Ultima III for Mac (OS X port)"
-note = "Fan port to OS X, called the best available version on the Codex."
-links = [ { name = "Codex entry", url = "https://ultima3.ultimacodex.com/ultima-3-for-mac/" } ]

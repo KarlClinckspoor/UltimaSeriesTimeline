@@ -1,5 +1,6 @@
 # Releases of Ultima I: The First Age of Darkness. One [[release]] block each; see CONTRIBUTING.md for every field.
 
+
 [[release]]
 year = 1981
 platform = "apple2"
@@ -90,6 +91,22 @@ note = "Reverse-engineering effort that reads the original game files. Unfinishe
 links = [ { name = "Bitbucket", url = "https://bitbucket.org/dandago/u1revenge" } ]
 
 [[release]]
+year = 2012
+approx = true
+type = "fan"
+label = "The Gate of Sosaria (RPG Maker VX)"
+note = "Ultima I remake in RPG Maker VX using Ultima VII graphics. Begun around 2012, cancelled by its first team in 2014, later revived by Ultima Mercator as a short demo."
+links = [ { name = "Codex entry", url = "https://ultima1.ultimacodex.com/the-gate-of-sosaria/" } ]
+
+[[release]]
+year = 2017
+approx = true
+type = "fan"
+label = "uUltima (Unity)"
+note = "Unity remake of Ultima I aimed at Android and PC. The year is the Codex listing date; the Codex describes it as in development and unreleased, with no news since 2019."
+links = [ { name = "Codex entry", url = "https://ultima1.ultimacodex.com/uultima/" } ]
+
+[[release]]
 year = 2020
 type = "engine"
 label = "ScummVM Ultima I (in progress)"
@@ -97,27 +114,11 @@ note = "An Ultima I subengine based on a decompilation was added to ScummVM's Ul
 links = [ { name = "Announcement", url = "https://ultimacodex.com/2020/02/support-for-some-ultima-games-is-coming-to-scummvm/" }, { name = "ScummVM", url = "https://www.scummvm.org/" } ]
 
 [[release]]
-year = 2026
-type = "decomp"
-label = "u1-decompiled (Karl Clinckspoor)"
-note = "Source for the PC remake (1986/87, conversion by John Fachini), rebuilt with Lattice C 3.1x, MASM 3.00 and Microsoft LINK into executables byte-identical to the GOG release. All five EXEs rebuild identical; GEN.EXE is decompiled to C and the rest still use generated assembly stand-ins. No playable port yet."
-needs_data = true
-links = [ { name = "GitHub", url = "https://github.com/KarlClinckspoor/u1-decompiled" }, { name = "Handoff notes", url = "https://github.com/KarlClinckspoor/u1-decompiled/blob/main/docs/HANDOFF.md" } ]
-
-[[release]]
-year = 2017
-approx = true
-type = "fan"
-label = "uUltima (Unity)"
-note = "Unity remake of Ultima I aimed at Android and PC."
-links = [ { name = "Codex entry", url = "https://ultima1.ultimacodex.com/uultima/" } ]
-
-[[release]]
 year = 2022
 approx = true
 type = "fan"
-label = "Fan port: Palm OS"
-note = "Ultima I running on Palm OS devices."
+label = "Fan port: Palm OS (SoftwareByPaul)"
+note = "Ultima I for Palm OS devices by SoftwareByPaul; the Codex reports the full version resurfacing in 2022, so the year is approximate."
 links = [ { name = "Codex entry", url = "https://ultima1.ultimacodex.com/ultima-1-for-palmos/" } ]
 play = [ { name = "CloudpilotEmu", url = "https://cloudpilot-emu.github.io/" } ]
 
@@ -138,7 +139,16 @@ links = [ { name = "Codex entry", url = "https://ultima1.ultimacodex.com/vic-20-
 play = [ { name = "VICE", url = "https://vice-emu.sourceforge.io/" } ]
 
 [[release]]
+year = 2026
+type = "decomp"
+label = "u1-decompiled (Karl Clinckspoor)"
+note = "Source for the PC remake (1986/87, conversion by John Fachini), rebuilt with Lattice C 3.1x, MASM 3.00 and Microsoft LINK into executables byte-identical to the GOG release. All five EXEs rebuild identical; GEN.EXE is decompiled to C and the rest still use generated assembly stand-ins. No playable port yet."
+links = [ { name = "GitHub", url = "https://github.com/KarlClinckspoor/u1-decompiled" }, { name = "Handoff notes", url = "https://github.com/KarlClinckspoor/u1-decompiled/blob/main/docs/HANDOFF.md" } ]
+
+[[release]]
+year = 2026
 type = "fan"
-label = "The Gate of Sosaria (RPG Maker VX)"
-note = "Ultima I remake in RPG Maker VX using Ultima VII graphics."
-links = [ { name = "Codex entry", url = "https://ultima1.ultimacodex.com/the-gate-of-sosaria/" } ]
+label = "Ultima 1 Unity (archiveofmyth)"
+note = "Free Unity rebuild of Ultima I with switchable graphics sets from across the series and more than 15 music packs; early access in 2026. It may be the same project as uUltima, which the Codex lists separately."
+links = [ { name = "itch.io", url = "https://archiveofmyth.itch.io/ultima-unity" } ]
+play = [ { name = "Free download (itch.io)", url = "https://archiveofmyth.itch.io/ultima-unity" } ]

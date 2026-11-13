@@ -1,5 +1,6 @@
 # Releases of Ultima Underworld: The Stygian Abyss. One [[release]] block each; see CONTRIBUTING.md for every field.
 
+
 [[release]]
 year = 1992
 platform = "dos"
@@ -40,8 +41,22 @@ year = 2002
 approx = true
 type = "engine"
 label = "Underworld Adventures"
-note = "Cross-platform engine for UW1 using the original files. Advanced but inactive since 2007; code now on GitHub."
+note = "Cross-platform engine for UW1 using the original files. Work resumed in 2021 (version 0.10.0 restored the old code) and the repository was still being updated in 2026, but much of the gameplay is not yet implemented. Code on GitHub."
 links = [ { name = "Project site", url = "https://vividos.github.io/UnderworldAdventures/" }, { name = "GitHub", url = "https://github.com/vividos/UnderworldAdventures" } ]
+
+[[release]]
+year = 2014
+approx = true
+type = "fan"
+label = "Ultima Underworld Demo Remake (Unreal Engine 4)"
+note = "Remake of the first level from the demo in Unreal Engine 4, with VR support."
+links = [ { name = "Codex entry", url = "https://underworld.ultimacodex.com/ultima-underworld-demo-remake-project/" } ]
+
+[[release]]
+type = "fan"
+label = "The Great Stygian Abyss for Unreal Tournament"
+note = "The whole Abyss rebuilt as Unreal Tournament levels."
+links = [ { name = "Codex entry", url = "https://underworld.ultimacodex.com/the-great-stygian-abyss-for-unreal-tournament/" } ]
 
 [[release]]
 year = 2017
@@ -87,17 +102,3 @@ type = "engine"
 label = "Underworld Revisited"
 note = "PQMarine's open-source Unity reimplementation for Windows and Linux, fully playable from character creation to the ending and checked against the original (rules verified against Underworld Exhumed). Saves work both ways with DOS. First release 0.1.0 on 2 October 2026; can replace the game's launch on Steam."
 links = [ { name = "Project site", url = "https://pqmarine.github.io/" }, { name = "GitHub", url = "https://github.com/PQMarine/UnderworldRevisited" }, { name = "Releases", url = "https://github.com/PQMarine/UnderworldRevisited/releases/latest" } ]
-
-[[release]]
-year = 2014
-approx = true
-type = "fan"
-label = "Ultima Underworld Demo Remake (Unreal Engine 4)"
-note = "Remake of the first level from the demo in Unreal Engine 4, with VR support."
-links = [ { name = "Codex entry", url = "https://underworld.ultimacodex.com/ultima-underworld-demo-remake-project/" } ]
-
-[[release]]
-type = "fan"
-label = "The Great Stygian Abyss for Unreal Tournament"
-note = "The whole Abyss rebuilt as Unreal Tournament levels."
-links = [ { name = "Codex entry", url = "https://underworld.ultimacodex.com/the-great-stygian-abyss-for-unreal-tournament/" } ]

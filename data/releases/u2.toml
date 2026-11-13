@@ -1,5 +1,6 @@
 # Releases of Ultima II: The Revenge of the Enchantress. One [[release]] block each; see CONTRIBUTING.md for every field.
 
+
 [[release]]
 year = 1982
 platform = "apple2"
@@ -86,8 +87,8 @@ note = "Japanese release; year undocumented."
 year = 2022
 approx = true
 type = "fan"
-label = "Fan port: Palm OS"
-note = "Ultima II running on Palm OS devices."
+label = "Fan port: Palm OS (SoftwareByPaul)"
+note = "Ultima II for Palm OS devices by SoftwareByPaul; the Codex reports the full version resurfacing in 2022, so the year is approximate."
 links = [ { name = "Codex entry", url = "https://ultima2.ultimacodex.com/ultima-2-for-palmos/" } ]
 play = [ { name = "CloudpilotEmu", url = "https://cloudpilot-emu.github.io/" } ]
 
@@ -104,3 +105,9 @@ type = "fan"
 label = "Ultima II for Windows"
 note = "A Windows-native port, listed as completed on the Codex."
 links = [ { name = "Codex entry", url = "https://ultima2.ultimacodex.com/ultima-2-for-windows/" } ]
+
+[[release]]
+type = "fan"
+label = "Ultima 2: Enilno (Morrowind engine, dormant)"
+note = "Long-dormant online-flavoured remake of Ultima II built on the Morrowind engine."
+links = [ { name = "Codex entry", url = "https://ultima2.ultimacodex.com/ultima-2-enilno/" } ]

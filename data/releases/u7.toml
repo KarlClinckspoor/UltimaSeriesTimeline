@@ -1,5 +1,6 @@
 # Releases of Ultima VII: The Black Gate. One [[release]] block each; see CONTRIBUTING.md for every field.
 
+
 [[release]]
 year = 1992
 platform = "dos"
@@ -22,13 +23,6 @@ label = "SNES: Ultima: The Black Gate"
 note = "Cut-down action-adventure adaptation by FCI / Pony Canyon (also Super Famicom, November 1994)."
 
 [[release]]
-year = 2006
-platform = "psp"
-type = "console"
-label = "PSP (EA Replay)"
-note = "The SNES version included in the EA Replay compilation, US, November 2006."
-
-[[release]]
 year = 2000
 approx = true
 type = "engine"
@@ -37,12 +31,11 @@ note = "Open-source Ultima VII engine running The Black Gate, Serpent Isle and b
 links = [ { name = "Exult", url = "https://exult.sourceforge.io/" }, { name = "GitHub", url = "https://github.com/exult/exult" } ]
 
 [[release]]
-year = 2024
-type = "fan"
-label = "Ultima VII: Revisited (in development)"
-note = "Anthony Salter's open-source 3D engine replacement for The Black Gate; Trinsic became fully playable in version 0.2.1 (May 2026). Needs your own copy of Ultima VII."
-needs_data = true
-links = [ { name = "Project site", url = "https://u7revisited.com/" }, { name = "GitHub", url = "https://github.com/ViridianGames/U7Revisited" } ]
+year = 2006
+platform = "psp"
+type = "console"
+label = "PSP (EA Replay)"
+note = "The SNES version included in the EA Replay compilation, US, November 2006."
 
 [[release]]
 year = 2009
@@ -60,11 +53,18 @@ note = "A Unity remake of Ultima VII."
 links = [ { name = "Codex entry", url = "https://ultima7.ultimacodex.com/el-portal-negro-ultima-7-in-unity/" } ]
 
 [[release]]
+year = 2024
+type = "fan"
+label = "Ultima VII: Revisited (in development)"
+note = "Anthony Salter's open-source 3D engine replacement for The Black Gate; Trinsic became fully playable in version 0.2.1 (May 2026), and a Trinsic demo has followed. See the project site for the latest version. Needs your own copy of Ultima VII."
+needs_data = true
+links = [ { name = "Project site", url = "https://u7revisited.com/" }, { name = "GitHub", url = "https://github.com/ViridianGames/U7Revisited" } ]
+
+[[release]]
 year = 2026
 type = "decomp"
 label = "Ultima7_Decomp (Kitrinx)"
 note = "AI-assisted decompilation of The Black Gate, byte-exact under Borland C++ 2.0, with an early portable build for Windows, macOS and Linux."
-needs_data = true
 links = [ { name = "GitHub", url = "https://github.com/Kitrinx/Ultima7_Decomp" }, { name = "Codex article", url = "https://ultimacodex.com/2026/10/the-black-gate-decompiled/" } ]
 
 [[release]]
@@ -75,12 +75,14 @@ note = "Up to eight players: the host is the Avatar and friends each take a comp
 links = [ { name = "Project site", url = "https://xcast3d.com/u7-quest-of-the-companions/" }, { name = "Codex entry", url = "https://ultima7.ultimacodex.com/ultima-vii-quest-of-the-companions/" } ]
 
 [[release]]
+year = 2026
 type = "engine"
 label = "Britannia Relit (Exult fork, beta)"
 note = "Keeps the pixel art and adds GPU lighting, shadows, weather and seasons. Linux beta only; no public release yet."
 links = [ { name = "Project site", url = "https://britannia-relit.pages.dev/" }, { name = "Codex article", url = "https://ultimacodex.com/2026/10/britannia-relit-an-exult-fork-that-gives-ultima-vii-octopath-style-lighting/" } ]
 
 [[release]]
+year = 2026
 type = "fan"
 label = "Ultima 7 Online (Loresong, not public)"
 note = "Browser MMO version of The Black Gate on three.js with the classic assets, shown only in videos so far."

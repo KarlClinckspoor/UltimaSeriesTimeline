@@ -1,5 +1,6 @@
 # Releases of Ultima V: Warriors of Destiny. One [[release]] block each; see CONTRIBUTING.md for every field.
 
+
 [[release]]
 year = 1988
 platform = "apple2"
@@ -77,12 +78,13 @@ play = [ { name = "Free download (ModDB)", url = "https://www.moddb.com/mods/ult
 [[release]]
 year = 2019
 type = "fan"
-label = "Ultima V Redux (in development)"
-note = "Brad Hannah's remake built on the original data. Began as a Unity voxel version, moved to a 2D Go/Ebiten engine in 2024, and was function-complete and heading to playtesting in September 2026."
+label = "Ultima V Redux (public preview)"
+note = "Brad Hannah's Go recreation, built on your own copy of the original data. Began as a Unity voxel version, moved to a 2D Go engine in 2024 and was function-complete in September 2026; downloadable preview builds for macOS, Windows and Linux now exist, along with a game-guide website."
 needs_data = true
-links = [ { name = "GitHub (Go)", url = "https://github.com/bradhannah/Ultima5ReduxGo" }, { name = "Codex page", url = "https://ultima5.ultimacodex.com/ultima-5-redux" } ]
+links = [ { name = "GitHub", url = "https://github.com/bradhannah/UltimaVRedux" }, { name = "Releases", url = "https://github.com/bradhannah/UltimaVRedux/releases" }, { name = "Game guide", url = "https://bradhannah.github.io/UltimaVRedux/" }, { name = "Codex page", url = "https://ultima5.ultimacodex.com/ultima-5-redux" } ]
 
 [[release]]
+year = 2026
 type = "decomp"
 label = "u5d (in progress)"
 note = "Matching decompilation of the MS-DOS version, inspired by u4-decompiled. About half matched; it does not link a playable executable yet."
@@ -100,3 +102,10 @@ type = "fan"
 label = "Fan port: TI-89 / TI-92 calculators"
 note = "Ultima V ported to Texas Instruments graphing calculators."
 links = [ { name = "Codex entry", url = "https://ultima5.ultimacodex.com/ultima-5-for-ti-calculators/" } ]
+
+[[release]]
+year = 2026
+type = "engine"
+label = "Ultima V modernized engine (synthwave-pixel)"
+note = "TypeScript engine for the 1988 MS-DOS game that plays your own copy, for the browser, desktop, Steam Deck and Android. The project's page itself carries some of the game's assets (Ultima V Upgrade music, Apple II tiles and box art), so check its terms."
+links = [ { name = "GitHub", url = "https://github.com/synthwave-pixel/ultima5" }, { name = "Play in browser", url = "https://synthwave-pixel.github.io/ultima5/" }, { name = "Codex article", url = "https://ultimacodex.com/2026/11/check-out-changenodes-modernized-engine-for-ultima-v-warriors-of-destiny/" } ]

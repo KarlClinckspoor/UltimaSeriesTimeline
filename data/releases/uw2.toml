@@ -1,5 +1,6 @@
 # Releases of Ultima Underworld II: Labyrinth of Worlds. One [[release]] block each; see CONTRIBUTING.md for every field.
 
+
 [[release]]
 year = 1993
 platform = "dos"
@@ -20,6 +21,20 @@ platform = "pc98"
 type = "jp"
 label = "PC-98"
 note = "Japan, 17 March 1995."
+
+[[release]]
+year = 2003
+approx = true
+type = "engine"
+label = "Abysmal (early)"
+note = "Early replacement engine aiming to run Ultima Underworld II on modern systems; its research was later credited by Underworld Adventures and UnderworldGodot."
+links = [ { name = "Codex entry", url = "https://underworld2.ultimacodex.com/abysmal-engine/" } ]
+
+[[release]]
+type = "engine"
+label = "LoW (Labyrinth of Worlds rewrite)"
+note = "A rewrite of Ultima Underworld II for modern systems."
+links = [ { name = "Project site", url = "https://low.sourceforge.net/" } ]
 
 [[release]]
 year = 2018
@@ -50,17 +65,3 @@ type = "engine"
 label = "Underworld Revisited (UW2 preview)"
 note = "Version 0.13.0 of PQMarine's Unity reimplementation adds a first preview of Ultima Underworld II alongside the complete UW1."
 links = [ { name = "Project site", url = "https://pqmarine.github.io/" }, { name = "GitHub", url = "https://github.com/PQMarine/UnderworldRevisited" }, { name = "Releases", url = "https://github.com/PQMarine/UnderworldRevisited/releases/latest" } ]
-
-[[release]]
-year = 2003
-approx = true
-type = "engine"
-label = "Abysmal (early)"
-note = "Early replacement engine aiming to run Ultima Underworld II on modern systems; its research was later credited by Underworld Adventures and UnderworldGodot."
-links = [ { name = "Codex entry", url = "https://underworld2.ultimacodex.com/abysmal-engine/" } ]
-
-[[release]]
-type = "engine"
-label = "LoW (Labyrinth of Worlds rewrite)"
-note = "A rewrite of Ultima Underworld II for modern systems."
-links = [ { name = "Project site", url = "https://low.sourceforge.net/" } ]

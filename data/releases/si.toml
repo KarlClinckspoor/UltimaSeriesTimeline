@@ -1,5 +1,6 @@
 # Releases of Ultima VII Part Two: Serpent Isle. One [[release]] block each; see CONTRIBUTING.md for every field.
 
+
 [[release]]
 year = 1993
 platform = "dos"
@@ -23,6 +24,7 @@ note = "Exult plays Serpent Isle and The Silver Seed, and restores the longer or
 links = [ { name = "Exult", url = "https://exult.sourceforge.io/" }, { name = "GitHub", url = "https://github.com/exult/exult" } ]
 
 [[release]]
+year = 2026
 type = "fan"
 label = "Serpent Isle Restored (in playtesting)"
 note = "Exult mod rebuilding the unfinished second half from design documents, unused code and team recollections, adding 15–30 hours. Needs Silver Seed and Exult 1.12; testers were being recruited in November 2026."
