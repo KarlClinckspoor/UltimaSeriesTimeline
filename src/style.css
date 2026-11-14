@@ -288,3 +288,23 @@ footer p { margin: 0; }
 }
 .export:hover:not(:disabled) { border-color: var(--gold); color: var(--gold); }
 .export:disabled { opacity: .6; cursor: progress; }
+
+/* ---------- Patches view ---------- */
+.pt-hint { margin: 10px 0 0; padding: 0 2px; border: 0; }
+.pt-kind { font-family: var(--display); font-weight: 400; font-size: 1.3rem; color: var(--gold); margin: 22px 0 10px; }
+.pt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 14px; }
+.pt-card {
+  background: var(--panel); border: 1px solid var(--line); border-top: 3px solid var(--gold); border-radius: 12px;
+  padding: 14px 16px 14px; transition: opacity .15s ease;
+}
+.pt-card.dim { opacity: .22; }
+.pt-card h3 { font-family: var(--display); font-weight: 400; font-size: 1.2rem; line-height: 1.15; margin: 0 0 6px; }
+.pt-card h3 a { color: var(--text); text-decoration: none; }
+.pt-card h3 a:hover { color: var(--gold); text-decoration: underline; }
+.pt-card p { margin: 8px 0; font-size: .95rem; }
+.pt-games { display: flex; flex-wrap: wrap; gap: 4px; }
+.pt-game { font-size: .72rem; font-weight: 700; color: var(--gold); border: 1px solid var(--line); background: var(--panel-2); border-radius: 5px; padding: 0 6px; }
+.pt-card dl { display: grid; grid-template-columns: max-content 1fr; gap: 3px 10px; margin: 8px 0; font-size: .84rem; }
+.pt-card dt { color: var(--muted); text-transform: uppercase; letter-spacing: .06em; font-size: .72rem; padding-top: 2px; }
+.pt-card dd { margin: 0; }
+.pt-card .links { margin-top: 8px; font-size: .88rem; display: flex; flex-wrap: wrap; gap: 4px 14px; }

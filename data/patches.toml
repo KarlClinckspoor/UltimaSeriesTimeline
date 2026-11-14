@@ -1,0 +1,140 @@
+# Patches, launchers and enhancement tools for the original games.
+# (Engine recreations, decompilation ports and fan remakes belong in data/releases/ instead.)
+#
+# Each [[tool]] needs: name, kind, games, summary, status, links (at least one).
+#   games   = game ids from data/games.toml
+#   needs   = what the player must supply (optional; the default is "Your own copy of each game")
+#   by      = author(s), license = licence name, both optional
+#   status  = what you know about maintenance, with a date or version. Statuses go stale; say "checked <month year>".
+# Never link to anything that distributes game files or ROMs.
+
+[kind.patcher]
+label = "Patchers and installers"
+
+[kind.fixes]
+label = "Bug fixes and restoration"
+
+[kind.compat]
+label = "Compatibility and renderers"
+
+[kind.audio]
+label = "Music and sound"
+
+[kind.features]
+label = "Controls and usability"
+
+[[tool]]
+name = "Pix's Ultima Patcher"
+kind = "patcher"
+games = ["u1", "u2", "u3", "u4", "u5", "u6", "se", "md", "uw1", "u7", "uw2", "si", "u8", "u9"]
+by = "Pix (GitHub repository: Fenyx4)"
+license = "MIT"
+summary = "Windows utility that applies the community patches in one place: graphics and tileset upgrades, General MIDI and MT-32 music, bug fixes and DOSBox setup. Bundles, among others, the Ultima II and III upgrades (including the Ultimore expansions), Serpent Isle fishing tweaks, Savage Empire patches and the Ultima IX Forgotten World patch."
+status = "Latest release 1.73, March 2024 (checked November 2026)."
+links = [ { name = "GitHub", url = "https://github.com/Fenyx4/UltimaPatcher" }, { name = "Ultima Codex page", url = "https://ultima1.ultimacodex.com/pixs-ultima-patcher/" }, { name = "Release announcement", url = "https://ultimacodex.com/2024/04/pixs-ultima-patcher-version-1-73-released/" } ]
+
+[[tool]]
+name = "UltimaHacks"
+kind = "features"
+games = ["u7", "si", "uw1", "uw2"]
+by = "John Glassmyer"
+license = "MIT"
+summary = "Assembly patches plus a Java patcher for the DOS executables. Ultima VII and Serpent Isle get keep-moving, spellcasting by key, party selection by number and flexible bags; the Underworld games get mouselook and other usability changes. Playable in DOSBox."
+needs = "Your own copy of the game; the patcher edits its executable."
+status = "No tagged releases; last code change March 2023 (checked November 2026)."
+links = [ { name = "GitHub", url = "https://github.com/JohnGlassmyer/UltimaHacks" } ]
+
+[[tool]]
+name = "U9GL"
+kind = "compat"
+games = ["u9"]
+by = "theGreyWanderer-uc"
+license = "Custom (see the repository)"
+summary = "Adds an OpenGL renderer to Ultima IX, alongside its DirectX 6, DirectX 7 and Glide ones, with a launcher that also fixes crashes and bugs and offers optional improvements. Installs one dsound.dll and backs up anything it changes; uninstall restores it."
+needs = "The GOG or Steam release of Ultima IX; 64-bit Windows."
+status = "Under active development: v0.5.6 released 14 November 2026."
+links = [ { name = "GitHub", url = "https://github.com/theGreyWanderer-uc/tgwUltima9GL" }, { name = "Releases", url = "https://github.com/theGreyWanderer-uc/tgwUltima9GL/releases" } ]
+
+[[tool]]
+name = "GOG Ultima IX updates"
+kind = "compat"
+games = ["u9"]
+by = "GOG"
+summary = "The GOG release of Ultima IX (patch base 1.19F) ships its own renderer emulation: Glide, then a DirectX renderer as the default with windowed mode, V-Sync, gamma, integer scaling and anti-aliasing, a Vulkan backend for Glide, custom resolutions, a higher framerate cap and a fix for the floating rune and sigil bug."
+needs = "The GOG release (built in)."
+status = "Official. Update notes are mirrored on gogdb; they carry no dates."
+links = [ { name = "GOG release notes (gogdb)", url = "https://www.gogdb.org/product/1207659093/releasenotes" } ]
+
+[[tool]]
+name = "Ultima IX Forgotten World patches"
+kind = "fixes"
+games = ["u9"]
+by = "The Forgotten World project"
+summary = "Fan bug-fix patch project for Ultima IX (version 1.19h is the one Pix's Patcher bundles)."
+status = "Old project; the Codex page dates from 2010 (checked November 2026)."
+links = [ { name = "Project page", url = "https://forgottenworld.ultimacodex.com/2010/10/24/ultima-ix-patches-project-information/" }, { name = "The Unofficial Ultima 9 Patch (Codex)", url = "https://ultima9.ultimacodex.com/the-unofficial-ultima-9-patch" } ]
+
+[[tool]]
+name = "Ultima VI Nitpicker's Delight Patch"
+kind = "fixes"
+games = ["u6"]
+by = "Sir John"
+summary = "Corrects errors in dialogue and books, copy-protection answers and duplicate conversation keywords."
+status = "Version 1.23 is the latest listed on the author's site (checked November 2026)."
+links = [ { name = "Author's page", url = "https://sirjohn.de/en/ultima6/ultima-vi-nitpickers-delight-patch" }, { name = "Codex wiki", url = "https://www.wiki.ultimacodex.com/wiki/Ultima_VI_Nitpickers_Delight_Patch" } ]
+
+[[tool]]
+name = "Ultima VII Nitpicker's Delight Patch"
+kind = "fixes"
+games = ["u7"]
+summary = "Modifies book, map and other game files to correct errors; listed on the Ultima Codex's Ultima VII updates page."
+status = "Listed 8 September 2020 (checked November 2026)."
+links = [ { name = "Ultima VII updates (Codex)", url = "https://ultima7.ultimacodex.com/category/game-updates" } ]
+
+[[tool]]
+name = "Ultima V Upgrade Patch"
+kind = "audio"
+games = ["u5"]
+by = "Voyager Dragon"
+summary = "Adds music to the IBM PC version of Ultima V, matching the Apple II and Commodore versions at better quality, and the Amiga song in character creation. Meant for DOSBox."
+needs = "Your own copy of the MS-DOS game, plus a DPMI substitute (csdpmi5b) in the game folder because the setup program needs DPMI."
+status = "Undated wiki page, last edited March 2025; newer DOSBox builds may not need the DPMI substitute."
+links = [ { name = "Codex wiki", url = "https://www.wiki.ultimacodex.com/wiki/Ultima_V_Upgrade_Patch" } ]
+
+[[tool]]
+name = "Ultima Underworld General MIDI Patches"
+kind = "audio"
+games = ["uw1", "uw2"]
+by = "Panzer Dragon"
+summary = "Replaces the original Roland (MT-32) music with optimised General MIDI files, one pack for each game, because the MT-32 music sounds odd in DOSBox. Can also be applied through Pix's Ultima Patcher."
+status = "Static fan patch; undated (checked November 2026)."
+links = [ { name = "Ultima Codex page", url = "https://underworld.ultimacodex.com/the-ultima-underworld-general-midi-patch" }, { name = "Codex wiki", url = "https://www.wiki.ultimacodex.com/wiki/General_MIDI_Patches" } ]
+
+[[tool]]
+name = "Ultima Underworld Portable"
+kind = "patcher"
+games = ["uw1", "uw2"]
+by = "vini1264"
+license = "GPL-3.0"
+summary = "Launcher and patch kit for the GOG versions of both Underworld games around DOSBox Staging. Offers MT-32 music, optional mouselook from UltimaHacks, brighter lighting and a Brazilian Portuguese translation (Ultima Underworld I only)."
+needs = "Your own copy of the GOG or CD version."
+status = "No tagged releases on GitHub; the bundled DOSBox Staging version listed on the wiki may be stale."
+links = [ { name = "GitHub", url = "https://github.com/vini1264/Ultima-Underworld-Portable" }, { name = "Codex wiki", url = "https://wiki.ultimacodex.com/wiki/Ultima_Underworld_Portable" } ]
+
+[[tool]]
+name = "Portable Ultima Patches"
+kind = "patcher"
+games = ["u1", "u2", "u3", "u4", "u5", "u6", "u7", "si"]
+by = "Xarton Dragon"
+summary = "The same kinds of fan patches as Pix's Ultima Patcher, packaged in the PDAR patch format so they are more portable across platforms than the Windows tool. The Codex noted them as compatible with the GOG versions."
+status = "Last discussed on the Codex in 2011 and 2012; check the page for the current state."
+links = [ { name = "Ultima Codex page", url = "https://ultima1.ultimacodex.com/portable-ultima-patches/" } ]
+
+[[tool]]
+name = "Ultima 8 in Windows"
+kind = "compat"
+games = ["u8"]
+by = "Dragon Baroque"
+summary = "Lets the original DOS Ultima VIII run in Windows' expanded-memory environment. The Codex page itself calls it largely redundant now that modern engines and DOSBox exist."
+status = "Legacy patch, largely redundant on current systems."
+links = [ { name = "Ultima Codex page", url = "https://ultima8.ultimacodex.com/ultima-8-in-windows" } ]

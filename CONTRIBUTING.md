@@ -10,6 +10,7 @@ No time for that? [Open an issue](../../issues/new/choose) instead: "Add a relea
 |---|---|
 | `data/releases/<game>.toml` | **Every release of one game.** This is the file you will edit most. |
 | `data/games.toml` | The games, in canon order, with where to buy them today. |
+| `data/patches.toml` | Patches and enhancement tools (the **Patches** tab). |
 | `data/platforms.toml` | Hardware platforms: emulators, original hardware, table column. |
 | `data/types.toml` | The release types (original, port, engine recreation, …). |
 | `data/site.toml` | Title, intro line, footer text, table columns. |
@@ -62,6 +63,25 @@ Which table column an entry lands in follows from `platform`; without a platform
 - Plain text in `note`. A `“c.”` date or an honest "year undocumented" beats a guess.
 - Say what state a project is in (released, in development, abandoned, taken down). Statuses go stale, so put a month in when it matters.
 - Prefer the project's own page or repository over a news article.
+
+## Add a patch or enhancement tool
+
+The **Patches** tab is built from `data/patches.toml`: tools that patch, fix or enhance the *original* games (engine recreations and remakes go in `data/releases/` instead). Add a block:
+
+```toml
+[[tool]]
+name = "Example Patch"
+kind = "fixes"            # patcher, fixes, compat, audio or features (see the [kind.*] tables at the top)
+games = ["u6"]            # game ids from data/games.toml
+by = "Author"             # optional
+license = "MIT"           # optional
+summary = "What it does, in one to three plain sentences."
+needs = "Your own GOG copy."   # optional; default is "Your own copy of each game."
+status = "Version 1.2, March 2025 (checked November 2026)."
+links = [ { name = "Project page", url = "https://example.org/patch" } ]
+```
+
+`summary`, `status` and at least one link are required, and the first link is where the tool's name goes. Statuses go stale, so give a version or date and say when you checked. Never link to anything that distributes game files or ROMs.
 
 ## Add a game, platform or type
 

@@ -88,11 +88,11 @@ function renderControls() {
     const k = b.dataset.type;
     if (state.types.has(k)) state.types.delete(k); else state.types.add(k);
     b.setAttribute('aria-pressed', state.types.has(k));
-    applyFilters(); renderTable(); renderCompact();
+    applyFilters(); renderTable(); renderCompact(); renderPatches();
   });
   const sel = document.getElementById('gamesel');
   sel.insertAdjacentHTML('beforeend', GAMES.map(g => `<option value="${g.id}">${esc(g.t)}</option>`).join(''));
-  sel.addEventListener('change', () => { state.game = sel.value; applyFilters(); renderTable(); renderCompact(); });
+  sel.addEventListener('change', () => { state.game = sel.value; applyFilters(); renderTable(); renderCompact(); renderPatches(); });
 }
 
 /* ======================= TIMELINE ======================= */
@@ -293,7 +293,33 @@ document.getElementById('tlscroll').addEventListener('scroll', () => { if (!card
 window.addEventListener('resize', () => { if (!card.hidden && activeEl) position(activeEl); });
 
 /* ======================= VIEW SWITCH ======================= */
-const VIEWS = ['timeline', 'compact', 'table'];
+/* ======================= PATCHES ======================= */
+function renderPatches() {
+  const { kinds, tools } = D.patches;
+  const link = (n, u) => `<a href="${esc(u)}">${esc(n)}</a>`;
+  document.getElementById('patches').innerHTML = Object.entries(kinds).map(([kid, k]) => {
+    const mine = tools.filter(t => t.kind === kid);
+    if (!mine.length) return '';
+    return `<h2 class="pt-kind">${esc(k.label)}</h2><div class="pt-grid">` + mine.map(t => {
+      const dim = state.game && !t.games.includes(state.game) ? ' dim' : '';
+      const games = t.games.map(g => `<span class="pt-game" title="${esc(GMAP[g].t)}">${esc(GMAP[g].a)}</span>`).join('');
+      return `<article class="pt-card${dim}">
+        <h3><a href="${esc(t.links[0].url)}">${esc(t.name)}</a></h3>
+        <div class="pt-games">${games}</div>
+        <p>${esc(t.summary)}</p>
+        <dl>
+          <dt>Needs</dt><dd>${esc(t.needs || 'Your own copy of each game.')}</dd>
+          ${t.by ? `<dt>By</dt><dd>${esc(t.by)}</dd>` : ''}
+          ${t.license ? `<dt>Licence</dt><dd>${esc(t.license)}</dd>` : ''}
+          <dt>Status</dt><dd>${esc(t.status)}</dd>
+        </dl>
+        <div class="links">${t.links.map(l => link(l.name, l.url)).join('')}</div>
+      </article>`;
+    }).join('') + '</div>';
+  }).join('');
+}
+
+const VIEWS = ['timeline', 'compact', 'table', 'patches'];
 function show(view) {
   if (!VIEWS.includes(view)) view = 'timeline';
   VIEWS.forEach(v => {
@@ -309,6 +335,7 @@ function go(view) {
 document.getElementById('btn-timeline').addEventListener('click', () => go('timeline'));
 document.getElementById('btn-table').addEventListener('click', () => go('table'));
 document.getElementById('btn-compact').addEventListener('click', () => go('compact'));
+document.getElementById('btn-patches').addEventListener('click', () => go('patches'));
 document.getElementById('cpscroll').addEventListener('scroll', () => { if (!card.hidden) closeCard(); }, { passive: true });
 window.addEventListener('hashchange', () => show(location.hash.slice(1)));
 
@@ -329,8 +356,8 @@ function loadH2C() {
 async function exportPng() {
   const btn = document.getElementById('btn-export'), label = btn.textContent;
   const view = VIEWS.find(v => !document.getElementById('view-' + v).hidden);
-  const names = { timeline: 'Timeline', compact: 'Compact timeline', table: 'Canon table' };
-  const srcSel = { timeline: '#track', compact: '#cptrack', table: '#tbl' }[view];
+  const names = { timeline: 'Timeline', compact: 'Compact timeline', table: 'Canon table', patches: 'Patches and enhancements' };
+  const srcSel = { timeline: '#track', compact: '#cptrack', table: '#tbl', patches: '#patches' }[view];
   if (!card.hidden) closeCard();
   btn.disabled = true; btn.textContent = 'Exporting…';
   let wrap;
@@ -338,6 +365,7 @@ async function exportPng() {
     const html2canvas = await loadH2C();
     if (document.fonts && document.fonts.ready) await document.fonts.ready;
     const src = document.querySelector(srcSel), clone = src.cloneNode(true);
+    if (view === 'patches') clone.style.width = src.offsetWidth + 'px'; // fluid grid: keep the on-screen column count
     // inline SVG loses the page's CSS when rasterised, so copy the computed paint onto each shape
     const a = src.querySelectorAll('svg, svg *'), b = clone.querySelectorAll('svg, svg *');
     a.forEach((el, i) => {
@@ -374,5 +402,5 @@ async function exportPng() {
 document.getElementById('btn-export').addEventListener('click', exportPng);
 
 /* ======================= INIT ======================= */
-renderThemes(); renderLede(); renderControls(); renderTimeline(); renderCompact(); renderTable(); applyFilters();
+renderThemes(); renderLede(); renderControls(); renderTimeline(); renderCompact(); renderTable(); renderPatches(); applyFilters();
 show(location.hash.slice(1));

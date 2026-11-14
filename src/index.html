@@ -33,6 +33,7 @@
           <button type="button" id="btn-timeline" aria-pressed="true">Timeline</button>
           <button type="button" id="btn-compact" aria-pressed="false">Compact timeline</button>
           <button type="button" id="btn-table" aria-pressed="false">Canon table</button>
+          <button type="button" id="btn-patches" aria-pressed="false">Patches</button>
         </div>
         <div class="themes" id="themes" role="group" aria-label="Colour theme"></div>
         <button type="button" class="export" id="btn-export" title="Save the current view as a PNG image">Export PNG</button>
@@ -65,6 +66,11 @@
 
   <section class="view" id="view-table" aria-label="Canon order table" hidden>
     <div class="tbl-shell"><table id="tbl"></table></div>
+  </section>
+
+  <section class="view" id="view-patches" aria-label="Patches and enhancements" hidden>
+    <p class="tl-hint pt-hint">Tools that patch, fix or enhance the original games. All need your own copy of the game; none distributes game files. The “Highlight game” menu dims tools that don't apply.</p>
+    <div id="patches"></div>
   </section>
 
   <footer id="footer"></footer>

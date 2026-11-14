@@ -1,0 +1,51 @@
+name: Add a patch or enhancement tool
+description: A patcher, bug-fix patch, renderer wrapper, music pack or usability mod for the original games.
+title: "Add tool: "
+labels: ["add-tool"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For tools that patch or improve the **original** games. Engine recreations, decompilation ports and fan remakes go in
+        "Add a release or project" instead. Entries live in `data/patches.toml`.
+  - type: input
+    id: name
+    attributes:
+      label: Name of the tool
+    validations:
+      required: true
+  - type: input
+    id: games
+    attributes:
+      label: Which games does it work with?
+      placeholder: "e.g. Ultima VII and Serpent Isle"
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What does it do?
+      description: One to three plain sentences. Say what it needs from the player (GOG copy, DOSBox, a specific release) if you know.
+    validations:
+      required: true
+  - type: input
+    id: status
+    attributes:
+      label: Latest version and date, licence
+      placeholder: "e.g. v1.2, March 2025, MIT"
+  - type: textarea
+    id: links
+    attributes:
+      label: Links
+      description: The project's own page or repository, and a release or announcement. One per line.
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Checks
+      options:
+        - label: It is not already listed on the Patches tab.
+          required: true
+        - label: None of the links offers game files or ROMs.
+          required: true
